@@ -103,12 +103,15 @@ class LiquidGlassNavigation {
   }
 
   moveDropletToItem(index) {
+    this.activeIndex = index;
+    
+    // Always update active states regardless of mobile/desktop
+    this.updateActiveStates(index);
+    
     // Skip droplet movement on mobile
     if (this.isMobile || this.isAnimating || !this.dropletSelector || !this.navItems[index]) return;
     
     this.isAnimating = true;
-    this.activeIndex = index;
-    
     const targetItem = this.navItems[index];
     
     // Wait for DOM stability and use multiple frames for accuracy
@@ -171,9 +174,6 @@ class LiquidGlassNavigation {
         
         // Create ripple effect
         this.createLiquidRipple(targetItem);
-        
-        // Update active states
-        this.updateActiveStates(index);
         
         // Reset animation state
         setTimeout(() => {

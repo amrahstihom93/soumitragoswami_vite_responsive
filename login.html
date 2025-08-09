@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script type="module" src="/src/main.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="/src/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom footer styling to match main website */
+    .footer {
+      background-color: #212529 !important;
+    }
+    
+    .copyright {
+      background-color: #1a1e21;
+      border-top: 1px solid #495057;
+    }
+    
+    .btn-link {
+      color: #adb5bd;
+      text-decoration: none;
+      display: block;
+      padding: 2px 0;
+      border: none;
+      background: none;
+      text-align: left;
+    }
+    
+    .btn-link:hover {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    
+    .btn-square {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .border-bottom {
+      border-bottom: 1px solid #6c757d !important;
+      color: #adb5bd;
+      text-decoration: none;
+    }
+    
+    .border-bottom:hover {
+      color: #ffffff;
+    }
+    
+    
+    /* Navbar link styles to match index.html */
+    nav .block {
+      font-weight: 500;
+      color: #222;
+      background: none;
+      transition: all 0.2s;
+    }
+    nav .block:hover, nav .block:focus {
+      color: #2563eb;
+      background: #f0f6ff;
+      box-shadow: 0 2px 8px 0 rgba(37,99,235,0.08);
+    }
+    nav .block.active, nav .block[aria-current="page"] {
+      background: #e0e7ff;
+      color: #2563eb;
+      font-weight: 600;
+      box-shadow: 0 2px 8px 0 rgba(37,99,235,0.12);
+    }
+    nav .group > a {
+      font-weight: 600;
+      color: #222;
+      background: none;
+      border-radius: 0.75rem;
+      transition: all 0.2s;
+    }
+    nav .group:hover > a, nav .group:focus-within > a {
+      color: #2563eb;
+      background: #e0e7ff;
+      box-shadow: 0 2px 8px 0 rgba(37,99,235,0.12);
+    }
+    nav .group ul {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+      box-shadow: 0 8px 32px 0 rgba(37,99,235,0.10);
+    }
+    nav .group:hover ul,
+    nav .group:focus-within ul {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      visibility: visible !important;
+    }
+    nav .group ul li a {
+      font-weight: 600;
+      color: #222;
+      background: none;
+      transition: all 0.2s;
+    }
+    nav .group ul li a:hover, nav .group ul li a:focus {
+      color: #2563eb;
+      background: #e0e7ff;
+    }
+    @media (max-width: 768px) {
+      nav .group ul {
+        position: static !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        visibility: visible !important;
+        transform: none !important;
+        margin-top: 0.5rem;
+        display: none;
+        background: #f8fafc !important;
+        backdrop-filter: none !important;
+        border-radius: 0.75rem;
+        animation: slideDown 0.3s ease-out;
+      }
+      nav .group.mobile-open ul {
+        display: block !important;
+      }
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+    
+    /* Iframe container animations */
+    .iframe-container {
+      animation: fadeInUp 1s ease-out 0.5s both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-inter">
+  <!-- Fixed Top Navbar -->
+  <!-- Fixed Top Navbar (copied from index.html for consistency) -->
+    <nav class="fixed top-0 left-0 w-full bg-white border-b-2 border-blue-100 shadow-lg z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-between py-4 md:py-6 px-4 md:px-10 min-h-[80px]">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="/img/logo.png" alt="Logo" class="h-12 auto md:h-14 md:auto">
+        </a>
+        <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-auto p-2 rounded-lg hover:bg-blue-50 transition">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul id="main-menu" class="hidden md:flex md:space-x-7 flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 bg-white md:bg-transparent border-t-2 md:border-0 pt-4 md:pt-0 fixed md:static top-20 left-0 md:top-auto md:left-auto md:shadow-none shadow-2xl rounded-b-2xl md:rounded-none">
+          <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
+          <li><a href="/" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
+          <li class="relative group">
+            <a href="#services" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center border-l border-r border-gray-200 md:border-l md:border-r md:border-gray-200">Services <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+            <ul class="absolute left-0 md:left-1/2 md:-translate-x-1/2 right-auto top-full mt-1 min-w-[14rem] max-w-sm w-auto bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto pointer-events-none transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Mutual Funds/SIP</a></li>
+              <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Insurance</a></li>
+              <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Loans</a></li>
+              <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">IT Filing & GST</a></li>
+              <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Other Services</a></li>
+            </ul>
+          </li>
+          <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+          <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+          <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+          <li class="relative group">
+            <a href="#" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center border-l border-r border-gray-200 md:border-l md:border-r md:border-gray-200">More <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+            <ul class="absolute left-0 md:left-1/2 md:-translate-x-1/2 right-auto top-full mt-1 min-w-[14rem] max-w-sm w-auto bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto pointer-events-none transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="about.html#cert" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Certification</a></li>
+              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Risk Profiler</a></li>
+              <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Disclosure</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const toggle = document.getElementById('menu-toggle');
+          const menu = document.getElementById('main-menu');
+          if(toggle && menu) {
+            toggle.addEventListener('click', function() {
+              menu.classList.toggle('hidden');
+            });
+          }
+
+          // Dropdown delay logic for desktop
+          document.querySelectorAll('.group').forEach(function(group) {
+            let hideTimeout;
+            const dropdown = group.querySelector('ul');
+            if (!dropdown) return;
+            group.addEventListener('mouseenter', function() {
+              clearTimeout(hideTimeout);
+              dropdown.style.opacity = '1';
+              dropdown.style.pointerEvents = 'auto';
+              dropdown.style.visibility = 'visible';
+            });
+            group.addEventListener('mouseleave', function() {
+              hideTimeout = setTimeout(function() {
+                dropdown.style.opacity = '';
+                dropdown.style.pointerEvents = '';
+                dropdown.style.visibility = '';
+              }, 250); // 250ms delay before hiding
+            });
+            // For accessibility: focus/blur
+            group.addEventListener('focusin', function() {
+              clearTimeout(hideTimeout);
+              dropdown.style.opacity = '1';
+              dropdown.style.pointerEvents = 'auto';
+              dropdown.style.visibility = 'visible';
+            });
+            group.addEventListener('focusout', function() {
+              hideTimeout = setTimeout(function() {
+                dropdown.style.opacity = '';
+                dropdown.style.pointerEvents = '';
+                dropdown.style.visibility = '';
+              }, 250);
+            });
+          });
+        });
+      </script>
+    </nav>
+
+    
+  <style>
+  .iframe-container {
+    width: 100%;
+  }
+
+  .iframe-container iframe {
+    width: 100%;
+    border: none;
+    height: 900px; /* default desktop height */
+  }
+
+  @media (max-width: 768px) { /* Tablet */
+    .iframe-container iframe {
+      height: 1100px; /* more height for taller content */
+    }
+  }
+
+  @media (max-width: 480px) { /* Mobile */
+    .iframe-container iframe {
+      height: 1400px; /* big enough so nothing is cut off */
+    }
+  }
+</style>
+
+<div class="iframe-container">
+  <iframe
+    src="https://my-planner.in/login"
+    title="Login"
+    scrolling="no">
+  </iframe>
+</div>
+
+
+   <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <h4 class="text-white mb-4">Office</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>1st Cross Road, Salt Lake City, India </p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 9804452151</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>sgswamee.ib@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href="https://x.com/sgswamee" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank"><i class="fab fa-facebook-f" ></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href="" target="_blank"><i class="fab fa-youtube" target="_blank"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank"><i class="fab fa-linkedin-in" ></i></a>
+                    </div>
+                </div>
+                <div class="col-lg- col-md-6 wow fadeInUp" data-wow-delay="0.3s" style="width:18%">
+                    <h4 class="text-white mb-4">Services</h4>
+                    <a class="btn btn-link" href="sip.html">Mutual Funds</a>
+                    <a class="btn btn-link" href="ins.html">Insurance</a>
+                    <a class="btn btn-link" href="loan.html">Loans</a>
+                    <a class="btn btn-link" href="itr.html">IT Filling & GST</a>
+                    <a class="btn btn-link" href="other.html">Add-on services</a>
+                </div>
+                <div class="col-lg- col-md-6 wow fadeInUp" data-wow-delay="0.4s" style="width:16%">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="index.html">Home</a>
+                    <a class="btn btn-link" href="/about.html#cert">Certification</a>
+                    <a class="btn btn-link" href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank">Risk Profiler</a>
+                    <a class="btn btn-link" href="/pdf/TER_May_2025.pdf" download>Disclosure</a>
+                    <a class="btn btn-link" href="#contact">Contact Us</a>
+                </div>
+                <div class="col-lg- col-md-6 wow fadeInUp" data-wow-delay="0.5s" style="width:27%">
+                    <h4 class="text-white mb-4">Important Links</h4>
+                    <a class="btn btn-link" href="https://www.cvlkra.com/kycpaninquiry.aspx" target="_blank" style="color: white">Check your KYC status</a>
+                    <a class="btn btn-link" href="https://irdai.gov.in/grievance-redressal-mechanism1" target="_blank" style="color: white">IRDAI Grievances Redressal</a>
+                    <a class="btn btn-link" href="https://www.amfiindia.com/investor-corner/online-center/SEBI-Score.html" target="_blank" style="color: white">AMFI Grievances Redressal</a>
+                    <a class="btn btn-link" href="https://cybercrime.gov.in/Webform/Accept.aspx" target="_blank" style="color: white">Cyber Crime Complaint Filing</a>
+                    <a class="btn btn-link" href="http://www.singhassociates.store/" target="_blank" style="color: white">Singh And Associates</a>                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4 wow fadeIn" data-wow-delay="0.6s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <a class="" >AMFI Registered Mutual Fund Distributor: ARN-309045</a><br>
+                    <a class="border-bottom" href="/pdf/privacypolicy.pdf" download>Privacy Policy</a> | 
+                    <a class="border-bottom" href="/pdf/termscondition.pdf" download>Terms and Conditions.</a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <br><a class="border-bottom" href="">Sree Vinayaka Infotech</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    
+    <!-- Initialize WOW animations -->
+    <script>
+        // Initialize WOW.js
+        new WOW().init();
+        
+        // Enhanced navbar scroll effects
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('nav');
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Add hide/show navbar on scroll
+            if (currentScroll > lastScrollTop && currentScroll > 100) {
+                // Scrolling down
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+        
+        // Add smooth transitions for navbar links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Add ripple effect to buttons and links
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const circle = document.createElement('span');
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+            
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+            circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+            circle.classList.add('ripple');
+            
+            const ripple = button.getElementsByClassName('ripple')[0];
+            if (ripple) {
+                ripple.remove();
+            }
+            
+            button.appendChild(circle);
+        }
+        
+        // Apply ripple effect to navbar links
+        document.querySelectorAll('nav a, .btn').forEach(element => {
+            element.addEventListener('click', createRipple);
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.iframe-container, .footer, .copyright').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+    <!-- Global Financial Tools Widget Navbar -->
+    <div id="widget-navbar" class="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">
+      <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-14 h-14 flex items-center justify-center text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
+        <i class="fas fa-calculator"></i>
+      </button>
+      <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 w-80 animate-fade-in-up">
+        <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
+        <div class="flex gap-2 mb-4">
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition text-sm" data-tool="emi-calc">EMI</button>
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-orange-50 text-orange-700 font-semibold hover:bg-orange-100 transition text-sm" data-tool="ret-calc">Retirement</button>
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-gray-50 text-gray-700 font-semibold hover:bg-gray-100 transition text-sm" data-tool="inf-calc">Inflation</button>
+        </div>
+        <!-- SIP Calculator -->
+        <div id="sip-calc" class="widget-tool">
+          <form id="sip-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Monthly Investment (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
+            <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Investment Period (months)" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Maturity Value" readonly></div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+        <!-- EMI Calculator -->
+        <div id="emi-calc" class="widget-tool hidden">
+          <form id="emi-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Loan Amount (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Interest Rate (%)" required></div>
+            <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Tenure (months)" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Monthly EMI" readonly></div>
+            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+        <!-- Retirement Calculator -->
+        <div id="ret-calc" class="widget-tool hidden">
+          <form id="ret-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Savings (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
+            <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years to Grow" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
+            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+        <!-- Inflation Calculator -->
+        <div id="inf-calc" class="widget-tool hidden">
+          <form id="inf-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Value (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Inflation Rate (%)" required></div>
+            <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
+            <button type="submit" class="w-full bg-gray-600 hover:bg-gray-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Floating widget navbar logic
+      document.addEventListener('DOMContentLoaded', function() {
+        const widgetToggle = document.getElementById('widget-toggle');
+        const widgetMenu = document.getElementById('widget-menu');
+        if(widgetToggle && widgetMenu) {
+          widgetToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            widgetMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', function(e) {
+            if (!widgetMenu.classList.contains('hidden')) {
+              widgetMenu.classList.add('hidden');
+            }
+          });
+          widgetMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+          });
+        }
+      });
+    </script>
+
+</html>
+
+
+
+
+
+
+
+
+
+

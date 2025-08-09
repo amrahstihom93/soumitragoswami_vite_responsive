@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Other Services - Soumitra Goswami</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-white text-gray-900 font-inter">
+    <!-- Fixed Top Navbar (copied from index.html for consistency) -->
+    <nav class="fixed top-0 left-0 w-full bg-white border-b-2 border-blue-100 shadow-lg z-50">
+      <div class="container mx-auto flex items-center justify-between py-4 md:py-6 px-4 md:px-10 min-h-[80px]">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="/img/logo.png" alt="Logo" class="h-12 w-12 md:h-14 md:w-14">
+          <span class="font-extrabold text-2xl md:text-3xl text-blue-700 leading-tight tracking-tight">Soumitra Goswami</span>
+        </a>
+        <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-auto p-2 rounded-lg hover:bg-blue-50 transition">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul id="main-menu" class="hidden md:flex md:space-x-7 flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 bg-white md:bg-transparent border-t-2 md:border-0 pt-4 md:pt-0 fixed md:static top-20 left-0 md:top-auto md:left-auto md:shadow-none shadow-2xl rounded-b-2xl md:rounded-none">
+          <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
+          <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
+          <li class="relative group">
+            <a href="#services" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center border-l border-r border-gray-200 md:border-l md:border-r md:border-gray-200">Services <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+            <ul class="absolute left-0 md:left-1/2 md:-translate-x-1/2 right-auto top-full mt-1 min-w-[14rem] max-w-sm w-auto bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto pointer-events-none transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Mutual Funds/SIP</a></li>
+              <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Insurance</a></li>
+              <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Loans</a></li>
+              <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">IT Filing & GST</a></li>
+              <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Other Services</a></li>
+            </ul>
+          </li>
+          <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+          <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+          <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+          <li class="relative group">
+            <a href="#" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center border-l border-r border-gray-200 md:border-l md:border-r md:border-gray-200">More <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+            <ul class="absolute left-0 md:left-1/2 md:-translate-x-1/2 right-auto top-full mt-1 min-w-[14rem] max-w-sm w-auto bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto pointer-events-none transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="about.html#cert" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Certification</a></li>
+              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Risk Profiler</a></li>
+              <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Disclosure</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <script>
+      // Carousel logic for service cards
+      document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.carousel-track');
+        const cards = document.querySelectorAll('.carousel-card');
+        const prev = document.querySelector('.carousel-prev');
+        const next = document.querySelector('.carousel-next');
+        let current = 0;
+        let visible = 3;
+        function updateVisible() {
+          if(window.innerWidth < 640) visible = 1;
+          else if(window.innerWidth < 1024) visible = 2;
+          else visible = 3;
+        }
+        function updateCarousel() {
+          updateVisible();
+          const cardWidth = cards[0].offsetWidth + 16; // 16px margin
+          track.style.transform = `translateX(-${current * cardWidth}px)`;
+        }
+        function goTo(idx) {
+          current = Math.max(0, Math.min(idx, cards.length - visible));
+          updateCarousel();
+        }
+        if(prev && next && cards.length > visible) {
+          prev.addEventListener('click', function() { goTo(current - 1); });
+          next.addEventListener('click', function() { goTo(current + 1); });
+        }
+        window.addEventListener('resize', function() { goTo(current); });
+        goTo(0);
+      });
+        document.addEventListener('DOMContentLoaded', function() {
+          const toggle = document.getElementById('menu-toggle');
+          const menu = document.getElementById('main-menu');
+          if(toggle && menu) {
+            toggle.addEventListener('click', function() {
+              menu.classList.toggle('hidden');
+            });
+          }
+        });
+      </script>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 md:py-24 flex items-center justify-center overflow-hidden mt-[80px]">
+      <div class="absolute inset-0 pointer-events-none select-none z-0">
+        <svg width="100%" height="100%" viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+          <defs>
+            <radialGradient id="otherRadial" cx="50%" cy="50%" r="80%" fx="50%" fy="50%">
+              <stop offset="0%" stop-color="#e0e7ff" stop-opacity="0.7" />
+              <stop offset="60%" stop-color="#bae6fd" stop-opacity="0.4" />
+              <stop offset="100%" stop-color="#f3e8ff" stop-opacity="0.2" />
+            </radialGradient>
+            <linearGradient id="otherLinear" x1="0" y1="0" x2="1440" y2="500" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#6366f1" stop-opacity="0.12" />
+              <stop offset="1" stop-color="#38bdf8" stop-opacity="0.08" />
+            </linearGradient>
+          </defs>
+          <ellipse cx="720" cy="250" rx="700" ry="200" fill="url(#otherRadial)" />
+          <ellipse cx="400" cy="120" rx="180" ry="60" fill="#6366f1" opacity="0.10" filter="url(#blur1)" />
+          <ellipse cx="1100" cy="380" rx="160" ry="50" fill="#38bdf8" opacity="0.10" filter="url(#blur2)" />
+          <rect x="0" y="450" width="1440" height="50" fill="url(#otherLinear)" />
+          <filter id="blur1"><feGaussianBlur stdDeviation="30" /></filter>
+          <filter id="blur2"><feGaussianBlur stdDeviation="20" /></filter>
+        </svg>
+      </div>
+      <div class="relative z-10 max-w-3xl mx-auto text-center">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-4 animate-fade-in">Other <span class="text-blue-600">Services</span></h1>
+        <p class="text-lg md:text-2xl text-blue-800 mb-6 animate-fade-in delay-100">Explore our add-on and value-added services for your financial and documentation needs.</p>
+        <a href="#enquiry" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-8 py-3 text-lg shadow transition-all animate-bounce">Get Quote</a>
+      </div>
+    </section>
+
+    <!-- Services Cards Section -->
+
+    <section class="container mx-auto px-6 py-12">
+      <div class="max-w-5xl mx-auto mb-10 animate-fade-in-up">
+        <div class="relative">
+          <button type="button" class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-700 shadow-lg"><i class="fas fa-chevron-left"></i></button>
+          <div class="overflow-hidden">
+            <div class="carousel-track flex transition-transform duration-500" style="will-change: transform;">
+              <div class="carousel-card bg-blue-50 border border-blue-100 rounded-xl p-6 flex flex-col items-center shadow mx-2 min-w-[260px] max-w-xs">
+                <img src="/img/addon/pan-card.jpg" alt="PAN Card" class="w-16 h-16 mb-3 rounded-lg shadow">
+                <span class="font-semibold text-lg text-blue-900 mb-2">PAN Card Services</span>
+                <p class="text-sm text-gray-600 text-center">New PAN, correction, and reprint services.</p>
+              </div>
+              <div class="carousel-card bg-blue-50 border border-blue-100 rounded-xl p-6 flex flex-col items-center shadow mx-2 min-w-[260px] max-w-xs">
+                <img src="/img/addon/passport.jpg" alt="Passport" class="w-16 h-16 mb-3 rounded-lg shadow">
+                <span class="font-semibold text-lg text-blue-900 mb-2">Passport Assistance</span>
+                <p class="text-sm text-gray-600 text-center">Guidance for new and renewal passport applications.</p>
+              </div>
+              <div class="carousel-card bg-blue-50 border border-blue-100 rounded-xl p-6 flex flex-col items-center shadow mx-2 min-w-[260px] max-w-xs">
+                <img src="/img/addon/trade-licence.jpg" alt="Trade Licence" class="w-16 h-16 mb-3 rounded-lg shadow">
+                <span class="font-semibold text-lg text-blue-900 mb-2">Trade Licence</span>
+                <p class="text-sm text-gray-600 text-center">Application and renewal of trade licences.</p>
+              </div>
+              <div class="carousel-card bg-blue-50 border border-blue-100 rounded-xl p-6 flex flex-col items-center shadow mx-2 min-w-[260px] max-w-xs">
+                <img src="/img/addon/msme.jpg" alt="MSME Registration" class="w-16 h-16 mb-3 rounded-lg shadow">
+                <span class="font-semibold text-lg text-blue-900 mb-2">MSME Registration</span>
+                <p class="text-sm text-gray-600 text-center">Micro, Small & Medium Enterprise registration.</p>
+              </div>
+              <div class="carousel-card bg-blue-50 border border-blue-100 rounded-xl p-6 flex flex-col items-center shadow mx-2 min-w-[260px] max-w-xs">
+                <img src="/img/addon/dsc.jpg" alt="Digital Signature" class="w-16 h-16 mb-3 rounded-lg shadow">
+                <span class="font-semibold text-lg text-blue-900 mb-2">Digital Signature (DSC)</span>
+                <p class="text-sm text-gray-600 text-center">Get your digital signature for secure online transactions.</p>
+              </div>
+              <div class="carousel-card bg-blue-50 border border-blue-100 rounded-xl p-6 flex flex-col items-center shadow mx-2 min-w-[260px] max-w-xs">
+                <img src="/img/addon/dth.jpg" alt="DTH Recharge" class="w-16 h-16 mb-3 rounded-lg shadow">
+                <span class="font-semibold text-lg text-blue-900 mb-2">DTH Recharge</span>
+                <p class="text-sm text-gray-600 text-center">Quick and easy DTH recharge services.</p>
+              </div>
+              <div class="carousel-card bg-blue-50 border border-blue-100 rounded-xl p-6 flex flex-col items-center shadow mx-2 min-w-[260px] max-w-xs">
+                <img src="/img/addon/flights-ticket.jpg" alt="Flight Tickets" class="w-16 h-16 mb-3 rounded-lg shadow">
+                <span class="font-semibold text-lg text-blue-900 mb-2">Flight Tickets</span>
+                <p class="text-sm text-gray-600 text-center">Book domestic and international flight tickets.</p>
+              </div>
+              <div class="carousel-card bg-blue-50 border border-blue-100 rounded-xl p-6 flex flex-col items-center shadow mx-2 min-w-[260px] max-w-xs">
+                <img src="/img/addon/bus.jpg" alt="Bus Tickets" class="w-16 h-16 mb-3 rounded-lg shadow">
+                <span class="font-semibold text-lg text-blue-900 mb-2">Bus Tickets</span>
+                <p class="text-sm text-gray-600 text-center">Book bus tickets for all major routes.</p>
+              </div>
+              <div class="carousel-card bg-blue-50 border border-blue-100 rounded-xl p-6 flex flex-col items-center shadow mx-2 min-w-[260px] max-w-xs">
+                <img src="/img/addon/Tally-Education.jpg" alt="Tally Education" class="w-16 h-16 mb-3 rounded-lg shadow">
+                <span class="font-semibold text-lg text-blue-900 mb-2">Tally Education</span>
+                <p class="text-sm text-gray-600 text-center">Tally courses and certification assistance.</p>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-700 shadow-lg"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <!-- Interactive Enquiry Form -->
+      <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8 mb-10 border border-blue-100 animate-fade-in-up">
+        <form id="enquiry" class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gradient-to-br from-blue-50 to-gray-100 rounded-lg p-6 border border-blue-200 shadow-sm animate-fade-in-up">
+          <div class="md:col-span-2 mb-2">
+            <h3 class="text-lg font-semibold text-blue-800 mb-1 flex items-center gap-2"><i class="fas fa-envelope-open-text text-blue-500"></i> Get a Quote</h3>
+            <p class="text-gray-500 text-sm">Fill the form below for a quick quote or assistance on any of our services.</p>
+          </div>
+          <input type="text" placeholder="Your Name" class="form-input rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white" required />
+          <input type="date" placeholder="Date of Birth" class="form-input rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white" required />
+          <input type="tel" placeholder="Mobile" class="form-input rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white md:col-span-2" required />
+          <input type="email" placeholder="Email" class="form-input rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white md:col-span-2" required />
+          <select class="form-select rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white md:col-span-2" required>
+            <option value="">Select Service</option>
+            <option>PAN Card Services</option>
+            <option>Passport Assistance</option>
+            <option>Trade Licence</option>
+            <option>MSME Registration</option>
+            <option>Digital Signature (DSC)</option>
+            <option>DTH Recharge</option>
+            <option>Flight Tickets</option>
+            <option>Bus Tickets</option>
+            <option>Tally Education</option>
+          </select>
+          <div class="md:col-span-2 flex flex-col md:flex-row gap-2">
+            <label class="text-sm font-medium text-gray-700">Upload PAN</label>
+            <input type="file" class="form-input border border-blue-200 rounded-md px-2 py-1 text-sm" accept=".jpg,.jpeg,.png,.pdf" />
+            <label class="text-sm font-medium text-gray-700">Upload Aadhaar</label>
+            <input type="file" class="form-input border border-blue-200 rounded-md px-2 py-1 text-sm" accept=".jpg,.jpeg,.png,.pdf" />
+          </div>
+          <textarea placeholder="Your Message (optional)" rows="2" class="form-textarea rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white md:col-span-2"></textarea>
+          <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md py-2 transition-all shadow hover:scale-105 active:scale-95">Submit Now</button>
+        </form>
+      </div>
+
+    <!-- Enquiry Form Validation Script -->
+    <script src="src/enquiry-validation.js"></script>
+
+      <!-- Testimonials Slider -->
+      <div class="max-w-3xl mx-auto mb-10 animate-fade-in-up">
+        <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2"><i class="fas fa-comments text-blue-400"></i> What Our Clients Say</h3>
+        <div class="relative bg-white rounded-xl shadow p-6 border border-blue-100 overflow-hidden">
+          <div class="testimonial-slider flex transition-transform duration-500" style="will-change: transform;">
+            <div class="testimonial-slide w-full flex-shrink-0">
+              <p class="text-lg text-gray-700 italic mb-2">“Excellent support for my PAN and passport application. Very professional.”</p>
+              <div class="flex items-center gap-3">
+                <img src="/img/testimonial-3.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-blue-200">
+                <span class="font-semibold text-blue-700">Amit Patel</span>
+              </div>
+            </div>
+            <div class="testimonial-slide w-full flex-shrink-0 hidden">
+              <p class="text-lg text-gray-700 italic mb-2">“Quick and easy DTH recharge and ticket booking. Highly recommended!”</p>
+              <div class="flex items-center gap-3">
+                <img src="/img/testimonial-4.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-blue-200">
+                <span class="font-semibold text-blue-700">Sneha Roy</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end gap-2 mt-4">
+            <button type="button" class="testimonial-prev w-8 h-8 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-700"><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="testimonial-next w-8 h-8 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-700"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="max-w-3xl mx-auto animate-fade-in-up">
+        <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2"><i class="fas fa-question-circle text-blue-400"></i> FAQs</h3>
+        <div class="space-y-3" id="faq-accordion">
+          <div class="bg-white border border-blue-100 rounded-lg shadow-sm">
+            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-blue-800 focus:outline-none faq-toggle">
+              What documents are needed for PAN card services?
+              <i class="fas fa-chevron-down transition-transform"></i>
+            </button>
+            <div class="faq-content px-4 pb-3 text-gray-600 hidden">Aadhaar, address proof, and passport-size photo are required.</div>
+          </div>
+          <div class="bg-white border border-blue-100 rounded-lg shadow-sm">
+            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-blue-800 focus:outline-none faq-toggle">
+              Can you help with passport application?
+              <i class="fas fa-chevron-down transition-transform"></i>
+            </button>
+            <div class="faq-content px-4 pb-3 text-gray-600 hidden">Yes, we provide end-to-end assistance for new and renewal passport applications.</div>
+          </div>
+          <div class="bg-white border border-blue-100 rounded-lg shadow-sm">
+            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-blue-800 focus:outline-none faq-toggle">
+              Is my data safe?
+              <i class="fas fa-chevron-down transition-transform"></i>
+            </button>
+            <div class="faq-content px-4 pb-3 text-gray-600 hidden">Absolutely. We ensure complete confidentiality and data security for all clients.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (copied from index.html for consistency) -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <img src="/img/logo.png" alt="Soumitra Goswami" class="h-8 w-auto">
+              <span class="text-lg font-bold">Soumitra Goswami</span>
+            </div>
+            <p class="text-gray-400 mb-4">
+              Your trusted financial advisor for investments, insurance, and comprehensive financial planning.
+            </p>
+            <div class="flex space-x-3">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Services</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="sip.html" class="hover:text-white transition-colors">Mutual Funds/SIP</a></li>
+              <li><a href="ins.html" class="hover:text-white transition-colors">Insurance</a></li>
+              <li><a href="loan.html" class="hover:text-white transition-colors">Loans</a></li>
+              <li><a href="itr.html" class="hover:text-white transition-colors">IT Filing & GST</a></li>
+              <li><a href="other.html" class="hover:text-white transition-colors">Other Services</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+              <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+              <li><a href="#team" class="hover:text-white transition-colors">Team</a></li>
+              <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <i class="fas fa-phone mr-2"></i>
+                +91 98765 43210
+              </li>
+              <li>
+                <i class="fas fa-envelope mr-2"></i>
+                contact@soumitragoswami.in
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                Kolkata, West Bengal
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 Soumitra Goswami. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Testimonial slider logic
+      document.addEventListener('DOMContentLoaded', function() {
+        let idx = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const prev = document.querySelector('.testimonial-prev');
+        const next = document.querySelector('.testimonial-next');
+        function showSlide(i) {
+          slides.forEach((slide, j) => {
+            slide.classList.toggle('hidden', j !== i);
+          });
+        }
+        if (prev && next && slides.length > 1) {
+          prev.addEventListener('click', function() {
+            idx = (idx - 1 + slides.length) % slides.length;
+            showSlide(idx);
+          });
+          next.addEventListener('click', function() {
+            idx = (idx + 1) % slides.length;
+            showSlide(idx);
+          });
+          showSlide(idx);
+        }
+        // FAQ accordion logic
+        document.querySelectorAll('.faq-toggle').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const content = btn.parentElement.querySelector('.faq-content');
+            if (content) {
+              content.classList.toggle('hidden');
+              btn.querySelector('i').classList.toggle('rotate-180');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+    <!-- Global Financial Tools Widget Navbar -->
+    <div id="widget-navbar" class="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">
+      <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-14 h-14 flex items-center justify-center text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
+        <i class="fas fa-calculator"></i>
+      </button>
+      <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 w-80 animate-fade-in-up">
+        <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
+        <div class="flex gap-2 mb-4">
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition text-sm" data-tool="emi-calc">EMI</button>
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-orange-50 text-orange-700 font-semibold hover:bg-orange-100 transition text-sm" data-tool="ret-calc">Retirement</button>
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-gray-50 text-gray-700 font-semibold hover:bg-gray-100 transition text-sm" data-tool="inf-calc">Inflation</button>
+        </div>
+        <!-- SIP Calculator -->
+        <div id="sip-calc" class="widget-tool">
+          <form id="sip-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Monthly Investment (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
+            <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Investment Period (months)" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Maturity Value" readonly></div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+        <!-- EMI Calculator -->
+        <div id="emi-calc" class="widget-tool hidden">
+          <form id="emi-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Loan Amount (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Interest Rate (%)" required></div>
+            <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Tenure (months)" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Monthly EMI" readonly></div>
+            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+        <!-- Retirement Calculator -->
+        <div id="ret-calc" class="widget-tool hidden">
+          <form id="ret-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Savings (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
+            <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years to Grow" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
+            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+        <!-- Inflation Calculator -->
+        <div id="inf-calc" class="widget-tool hidden">
+          <form id="inf-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Value (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Inflation Rate (%)" required></div>
+            <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
+            <button type="submit" class="w-full bg-gray-600 hover:bg-gray-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Floating widget navbar logic
+      document.addEventListener('DOMContentLoaded', function() {
+        const widgetToggle = document.getElementById('widget-toggle');
+        const widgetMenu = document.getElementById('widget-menu');
+        if(widgetToggle && widgetMenu) {
+          widgetToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            widgetMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', function(e) {
+            if (!widgetMenu.classList.contains('hidden')) {
+              widgetMenu.classList.add('hidden');
+            }
+          });
+          widgetMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+          });
+        }
+      });
+    </script>
+</html>

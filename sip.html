@@ -1,0 +1,329 @@
+<!-- SIP Service Page -->
+<!-- Content adapted from https://soumitragoswami.in/sip.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIP Services</title>
+  <script type="module" src="/src/main.js"></script>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+
+    <!-- Fixed Top Navbar (copied from index.html for consistency) -->
+    <nav class="fixed top-0 left-0 w-full bg-white border-b-2 border-blue-100 shadow-lg z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-between py-4 md:py-6 px-4 md:px-10 min-h-[80px]">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="/img/logo.png" alt="Logo" class="h-12 width:auto md:h-14 md:auto">
+        </a>
+        <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-auto p-2 rounded-lg hover:bg-blue-50 transition">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul id="main-menu" class="hidden md:flex md:space-x-7 flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 bg-white md:bg-transparent border-t-2 md:border-0 pt-4 md:pt-0 fixed md:static top-20 left-0 md:top-auto md:left-auto md:shadow-none shadow-2xl rounded-b-2xl md:rounded-none">
+          <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
+          <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
+          <li class="relative group">
+            <a href="#services" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center border-l border-r border-gray-200 md:border-l md:border-r md:border-gray-200">Services <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+            <ul class="absolute left-0 md:left-1/2 md:-translate-x-1/2 right-auto top-full mt-1 min-w-[14rem] max-w-sm w-auto bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto pointer-events-none transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Mutual Funds/SIP</a></li>
+              <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Insurance</a></li>
+              <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Loans</a></li>
+              <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">IT Filing & GST</a></li>
+              <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Other Services</a></li>
+            </ul>
+          </li>
+          <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+          <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+          <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+          <li class="relative group">
+            <a href="#" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center border-l border-r border-gray-200 md:border-l md:border-r md:border-gray-200">More <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+            <ul class="absolute left-0 md:left-1/2 md:-translate-x-1/2 right-auto top-full mt-1 min-w-[14rem] max-w-sm w-auto bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto pointer-events-none transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="about.html#cert" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Certification</a></li>
+              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Risk Profiler</a></li>
+              <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Disclosure</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const toggle = document.getElementById('menu-toggle');
+          const menu = document.getElementById('main-menu');
+          if(toggle && menu) {
+            toggle.addEventListener('click', function() {
+              menu.classList.toggle('hidden');
+            });
+          }
+        });
+      </script>
+    </nav>
+
+
+  <!-- Hero Section -->
+  <section class="relative py-16 md:py-24 flex items-center justify-center overflow-hidden mt-[80px]">
+    <div class="absolute inset-0 pointer-events-none select-none opacity-20" style="background: url('/img/bg.png') center/cover no-repeat;"></div>
+      <div class="absolute inset-0 pointer-events-none select-none z-0">
+        <svg width="100%" height="100%" viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+          <defs>
+            <radialGradient id="sipRadial" cx="50%" cy="50%" r="80%" fx="50%" fy="50%">
+              <stop offset="0%" stop-color="#c7d2fe" stop-opacity="0.7" />
+              <stop offset="60%" stop-color="#f3e8ff" stop-opacity="0.4" />
+              <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.2" />
+            </radialGradient>
+            <linearGradient id="sipLinear" x1="0" y1="0" x2="1440" y2="500" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#6366f1" stop-opacity="0.12" />
+              <stop offset="1" stop-color="#a78bfa" stop-opacity="0.08" />
+            </linearGradient>
+          </defs>
+          <ellipse cx="720" cy="250" rx="700" ry="200" fill="url(#sipRadial)" />
+          <ellipse cx="400" cy="120" rx="180" ry="60" fill="#6366f1" opacity="0.10" filter="url(#blur1)" />
+          <ellipse cx="1100" cy="380" rx="160" ry="50" fill="#a78bfa" opacity="0.10" filter="url(#blur2)" />
+          <rect x="0" y="450" width="1440" height="50" fill="url(#sipLinear)" />
+          <filter id="blur1"><feGaussianBlur stdDeviation="30" /></filter>
+          <filter id="blur2"><feGaussianBlur stdDeviation="20" /></filter>
+        </svg>
+      </div>
+    <div class="relative z-10 max-w-3xl mx-auto text-center">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-4 animate-fade-in">Start SIP @ <span class="text-blue-600">₹99/-</span> P/M</h1>
+      <p class="text-lg md:text-2xl text-blue-800 mb-6 animate-fade-in delay-100">Invest smartly, grow steadily. Begin your wealth journey with trusted SIP plans.</p>
+      <div class="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in delay-200">
+        <div class="flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-blue-100">
+          <i class="fas fa-check-circle text-green-500"></i>
+          <span class="font-medium text-blue-900">Low Minimum Investment</span>
+        </div>
+    <section class="section bg-white py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2">Mutual Funds / SIP</h2>
+          <p class="text-lg text-gray-600">Build wealth systematically with our curated mutual fund portfolios and SIP plans.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all">
+            <div class="bg-blue-600 rounded-full p-4 mb-4">
+              <i class="fas fa-chart-line text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Systematic Investment Plans</h3>
+            <p class="text-gray-600 mb-6">Start investing with as little as ₹500/month. SIPs help you build wealth over time with discipline and flexibility.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="bg-white rounded-2xl shadow-lg border border-green-100 p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all">
+            <div class="bg-green-600 rounded-full p-4 mb-4">
+              <i class="fas fa-shield-alt text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-green-800 mb-2">Mutual Fund Portfolios</h3>
+            <p class="text-gray-600 mb-6">Diversified portfolios tailored to your risk profile and financial goals. Get expert advice and regular reviews.</p>
+            <a href="#" class="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <!-- Interactive Contact Form -->
+      <form id="enquiry" class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200 shadow-sm animate-fade-in-up">
+        <div class="md:col-span-2 mb-2">
+          <h3 class="text-lg font-semibold text-blue-800 mb-1 flex items-center gap-2"><i class="fas fa-envelope-open-text text-blue-500"></i> Quick SIP Enquiry</h3>
+          <p class="text-gray-500 text-sm">Get personalized SIP recommendations. Fill the form below and our advisor will contact you soon.</p>
+        </div>
+        <input type="text" placeholder="Full Name" class="form-input rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white" required />
+        <input type="email" placeholder="Email Address" class="form-input rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white" required />
+        <input type="tel" placeholder="Phone Number" class="form-input rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white md:col-span-2" required />
+        <select class="form-select rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white md:col-span-2" required>
+          <option value="">Select Fund of Interest</option>
+          <option>PARAG PARIKH FLEXI CAP FUND (R) G</option>
+          <option>ICICI PRUDENTIAL VALUE DISCOVERY FUND (R) G</option>
+          <option>NIPPON INDIA GROWTH FUND (R) G</option>
+        </select>
+        <textarea placeholder="Your Message (optional)" rows="2" class="form-textarea rounded-md border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 text-sm bg-white md:col-span-2"></textarea>
+        <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md py-2 transition-all shadow hover:scale-105 active:scale-95">Send Enquiry</button>
+      </form>
+    </div>
+
+    <!-- Enquiry Form Validation Script -->
+    <script src="src/enquiry-validation.js"></script>
+
+    <!-- Testimonials Slider -->
+    <div class="max-w-3xl mx-auto mb-10 animate-fade-in-up">
+      <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2"><i class="fas fa-comments text-blue-400"></i> What Our SIP Clients Say</h3>
+      <div class="relative bg-white rounded-xl shadow p-6 border border-blue-100 overflow-hidden">
+        <div class="testimonial-slider flex transition-transform duration-500" style="will-change: transform;">
+          <div class="testimonial-slide w-full flex-shrink-0">
+            <p class="text-lg text-gray-700 italic mb-2">“I started my SIP with just ₹99 and the process was seamless. Highly recommend Soumitra’s guidance!”</p>
+            <div class="flex items-center gap-3">
+              <img src="/img/testimonial-1.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-blue-200">
+              <span class="font-semibold text-blue-700">Rajesh Kumar</span>
+            </div>
+          </div>
+          <div class="testimonial-slide w-full flex-shrink-0 hidden">
+            <p class="text-lg text-gray-700 italic mb-2">“The SIP recommendations were spot on. My investments are growing steadily.”</p>
+            <div class="flex items-center gap-3">
+              <img src="/img/testimonial-2.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-blue-200">
+              <span class="font-semibold text-blue-700">Priya Sharma</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-end gap-2 mt-4">
+          <button type="button" class="testimonial-prev w-8 h-8 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-700"><i class="fas fa-chevron-left"></i></button>
+          <button type="button" class="testimonial-next w-8 h-8 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-700"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="max-w-3xl mx-auto animate-fade-in-up">
+      <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2"><i class="fas fa-question-circle text-blue-400"></i> SIP FAQs</h3>
+      <div class="space-y-3" id="faq-accordion">
+        <div class="bg-white border border-blue-100 rounded-lg shadow-sm">
+          <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-blue-800 focus:outline-none faq-toggle">
+            What is a SIP?
+            <i class="fas fa-chevron-down transition-transform"></i>
+          </button>
+          <div class="faq-content px-4 pb-3 text-gray-600 hidden">A Systematic Investment Plan (SIP) allows you to invest a fixed amount regularly in mutual funds, helping you build wealth over time.</div>
+        </div>
+        <div class="bg-white border border-blue-100 rounded-lg shadow-sm">
+          <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-blue-800 focus:outline-none faq-toggle">
+            Can I start SIP with ₹99?
+            <i class="fas fa-chevron-down transition-transform"></i>
+          </button>
+          <div class="faq-content px-4 pb-3 text-gray-600 hidden">Yes, you can start SIPs with as little as ₹99 per month in select funds, making investing accessible for everyone.</div>
+        </div>
+        <div class="bg-white border border-blue-100 rounded-lg shadow-sm">
+          <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-blue-800 focus:outline-none faq-toggle">
+            Are SIPs safe?
+            <i class="fas fa-chevron-down transition-transform"></i>
+          </button>
+          <div class="faq-content px-4 pb-3 text-gray-600 hidden">SIPs are a disciplined way to invest in mutual funds, which are regulated by SEBI. However, all investments are subject to market risks.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Testimonial slider logic
+    document.addEventListener('DOMContentLoaded', function() {
+      let idx = 0;
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const prev = document.querySelector('.testimonial-prev');
+      const next = document.querySelector('.testimonial-next');
+      function showSlide(i) {
+        slides.forEach((slide, j) => {
+          slide.classList.toggle('hidden', j !== i);
+        });
+      }
+      if (prev && next && slides.length > 1) {
+        prev.addEventListener('click', function() {
+          idx = (idx - 1 + slides.length) % slides.length;
+          showSlide(idx);
+        });
+        next.addEventListener('click', function() {
+          idx = (idx + 1) % slides.length;
+          showSlide(idx);
+        });
+        showSlide(idx);
+      }
+      // FAQ accordion logic
+      document.querySelectorAll('.faq-toggle').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const content = btn.parentElement.querySelector('.faq-content');
+          if (content) {
+            content.classList.toggle('hidden');
+            btn.querySelector('i').classList.toggle('rotate-180');
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Social Icons -->
+  <footer class="bg-gray-50 border-t mt-12 py-6">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+      <div class="mb-4 md:mb-0">
+        <a href="https://x.com/sgswamee" target="_blank" class="mx-2 text-gray-600 hover:text-blue-500"><i class="fab fa-twitter fa-lg"></i></a>
+        <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="mx-2 text-gray-600 hover:text-blue-700"><i class="fab fa-linkedin fa-lg"></i></a>
+      </div>
+      <div class="text-sm text-gray-500">
+        <a href="index.html" class="hover:underline">Home</a> |
+        <a href="about.html#cert" class="hover:underline">Certification</a> |
+        <a href="contact.html" class="hover:underline">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+</body>
+    <!-- Global Financial Tools Widget Navbar -->
+    <div id="widget-navbar" class="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">
+      <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-14 h-14 flex items-center justify-center text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
+        <i class="fas fa-calculator"></i>
+      </button>
+      <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 w-80 animate-fade-in-up">
+        <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
+        <div class="flex gap-2 mb-4">
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition text-sm" data-tool="emi-calc">EMI</button>
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-orange-50 text-orange-700 font-semibold hover:bg-orange-100 transition text-sm" data-tool="ret-calc">Retirement</button>
+          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-gray-50 text-gray-700 font-semibold hover:bg-gray-100 transition text-sm" data-tool="inf-calc">Inflation</button>
+        </div>
+        <!-- SIP Calculator -->
+        <div id="sip-calc" class="widget-tool">
+          <form id="sip-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Monthly Investment (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
+            <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Investment Period (months)" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Maturity Value" readonly></div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+        <!-- EMI Calculator -->
+        <div id="emi-calc" class="widget-tool hidden">
+          <form id="emi-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Loan Amount (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Interest Rate (%)" required></div>
+            <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Tenure (months)" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Monthly EMI" readonly></div>
+            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+        <!-- Retirement Calculator -->
+        <div id="ret-calc" class="widget-tool hidden">
+          <form id="ret-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Savings (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
+            <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years to Grow" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
+            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+        <!-- Inflation Calculator -->
+        <div id="inf-calc" class="widget-tool hidden">
+          <form id="inf-calc-form" class="space-y-2">
+            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Value (₹)" required></div>
+            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Inflation Rate (%)" required></div>
+            <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years" required></div>
+            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
+            <button type="submit" class="w-full bg-gray-600 hover:bg-gray-700 text-white rounded py-1 font-semibold">Calculate</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Floating widget navbar logic
+      document.addEventListener('DOMContentLoaded', function() {
+        const widgetToggle = document.getElementById('widget-toggle');
+        const widgetMenu = document.getElementById('widget-menu');
+        if(widgetToggle && widgetMenu) {
+          widgetToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            widgetMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', function(e) {
+            if (!widgetMenu.classList.contains('hidden')) {
+              widgetMenu.classList.add('hidden');
+            }
+          });
+          widgetMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+          });
+        }
+      });
+    </script>
+</html>

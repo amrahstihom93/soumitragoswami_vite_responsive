@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - Soumitra Goswami</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <style>
+        /* Add custom styles for full-page carousel if needed */
+        .full-page-carousel {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f3f4f6; /* Light gray background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh; /* Adjust height as needed */
+            margin: auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .carousel-item img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Ensure the whole image is visible */
+            border-radius: 10px;
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-control:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .carousel-prev {
+            left: 20px;
+        }
+        .carousel-next {
+            right: 20px;
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .indicator-dot.active {
+            background-color: white;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-inter">
+    <!-- Fixed Top Navbar (copied from index.html for consistency) -->
+    <nav class="fixed top-0 left-0 w-full bg-white border-b-2 border-blue-100 shadow-lg z-50">
+      <div class="container mx-auto flex items-center justify-between py-4 md:py-6 px-4 md:px-10 min-h-[80px]">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="/img/logo.png" alt="Logo" class="h-12 w-12 md:h-14 md:w-14">
+        </a>
+        <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-auto p-2 rounded-lg hover:bg-blue-50 transition">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul id="main-menu" class="hidden md:flex md:space-x-7 flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 bg-white md:bg-transparent border-t-2 md:border-0 pt-4 md:pt-0 fixed md:static top-20 left-0 md:top-auto md:left-auto md:shadow-none shadow-2xl rounded-b-2xl md:rounded-none">
+          <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
+          <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
+          <li class="relative group">
+            <a href="#services" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center border-l border-r border-gray-200 md:border-l md:border-r md:border-gray-200">Services <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+            <ul class="absolute left-0 md:left-1/2 md:-translate-x-1/2 right-auto top-full mt-1 min-w-[14rem] max-w-sm w-auto bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto pointer-events-none transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Mutual Funds/SIP</a></li>
+              <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Insurance</a></li>
+              <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Loans</a></li>
+              <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">IT Filing & GST</a></li>
+              <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Other Services</a></li>
+            </ul>
+          </li>
+          <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+          <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+          <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+          <li class="relative group">
+            <a href="#" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center border-l border-r border-gray-200 md:border-l md:border-r md:border-gray-200">More <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+            <ul class="absolute left-0 md:left-1/2 md:-translate-x-1/2 right-auto top-full mt-1 min-w-[14rem] max-w-sm w-auto bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto pointer-events-none transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Certification</a></li>
+              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Risk Profiler</a></li>
+              <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Disclosure</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const toggle = document.getElementById('menu-toggle');
+          const menu = document.getElementById('main-menu');
+          if(toggle && menu) {
+            toggle.addEventListener('click', function() {
+              menu.classList.toggle('hidden');
+            });
+          }
+        });
+      </script>
+    </nav>
+
+    <!-- Full Page Image Carousel -->
+    <section class="full-page-carousel mt-[80px]"> <!-- Adjusted margin-top -->
+        <div class="carousel-container">
+            <div class="carousel-inner" id="certificate-carousel-inner">
+                <!-- Images will be loaded here by JavaScript -->
+                <div class="carousel-item">
+                    <img src="/img/certificates/adityabirla.jpeg" alt="Certificate 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/certificates/amfi.jpeg" alt="Certificate 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/certificates/kotak.jpeg" alt="Certificate 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/certificates/nism.jpeg" alt="Certificate 4">
+                </div>
+                 <div class="carousel-item">
+                    <img src="/img/certificates/nismcert.jpeg" alt="Certificate 5">
+                </div>
+                 <div class="carousel-item">
+                    <img src="/img/certificates/policybazar.jpg" alt="Certificate 6">
+                </div>
+            </div>
+            <button class="carousel-control carousel-prev" id="carousel-prev">&#10094;</button>
+            <button class="carousel-control carousel-next" id="carousel-next">&#10095;</button>
+            <div class="carousel-indicators" id="carousel-indicators">
+                <!-- Indicators will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer (copied from index.html for consistency) -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
+    
+          <!-- Office Info -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Office</h4>
+            <p class="text-gray-400 mb-2">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              1st Cross Road, Salt Lake City, India
+            </p>
+            <p class="text-gray-400 mb-2">
+              <i class="fas fa-phone-alt mr-2"></i>
+              +91 9804452151
+            </p>
+            <p class="text-gray-400 mb-4">
+              <i class="fas fa-envelope mr-2"></i>
+              sgswamee.ib@gmail.com
+            </p>
+            <div class="flex space-x-3">
+              <a href="https://x.com/sgswamee" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+    
+          <!-- Services -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Services</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="sip.html" class="hover:text-white transition-colors">Mutual Funds</a></li>
+              <li><a href="ins.html" class="hover:text-white transition-colors">Insurance</a></li>
+              <li><a href="loan.html" class="hover:text-white transition-colors">Loans</a></li>
+              <li><a href="itr.html" class="hover:text-white transition-colors">IT Filing & GST</a></li>
+              <li><a href="other.html" class="hover:text-white transition-colors">Add-on Services</a></li>
+            </ul>
+          </div>
+    
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="cert.html" class="hover:text-white transition-colors">Certification</a></li>
+              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="hover:text-white transition-colors">Risk Profiler</a></li>
+              <li><a href="/pdf/TER_May_2025.pdf" download class="hover:text-white transition-colors">Disclosure</a></li>
+              <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
+            </ul>
+          </div>
+    
+          <!-- Important Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Important Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="https://www.cvlkra.com/kycpaninquiry.aspx" target="_blank" class="hover:text-white transition-colors">Check your KYC status</a></li>
+              <li><a href="https://irdai.gov.in/grievance-redressal-mechanism1" target="_blank" class="hover:text-white transition-colors">IRDAI Grievances Redressal</a></li>
+              <li><a href="https://www.amfiindia.com/investor-corner/online-center/SEBI-Score.html" target="_blank" class="hover:text-white transition-colors">AMFI Grievances Redressal</a></li>
+              <li><a href="https://cybercrime.gov.in/Webform/Accept.aspx" target="_blank" class="hover:text-white transition-colors">Cyber Crime Complaint Filing</a></li>
+              <li><a href="http://www.singhassociates.store/" target="_blank" class="hover:text-white transition-colors">Singh And Associates</a></li>
+            </ul>
+          </div>
+        </div>
+    
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 Soumitra Goswami. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    
+        <!-- Footer End -->
+    
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4 wow fadeIn" data-wow-delay="0.6s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <a class="" >AMFI Registered Mutual Fund Distributor: ARN-309045</a><br>
+                        <a class="border-bottom" href="/pdf/privacypolicy.pdf" download>Privacy Policy</a> | 
+                        <a class="border-bottom" href="/pdf/termscondition.pdf" download>Terms and Conditions.</a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        Designed By <br><a class="border-bottom" href="">Sree Vinayaka Infotech</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+        
+        <!-- Initialize WOW animations -->
+        <script>
+            // Initialize WOW.js
+            new WOW().init();
+            
+            // Enhanced navbar scroll effects
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('nav');
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Add hide/show navbar on scroll
+                if (currentScroll > lastScrollTop && currentScroll > 100) {
+                    // Scrolling down
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    navbar.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            });
+            
+            // Add smooth transitions for navbar links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add ripple effect to buttons and links
+            function createRipple(event) {
+                const button = event.currentTarget;
+                const circle = document.createElement('span');
+                const diameter = Math.max(button.clientWidth, button.clientHeight);
+                const radius = diameter / 2;
+                
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+                circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+                circle.classList.add('ripple');
+                
+                const ripple = button.getElementsByClassName('ripple')[0];
+                if (ripple) {
+                    ripple.remove();
+                }
+                
+                button.appendChild(circle);
+            }
+            
+            // Apply ripple effect to navbar links
+            document.querySelectorAll('nav a, .btn').forEach(element => {
+                element.addEventListener('click', createRipple);
+            });
+            
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.iframe-container, .footer, .copyright').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const carouselInner = document.getElementById('certificate-carousel-inner');
+            const prevButton = document.getElementById('carousel-prev');
+            const nextButton = document.getElementById('carousel-next');
+            const indicatorsContainer = document.getElementById('carousel-indicators');
+            const items = carouselInner.querySelectorAll('.carousel-item');
+            const totalItems = items.length;
+            let currentIndex = 0;
+
+            // Create indicators
+            items.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('indicator-dot');
+                if (index === 0) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => goToSlide(index));
+                indicatorsContainer.appendChild(dot);
+            });
+
+            const indicators = indicatorsContainer.querySelectorAll('.indicator-dot');
+
+            function updateCarousel() {
+                const offset = -currentIndex * 100;
+                carouselInner.style.transform = `translateX(${offset}%)`;
+                indicators.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateCarousel();
+            }
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            });
+
+            // Initial update
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>

@@ -1,5 +1,13 @@
-/* Custom fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Hide scrollbar for carousel */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 @tailwind base;
 @tailwind components;
@@ -2027,5 +2035,84 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
   
   .section {
     break-inside: avoid;
+  }
+}
+/* Hero Section Improvements */
+.hero-section {
+  padding: 3rem 1rem 4rem 1rem;
+  text-align: center;
+  background: #f8fafc;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.hero-section p {
+  font-size: 1.15rem;
+  color: #25603b;
+  margin-bottom: 2rem;
+}
+
+.hero-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.hero-options button,
+.hero-options .option-btn {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  color: #222;
+  font-weight: 500;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+.hero-options button:hover,
+.hero-options .option-btn:hover {
+  border: 1px solid #16a34a;
+  box-shadow: 0 2px 8px rgba(22,163,74,0.07);
+}
+
+.get-insured-btn {
+  margin-top: 0.5rem;
+  padding: 0.9rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(22,163,74,0.12);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.get-insured-btn:hover {
+  background: #15803d;
+  box-shadow: 0 4px 16px rgba(22,163,74,0.18);
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 2rem 0.5rem 2.5rem 0.5rem;
+  }
+  .hero-options {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .get-insured-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem 0;
   }
 }

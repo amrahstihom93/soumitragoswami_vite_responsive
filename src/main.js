@@ -1,3 +1,5 @@
+// Add-on carousel logic
+import './js/addon-carousel.js';
 import './style.css';
 
 // Liquid Glass Navigation System

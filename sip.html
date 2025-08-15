@@ -45,10 +45,15 @@
   <body class="bg-white text-gray-900 font-inter">
     <!-- Fixed Top Navbar (identical structure to index.html) -->
     <nav class="fixed top-0 left-0 w-full bg-white border-b-2 border-blue-100 shadow-lg z-50">
-      <div class="max-w-7xl mx-auto flex items-center justify-between py-4 md:py-6 px-4 md:px-10 min-h-[80px]">
+      <div class="max-w-7xl mx-auto flex items-center justify-between py-4 md:py-6 px-4 md:px-10 min-h-[80px] relative">
         <a href="index.html" class="flex items-center space-x-3">
           <img src="/img/logo.png" alt="Logo" class="h-12 w-auto md:h-14 md:w-auto" />
         </a>
+
+        <!-- Mobile Menu Button (top right, visible on mobile) -->
+        <button id="menu-toggle" class="md:hidden absolute right-4 top-4 z-50 text-3xl focus:outline-none p-2 rounded-lg hover:bg-blue-50 transition bg-blue-600 text-white shadow-lg w-14 h-14 flex items-center justify-center">
+          <i class="fas fa-bars"></i>
+        </button>
 
         <!-- Desktop Menu -->
         <ul
@@ -88,10 +93,7 @@
     <!-- Mobile Bottom Navbar (same pattern as index.html) -->
     <div id="mobile-nav-bottom" class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t-2 border-blue-100 shadow-lg z-50 py-2">
       <div class="container mx-auto flex items-center justify-around h-full">
-        <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-auto p-2 rounded-lg hover:bg-blue-50 transition fixed bottom-4 right-4 z-50 bg-blue-600 text-white shadow-lg w-14 h-14 flex items-center justify-center text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400">
-          <i class="fas fa-bars"></i>
-        </button>
-        <ul id="main-menu-mobile" class="hidden flex-col w-full bg-white border-t-2 pt-4 fixed top-20 left-0 bottom-0 overflow-y-auto">
+        <ul id="main-menu" class="hidden md:flex md:space-x-7 flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 bg-white md:bg-transparent border-t-2 md:border-0 pt-4 md:pt-0 fixed md:static top-20 left-0 md:top-auto md:left-auto md:shadow-none shadow-2xl rounded-b-2xl md:rounded-none">
           <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
           <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
           <li class="relative group">
@@ -365,12 +367,12 @@
     <!-- Optional app mount -->
     <div id="app"></div>
 
-    <!-- Global Financial Tools Widget Navbar -->
-    <div id="widget-navbar" class="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">
-      <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-14 h-14 flex items-center justify-center text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
+    <!-- Global Financial Tools Widget Navbar (left, large, visible like index.html) -->
+    <div id="widget-navbar" class="fixed bottom-20 left-6 z-50 flex flex-col items-start space-y-2 sm:bottom-6">
+      <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-24 h-24 flex items-center justify-center text-5xl focus:outline-none focus:ring-4 focus:ring-blue-400 transition-all">
         <i class="fas fa-calculator"></i>
       </button>
-      <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 w-80 animate-fade-in-up">
+      <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-3xl shadow-2xl p-8 w-[28rem] animate-fade-in-up">
         <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
         <div class="flex gap-2 mb-4">
           <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
@@ -447,67 +449,14 @@
 
     <!-- Menus + ripple + observers (same utility as index) -->
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // Mobile menu toggle
+      document.addEventListener('DOMContentLoaded', function() {
         const toggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('main-menu-mobile');
-        if (toggle && menu) {
-          toggle.addEventListener('click', function (e) {
-            e.stopPropagation();
+        const menu = document.getElementById('main-menu');
+        if(toggle && menu) {
+          toggle.addEventListener('click', function() {
             menu.classList.toggle('hidden');
           });
         }
-        document.addEventListener('click', function () {
-          if (menu && !menu.classList.contains('hidden')) menu.classList.add('hidden');
-        });
-        if (menu) menu.addEventListener('click', e => e.stopPropagation());
-
-        // Desktop dropdown delay
-        document.querySelectorAll('#main-menu-desktop .group').forEach(function (group) {
-          let hideTimeout;
-          const dropdown = group.querySelector('ul');
-          if (!dropdown) return;
-          const show = () => { clearTimeout(hideTimeout); dropdown.style.opacity = '1'; dropdown.style.pointerEvents = 'auto'; dropdown.style.visibility = 'visible'; };
-          const hide = () => { hideTimeout = setTimeout(function () { dropdown.style.opacity = ''; dropdown.style.pointerEvents = ''; dropdown.style.visibility = ''; }, 250); };
-          group.addEventListener('mouseenter', show);
-          group.addEventListener('mouseleave', hide);
-          group.addEventListener('focusin', show);
-          group.addEventListener('focusout', hide);
-        });
-
-        // Ripple effect
-        function createRipple(event) {
-          const target = event.currentTarget;
-          const rect = target.getBoundingClientRect();
-          const diameter = Math.max(target.clientWidth, target.clientHeight);
-          const radius = diameter / 2;
-          const circle = document.createElement('span');
-          circle.classList.add('ripple');
-          circle.style.width = circle.style.height = `${diameter}px`;
-          circle.style.left = `${event.clientX - rect.left - radius}px`;
-          circle.style.top = `${event.clientY - rect.top - radius}px`;
-          const existing = target.querySelector('.ripple');
-          if (existing) existing.remove();
-          target.appendChild(circle);
-        }
-        document.querySelectorAll('nav a, .btn, button').forEach(el => el.addEventListener('click', createRipple));
-
-        // Intersection Observer fade-ins (optional matching behavior)
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-            }
-          });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.iframe-container, .footer, .copyright').forEach(el => {
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(30px)';
-          el.style.transition = 'all 0.6s ease-out';
-          observer.observe(el);
-        });
       });
     </script>
 

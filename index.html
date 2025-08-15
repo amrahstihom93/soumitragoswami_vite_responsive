@@ -1,471 +1,673 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Soumitra Goswami - Financial Advisor & Investment Consultant</title>
-    <script type="module" src="/src/main.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  </head>
-  <body class="bg-white text-gray-900 font-inter">
-    <!-- Liquid Glass Navigation Platter -->
-    <nav class="glass-nav-platter">
-      <div class="liquid-droplet-selector"></div>
-      <a href="#home" class="glass-nav-item active" data-label="Home">Home</a>
-      <a href="#services" class="glass-nav-item" data-label="Services">Services</a>
-      <a href="#about" class="glass-nav-item" data-label="About">About</a>
-      <a href="#team" class="glass-nav-item" data-label="Team">Team</a>
-      <a href="#contact" class="glass-nav-item" data-label="Contact">Contact</a>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soumitra Goswami - Financial Advisor & Investment Consultant</title>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="hero-content">
-            <div class="hero-brand-mobile">
-              <img src="/img/logo.png" alt="Soumitra Goswami" class="brand-logo-hero">
-              <h2 class="brand-name">Soumitra Goswami</h2>
-              <p class="brand-tagline">Financial Advisor & Investment Consultant</p>
-            </div>
-            <h1 class="hero-title">
-              Start Your 
-              <span class="text-gradient">Investment Journey</span> 
-              with me
-            </h1>
-            <p class="hero-subtitle">
-              Professional financial advisor helping you build wealth through smart investments, 
-              insurance planning, and comprehensive financial solutions tailored to your goals.
-            </p>
-            <div class="hero-actions">
-              <button class="btn btn-primary btn-lg btn-icon">
-                <i class="fas fa-rocket"></i>
-                <span>Start Investing</span>
-              </button>
-              <button class="btn btn-secondary btn-lg btn-icon">
-                <i class="fas fa-phone"></i>
-                <span>Schedule Call</span>
-              </button>
-            </div>
-            <div class="hero-stats">
-              <div class="hero-stat">
-                <div class="hero-stat-number counter">500+</div>
-                <div class="hero-stat-label">Happy Clients</div>
-              </div>
-              <div class="hero-stat">
-                <div class="hero-stat-number counter">₹10Cr+</div>
-                <div class="hero-stat-label">Assets Managed</div>
-              </div>
-              <div class="hero-stat">
-                <div class="hero-stat-number counter">5+</div>
-                <div class="hero-stat-label">Years Experience</div>
-              </div>
+  <!-- App entry (Vite/your bundle) -->
+  <script type="module" src="/src/main.js"></script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- Your site CSS (Tailwind build, etc.) -->
+  <link rel="stylesheet" href="/src/style.css" />
+
+  <!-- Small helpers -->
+  <style>
+    :root { --nav-h: 72px; }
+    body { font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; }
+    .footer { background-color: #212529 !important; }
+    .copyright { background-color: #1a1e21; border-top: 1px solid #495057; }
+    .btn-link { color: #adb5bd; text-decoration: none; display: block; padding: 2px 0; border: none; background: none; text-align: left; }
+    .btn-link:hover { color: #ffffff; }
+    .btn-square { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+    .border-bottom { border-bottom: 1px solid #6c757d !important; color: #adb5bd; text-decoration: none; }
+    .border-bottom:hover { color: #ffffff; }
+    /* ripple */
+    .ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: ripple 600ms linear; background-color: rgba(0,0,0,0.15); pointer-events: none; }
+    @keyframes ripple { to { transform: scale(4); opacity: 0; } }
+    nav a, .btn, button { position: relative; overflow: hidden; }
+    /* mobile drawer */
+    .mobile-drawer { transform: translateY(-8px); }
+    .mobile-drawer.show { transform: translateY(0); }
+    /* hide scrollbar helper (for card row) */
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    /* account for fixed nav */
+    body.has-sticky { padding-top: var(--nav-h); }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 font-inter has-sticky">
+  <!-- Fixed Top Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: var(--nav-h)">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
+      </a>
+
+      <!-- Desktop Menu -->
+      <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
+        <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
+        <li><a href="/" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
+
+        <li class="relative group">
+          <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1"
+                  aria-haspopup="true" aria-expanded="false">
+            Services <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <!-- dropdown -->
+          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
+            <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Mutual Funds/SIP</a></li>
+            <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Insurance</a></li>
+            <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Loans</a></li>
+            <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">IT Filing & GST</a></li>
+            <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Other Services</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+        <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+        <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+
+        <li class="relative group">
+          <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1"
+                  aria-haspopup="true" aria-expanded="false">
+            More <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
+            <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Certification</a></li>
+            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Risk Profiler</a></li>
+            <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Disclosure</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Mobile toggle -->
+      <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
+              aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="md:hidden hidden mobile-drawer bg-white border-t border-blue-100 shadow-2xl">
+      <ul class="px-4 py-3 space-y-1">
+        <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
+        <li><a href="/" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
+
+        <!-- Services (collapsible) -->
+        <li>
+          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
+                  data-accordion="#m-services" aria-expanded="false">
+            Services <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
+            <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
+            <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
+            <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
+            <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
+            <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
+        <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
+        <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
+
+        <!-- More (collapsible) -->
+        <li>
+          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
+                  data-accordion="#m-more" aria-expanded="false">
+            More <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
+            <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
+            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
+            <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero relative py-16 md:py-24 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none select-none z-0">
+      <svg width="100%" height="100%" viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+        <defs>
+          <radialGradient id="mainRadial" cx="50%" cy="50%" r="80%" fx="50%" fy="50%">
+            <stop offset="0%" stop-color="#e0e7ff" stop-opacity="0.7" />
+            <stop offset="60%" stop-color="#c7d2fe" stop-opacity="0.4" />
+            <stop offset="100%" stop-color="#f3e8ff" stop-opacity="0.2" />
+          </radialGradient>
+          <linearGradient id="mainLinear" x1="0" y1="0" x2="1440" y2="500" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6366f1" stop-opacity="0.12" />
+            <stop offset="1" stop-color="#a78bfa" stop-opacity="0.08" />
+          </linearGradient>
+          <filter id="blur1"><feGaussianBlur stdDeviation="30" /></filter>
+          <filter id="blur2"><feGaussianBlur stdDeviation="20" /></filter>
+        </defs>
+        <ellipse cx="720" cy="250" rx="700" ry="200" fill="url(#mainRadial)" />
+        <ellipse cx="400" cy="120" rx="180" ry="60" fill="#6366f1" opacity="0.10" filter="url(#blur1)" />
+        <ellipse cx="1100" cy="380" rx="160" ry="50" fill="#a78bfa" opacity="0.10" filter="url(#blur2)" />
+        <rect x="0" y="450" width="1440" height="50" fill="url(#mainLinear)" />
+      </svg>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div class="space-y-6">
+          <div class="flex items-center gap-4">
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-blue-900">Soumitra Goswami</h2>
+              <p class="text-blue-700 text-base md:text-lg font-medium">Financial Advisor & Investment Consultant</p>
             </div>
           </div>
-          <div class="relative">
-            <img src="/img/soumitra.jpg" alt="Soumitra Goswami" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto">
-            <div class="absolute -bottom-6 -right-6 bg-white rounded-xl p-4 shadow-lg">
-              <div class="flex items-center space-x-3">
-                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span class="text-sm font-medium">Available for consultation</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section bg-white">
-      <div class="container mx-auto px-6">
-        <div class="section-header">
-          <h2 class="section-title">Our Services</h2>
-          <p class="section-subtitle">
-            Comprehensive financial solutions to help you achieve your financial goals
+          <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+            Start Your <span class="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Investment Journey</span> with Me
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 max-w-xl">
+            Professional financial advisor helping you build wealth through smart investments, insurance planning, and comprehensive financial solutions tailored to your goals.
           </p>
+
+          <div class="flex flex-wrap gap-3">
+            <button class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-5 py-3 shadow transition-all">
+              <i class="fas fa-rocket"></i> Start Investing
+            </button>
+            <button class="inline-flex items-center gap-2 bg-white border border-blue-600 text-blue-700 hover:bg-blue-50 font-semibold rounded-lg px-5 py-3 shadow transition-all">
+              <i class="fas fa-phone"></i> Schedule Call
+            </button>
+          </div>
+
+          <div class="flex gap-4 md:gap-6 mt-4">
+            <div class="flex-1 min-w-[120px] flex flex-col items-center bg-white rounded-xl shadow-md px-5 py-4 border border-blue-100">
+              <div class="text-2xl md:text-3xl font-bold text-blue-700">50+</div>
+              <div class="text-gray-600 text-sm font-medium">Happy Clients</div>
+            </div>
+            <div class="flex-1 min-w-[120px] flex flex-col items-center bg-white rounded-xl shadow-md px-5 py-4 border border-blue-100">
+              <div class="text-2xl md:text-3xl font-bold text-blue-700">₹10Cr+</div>
+              <div class="text-gray-600 text-sm font-medium">Assets Managed</div>
+            </div>
+            <div class="flex-1 min-w-[120px] flex flex-col items-center bg-white rounded-xl shadow-md px-5 py-4 border border-blue-100">
+              <div class="text-2xl md:text-3xl font-bold text-blue-700">5+</div>
+              <div class="text-gray-600 text-sm font-medium">Years Experience</div>
+            </div>
+          </div>
         </div>
 
-        <div class="grid-auto grid-4">
-          <!-- Mutual Funds/SIP -->
-          <div class="service-card card-blue">
-            <div class="service-icon bg-blue-600">
-              <i class="fas fa-chart-line text-white text-2xl"></i>
-            </div>
-            <h3 class="card-title">Mutual Funds/SIP</h3>
-            <p class="card-text mb-6">Build wealth systematically with our curated mutual fund portfolios and SIP plans.</p>
-            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-              Learn More <i class="fas fa-arrow-right ml-1"></i>
-            </a>
-          </div>
-
-          <!-- Insurance -->
-          <div class="service-card card-green">
-            <div class="service-icon bg-green-600">
-              <i class="fas fa-shield-alt text-white text-2xl"></i>
-            </div>
-            <h3 class="card-title">Insurance</h3>
-            <p class="card-text mb-6">Protect your family and assets with comprehensive insurance solutions.</p>
-            <a href="#" class="text-green-600 font-semibold hover:text-green-700 transition-colors">
-              Learn More <i class="fas fa-arrow-right ml-1"></i>
-            </a>
-          </div>
-
-          <!-- Loans -->
-          <div class="service-card card-purple">
-            <div class="service-icon bg-purple-600">
-              <i class="fas fa-hand-holding-usd text-white text-2xl"></i>
-            </div>
-            <h3 class="card-title">Loans</h3>
-            <p class="card-text mb-6">Get the best loan deals for home, personal, business, and other financial needs.</p>
-            <a href="#" class="text-purple-600 font-semibold hover:text-purple-700 transition-colors">
-              Learn More <i class="fas fa-arrow-right ml-1"></i>
-            </a>
-          </div>
-
-          <!-- IT & Add-on Services -->
-          <div class="service-card card-orange">
-            <div class="service-icon bg-orange-600">
-              <i class="fas fa-file-invoice text-white text-2xl"></i>
-            </div>
-            <h3 class="card-title">IT Filing & Add-on Services</h3>
-            <p class="card-text mb-6">Complete IT filing, GST, and other essential documentation services.</p>
-            <a href="#" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors">
-              Learn More <i class="fas fa-arrow-right ml-1"></i>
-            </a>
+        <div class="relative flex justify-center">
+          <img src="/img/soumitra.jpg" alt="Soumitra Goswami" class="rounded-3xl shadow-2xl w-full max-w-xs md:max-w-md mx-auto border-4 border-white" />
+          <div class="absolute -bottom-6 right-6 bg-white rounded-xl p-4 shadow-lg border border-blue-100 flex items-center gap-2">
+            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-sm font-medium text-blue-700">Available for consultation</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="section bg-gray-50">
-      <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <img src="/img/about.jpg" alt="About Soumitra Goswami" class="rounded-2xl shadow-lg w-full">
-          </div>
-          <div class="space-y-6">
-            <h2 class="section-title text-left">About Soumitra Goswami</h2>
-            <p class="text-lg text-gray-600 leading-relaxed">
-              With over 5 years of experience in financial planning and investment advisory, 
-              I help individuals and families achieve their financial goals through strategic planning 
-              and smart investment decisions.
-            </p>
-            <p class="text-lg text-gray-600 leading-relaxed">
-              My approach combines deep market knowledge with personalized service to ensure 
-              every client receives tailored solutions that align with their risk profile and financial objectives.
-            </p>
-            <div class="grid grid-cols-2 gap-6">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="font-bold text-blue-600 text-xl mb-2">AMFI Certified</h4>
-                  <p class="text-gray-600">Mutual Fund Distributor</p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="font-bold text-green-600 text-xl mb-2">NISM Certified</h4>
-                  <p class="text-gray-600">Investment Advisor</p>
-                </div>
-              </div>
-            </div>
-            <button class="btn btn-primary">View Certifications</button>
-          </div>
+  <!-- Services -->
+  <section id="services" class="bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-10">
+  <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2">Our Services</h2>
+        <p class="text-lg text-gray-600">Comprehensive financial solutions to help you achieve your financial goals</p>
+      </div>
+
+  <div class="grid grid-cols-2 gap-4 sm:flex sm:flex-row sm:gap-8 justify-center px-2">
+        <!-- cards unchanged, just tidied widths -->
+  <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+          <div class="bg-blue-600 rounded-full p-4 mb-4"><i class="fas fa-chart-line text-white text-2xl"></i></div>
+          <h3 class="text-xl font-bold text-blue-800 mb-2">Mutual Funds/SIP</h3>
+          <p class="text-gray-600 mb-6">Build wealth systematically with our curated mutual fund portfolios and SIP plans.</p>
+          <a href="sip.html" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+  <div class="bg-white rounded-2xl shadow-lg border border-green-100 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+          <div class="bg-green-600 rounded-full p-4 mb-4"><i class="fas fa-shield-alt text-white text-2xl"></i></div>
+          <h3 class="text-xl font-bold text-green-800 mb-2">Insurance</h3>
+          <p class="text-gray-600 mb-6">Protect your family and assets with comprehensive insurance solutions.</p>
+          <a href="ins.html" class="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+  <div class="bg-white rounded-2xl shadow-lg border border-purple-100 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+          <div class="bg-purple-600 rounded-full p-4 mb-4"><i class="fas fa-hand-holding-usd text-white text-2xl"></i></div>
+          <h3 class="text-xl font-bold text-purple-800 mb-2">Loans</h3>
+          <p class="text-gray-600 mb-6">Get the best loan deals for home, personal, business, and other financial needs.</p>
+          <a href="loan.html" class="text-purple-600 font-semibold hover:text-purple-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+  <div class="bg-white rounded-2xl shadow-lg border border-orange-100 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+          <div class="bg-orange-600 rounded-full p-4 mb-4"><i class="fas fa-file-invoice text-white text-2xl"></i></div>
+          <h3 class="text-xl font-bold text-orange-800 mb-2">IT Filing & Add-on Services</h3>
+          <p class="text-gray-600 mb-6">Complete IT filing, GST, and other essential documentation services.</p>
+          <a href="itr.html" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+  <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+          <div class="bg-gray-600 rounded-full p-4 mb-4"><i class="fas fa-ellipsis-h text-white text-2xl"></i></div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Other Services</h3>
+          <p class="text-gray-600 mb-6">Explore more services and solutions tailored for you.</p>
+          <a href="other.html" class="text-gray-700 font-semibold hover:text-gray-900 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Team Section -->
-    <section id="team" class="section bg-white">
-      <div class="container mx-auto px-6">
-        <div class="section-header">
-          <h2 class="section-title">Our Team</h2>
-          <p class="section-subtitle">
-            Meet our experienced professionals dedicated to your financial success
+  <!-- About -->
+  <section id="about" class="bg-gray-50 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div><img src="/img/about.jpg" alt="About Soumitra Goswami" class="rounded-3xl shadow-2xl w-full border-4 border-white" /></div>
+        <div class="space-y-6">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900">About Soumitra Goswami</h2>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            With over 5 years of experience in financial planning and investment advisory, I help individuals and families achieve their financial goals through strategic planning and smart investment decisions.
           </p>
-        </div>
-
-        <div class="team-grid">
-          <div class="team-member group">
-            <div class="team-image-wrapper">
-              <img src="/img/team-1.jpg" alt="Piu Banerjee" class="team-image">
-              <div class="team-overlay"></div>
-            </div>
-            <h3 class="team-name">Piu Banerjee</h3>
-            <p class="team-role">Back Office</p>
-          </div>
-
-          <div class="team-member group">
-            <div class="team-image-wrapper">
-              <img src="/img/team-2.jpg" alt="R. Singh" class="team-image">
-              <div class="team-overlay"></div>
-            </div>
-            <h3 class="team-name">R. Singh</h3>
-            <p class="team-role">Technical Advisor</p>
-          </div>
-
-          <div class="team-member group">
-            <div class="team-image-wrapper">
-              <img src="/img/team-3.jpg" alt="B. Rakshit" class="team-image">
-              <div class="team-overlay"></div>
-            </div>
-            <h3 class="team-name">B. Rakshit</h3>
-            <p class="team-role">Creative Head</p>
-          </div>
-
-          <div class="team-member group">
-            <div class="team-image-wrapper">
-              <img src="/img/soumitra.jpg" alt="Soumitra Goswami" class="team-image">
-              <div class="team-overlay"></div>
-            </div>
-            <h3 class="team-name">Soumitra Goswami</h3>
-            <p class="team-role">Financial Advisor</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section bg-gray-50">
-      <div class="container mx-auto px-6">
-        <div class="section-header">
-          <h2 class="section-title">What Our Clients Say</h2>
-          <p class="section-subtitle">
-            Read testimonials from our satisfied clients
+          <p class="text-lg text-gray-700 leading-relaxed">
+            My approach combines deep market knowledge with personalized service to ensure every client receives tailored solutions that align with their risk profile and financial objectives.
           </p>
-        </div>
-
-        <div class="grid-auto grid-3">
-          <div class="testimonial-card">
-            <div class="testimonial-header">
-              <img src="/img/testimonial-1.jpg" alt="Rajesh Kumar" class="testimonial-avatar">
-              <div class="testimonial-info">
-                <h4 class="testimonial-name">Rajesh Kumar</h4>
-                <p class="testimonial-role">Business Owner</p>
-              </div>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl shadow-md p-6 border border-blue-100 text-center">
+              <h4 class="font-bold text-blue-600 text-xl mb-2">AMFI Certified</h4>
+              <p class="text-gray-600">Mutual Fund Distributor</p>
             </div>
-            <p class="testimonial-content">Soumitra's expertise in financial planning helped me achieve my investment goals faster than I expected. Highly recommended!</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+            <div class="bg-white rounded-xl shadow-md p-6 border border-green-100 text-center">
+              <h4 class="font-bold text-green-600 text-xl mb-2">NISM Certified</h4>
+              <p class="text-gray-600">Investment Advisor</p>
             </div>
           </div>
-
-          <div class="testimonial-card">
-            <div class="testimonial-header">
-              <img src="/img/testimonial-2.jpg" alt="Priya Sharma" class="testimonial-avatar">
-              <div class="testimonial-info">
-                <h4 class="testimonial-name">Priya Sharma</h4>
-                <p class="testimonial-role">Software Engineer</p>
-              </div>
-            </div>
-            <p class="testimonial-content">Professional service and excellent guidance on mutual funds. My SIP portfolio is performing exceptionally well.</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="testimonial-header">
-              <img src="/img/testimonial-3.jpg" alt="Amit Patel" class="testimonial-avatar">
-              <div class="testimonial-info">
-                <h4 class="testimonial-name">Amit Patel</h4>
-                <p class="testimonial-role">Doctor</p>
-              </div>
-            </div>
-            <p class="testimonial-content">Great experience with loan processing and insurance planning. The team is very responsive and knowledgeable.</p>
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-          </div>
+          <button onclick="window.location.href='cert.html'" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-8 py-3 shadow transition-all mt-2">
+            View Certifications
+          </button>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section bg-blue-900 text-white">
-      <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12">
-          <div>
-            <h2 class="section-title text-left text-white">Get In Touch</h2>
-            <p class="text-xl text-blue-100 mb-8">
-              Ready to start your financial journey? Contact us today for a free consultation.
-            </p>
-            
-            <div class="space-y-6">
-              <div class="contact-info-item">
-                <div class="contact-icon-wrapper">
-                  <i class="fas fa-phone contact-icon"></i>
-                </div>
-                <div class="contact-details">
-                  <h4 class="contact-label text-white">Phone</h4>
-                  <p class="contact-value">+91 98765 43210</p>
-                </div>
-              </div>
-              
-              <div class="contact-info-item">
-                <div class="contact-icon-wrapper">
-                  <i class="fas fa-envelope contact-icon"></i>
-                </div>
-                <div class="contact-details">
-                  <h4 class="contact-label text-white">Email</h4>
-                  <p class="contact-value">contact@soumitragoswami.in</p>
-                </div>
-              </div>
-              
-              <div class="contact-info-item">
-                <div class="contact-icon-wrapper">
-                  <i class="fas fa-map-marker-alt contact-icon"></i>
-                </div>
-                <div class="contact-details">
-                  <h4 class="contact-label text-white">Address</h4>
-                  <p class="contact-value">Kolkata, West Bengal, India</p>
-                </div>
-              </div>
-            </div>
+  <!-- Team -->
+  <section id="team" class="bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2">Our Team</h2>
+        <p class="text-lg text-gray-600">Meet our experienced professionals dedicated to your financial success</p>
+      </div>
 
-            <div class="social-links mt-8">
-              <a href="#" class="social-link" aria-label="LinkedIn">
-                <i class="fab fa-linkedin text-white"></i>
-              </a>
-              <a href="#" class="social-link" aria-label="Twitter">
-                <i class="fab fa-twitter text-white"></i>
-              </a>
-              <a href="#" class="social-link" aria-label="Facebook">
-                <i class="fab fa-facebook text-white"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl p-8 text-gray-900">
-            <h3 class="text-2xl font-bold mb-6">Send us a Message</h3>
-            <form class="space-y-6">
-              <div class="form-grid form-grid-2">
-                <div class="form-group">
-                  <input type="text" placeholder="First Name" class="form-input" required>
-                </div>
-                <div class="form-group">
-                  <input type="text" placeholder="Last Name" class="form-input" required>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <input type="email" placeholder="Email Address" class="form-input" required>
-              </div>
-              
-              <div class="form-group">
-                <input type="tel" placeholder="Phone Number" class="form-input" required>
-              </div>
-              
-              <div class="form-group">
-                <select class="form-select" required>
-                  <option value="">Select Service</option>
-                  <option value="mutual-funds">Mutual Funds/SIP</option>
-                  <option value="insurance">Insurance</option>
-                  <option value="loans">Loans</option>
-                  <option value="it-filing">IT Filing & Add-on Services</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <textarea placeholder="Your Message" rows="4" class="form-textarea" required></textarea>
-              </div>
-              
-              <button type="submit" class="btn btn-primary btn-full">
-                Send Message
-              </button>
-            </form>
-          </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-6 text-center">
+          <img src="/img/team-1.jpg" alt="Piu Banerjee" class="rounded-full w-28 h-28 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+          <h3 class="text-lg font-bold text-blue-800 mb-1">Piu Banerjee</h3>
+          <p class="text-gray-600">Back Office</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-6 text-center">
+          <img src="/img/team-2.jpg" alt="R. Singh" class="rounded-full w-28 h-28 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+          <h3 class="text-lg font-bold text-blue-800 mb-1">R. Singh</h3>
+          <p class="text-gray-600">Technical Advisor</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-6 text-center">
+          <img src="/img/team-3.jpg" alt="B. Rakshit" class="rounded-full w-28 h-28 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+          <h3 class="text-lg font-bold text-blue-800 mb-1">B. Rakshit</h3>
+          <p class="text-gray-600">Creative Head</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-6 text-center">
+          <img src="/img/soumitra.jpg" alt="Soumitra Goswami" class="rounded-full w-28 h-28 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+          <h3 class="text-lg font-bold text-blue-800 mb-1">Soumitra Goswami</h3>
+          <p class="text-gray-600">Financial Advisor</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-      <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-4 gap-8">
-          <div>
-            <div class="flex items-center space-x-2 mb-4">
-              <img src="/img/logo.png" alt="Soumitra Goswami" class="h-8 w-auto">
-              <span class="text-lg font-bold">Soumitra Goswami</span>
-            </div>
-            <p class="text-gray-400 mb-4">
-              Your trusted financial advisor for investments, insurance, and comprehensive financial planning.
-            </p>
-            <div class="flex space-x-3">
-              <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                <i class="fab fa-facebook"></i>
-              </a>
-            </div>
-          </div>
+  <!-- Testimonials -->
+  <section class="bg-gray-50 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2">What Our Clients Say</h2>
+        <p class="text-lg text-gray-600">Read testimonials from our satisfied clients</p>
+      </div>
 
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Services</h4>
-            <ul class="space-y-2 text-gray-400">
-              <li><a href="#" class="hover:text-white transition-colors">Mutual Funds</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">SIP Planning</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Insurance</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Loans</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">IT Filing</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul class="space-y-2 text-gray-400">
-              <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
-              <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
-              <li><a href="#team" class="hover:text-white transition-colors">Team</a></li>
-              <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-            <ul class="space-y-2 text-gray-400">
-              <li>
-                <i class="fas fa-phone mr-2"></i>
-                +91 98765 43210
-              </li>
-              <li>
-                <i class="fas fa-envelope mr-2"></i>
-                contact@soumitragoswami.in
-              </li>
-              <li>
-                <i class="fas fa-map-marker-alt mr-2"></i>
-                Kolkata, West Bengal
-              </li>
-            </ul>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- three cards unchanged -->
+        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center">
+          <img src="/img/testimonial-1.jpg" alt="Rajesh Kumar" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+          <h4 class="text-lg font-bold text-blue-800 mb-1">Rajesh Kumar</h4>
+          <p class="text-gray-500 text-sm mb-2">Business Owner</p>
+          <p class="text-gray-700 mb-4">Soumitra's expertise in financial planning helped me achieve my investment goals faster than I expected. Highly recommended!</p>
+          <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         </div>
 
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Soumitra Goswami. All rights reserved.</p>
+        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center">
+          <img src="/img/testimonial-2.jpg" alt="Priya Sharma" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+          <h4 class="text-lg font-bold text-blue-800 mb-1">Priya Sharma</h4>
+          <p class="text-gray-500 text-sm mb-2">Software Engineer</p>
+          <p class="text-gray-700 mb-4">Professional service and excellent guidance on mutual funds. My SIP portfolio is performing exceptionally well.</p>
+          <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center">
+          <img src="/img/testimonial-3.jpg" alt="Amit Patel" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+          <h4 class="text-lg font-bold text-blue-800 mb-1">Amit Patel</h4>
+          <p class="text-gray-500 text-sm mb-2">Doctor</p>
+          <p class="text-gray-700 mb-4">Great experience with loan processing and insurance planning. The team is very responsive and knowledgeable.</p>
+          <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <div id="app"></div>
-  </body>
+  <!-- Contact -->
+  <section id="contact" class="bg-blue-900 text-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 gap-10">
+        <div class="bg-white rounded-2xl text-gray-900 shadow-xl border border-blue-100 overflow-hidden">
+          <div class="bg-blue-50 px-8 py-6 border-b border-blue-100">
+            <h3 class="text-2xl font-bold text-blue-800">Send us a Message</h3>
+          </div>
+
+          <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 px-8 py-10">
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-medium text-gray-700">First Name</label>
+              <input type="text" placeholder="First Name" class="border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 rounded bg-white" required />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-medium text-gray-700">Last Name</label>
+              <input type="text" placeholder="Last Name" class="border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 rounded bg-white" required />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-medium text-gray-700">Email Address</label>
+              <input type="email" placeholder="Email Address" class="border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 rounded bg-white" required />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-medium text-gray-700">Phone Number</label>
+              <input type="tel" placeholder="Phone Number" class="border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 rounded bg-white" required />
+            </div>
+            <div class="flex flex-col gap-2 md:col-span-2">
+              <label class="text-sm font-medium text-gray-700">Select Service</label>
+              <select class="border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 rounded bg-white" required>
+                <option value="">Select Service</option>
+                <option value="mutual-funds">Mutual Funds/SIP</option>
+                <option value="insurance">Insurance</option>
+                <option value="loans">Loans</option>
+                <option value="it-filing">IT Filing & Add-on Services</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-2 md:col-span-2">
+              <label class="text-sm font-medium text-gray-700">Your Message</label>
+              <textarea rows="3" placeholder="Your Message" class="border border-blue-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-300 px-3 py-2 rounded bg-white"></textarea>
+            </div>
+            <div class="md:col-span-2 flex justify-end">
+              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-10 py-3 transition-all shadow-lg">Send Message</button>
+            </div>
+          </form>
+
+          <!-- OTP Modal -->
+          <div id="otp-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-[60] hidden">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-xs">
+              <h3 class="text-lg font-bold text-blue-700 mb-2 text-center">Enter OTP</h3>
+              <p class="text-gray-600 text-sm mb-4 text-center">Demo OTP is shown below for this static flow.</p>
+              <input id="otp-input" type="text" maxlength="6" class="w-full border rounded px-3 py-2 text-center text-lg tracking-widest mb-2" placeholder="Enter OTP" autocomplete="one-time-code" />
+              <div id="otp-error" class="text-red-600 text-xs mb-2 hidden">Invalid OTP. Please try again.</div>
+              <button id="otp-verify-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-2 font-semibold mb-2">Verify</button>
+              <button id="otp-cancel-btn" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 rounded py-2 font-semibold">Cancel</button>
+              <div class="text-xs text-gray-400 mt-2 text-center">Demo OTP: <span id="otp-demo-value" class="font-mono"></span></div>
+            </div>
+          </div>
+          <!-- /OTP Modal -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Office</h4>
+          <p class="text-gray-400 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>1st Cross Road, Salt Lake City, India</p>
+          <p class="text-gray-400 mb-2"><i class="fas fa-phone-alt mr-2"></i>+91 9804452151</p>
+          <p class="text-gray-400 mb-4"><i class="fas fa-envelope mr-2"></i>sgswamee.ib@gmail.com</p>
+          <div class="flex space-x-3">
+            <a href="https://x.com/sgswamee" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="sip.html" class="hover:text-white">Mutual Funds</a></li>
+            <li><a href="ins.html" class="hover:text-white">Insurance</a></li>
+            <li><a href="loan.html" class="hover:text-white">Loans</a></li>
+            <li><a href="itr.html" class="hover:text-white">IT Filing & GST</a></li>
+            <li><a href="other.html" class="hover:text-white">Add-on Services</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="/about.html#cert" class="hover:text-white">Certification</a></li>
+            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="hover:text-white">Risk Profiler</a></li>
+            <li><a href="/pdf/TER_May_2025.pdf" download class="hover:text-white">Disclosure</a></li>
+            <li><a href="#contact" class="hover:text-white">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Important Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="https://www.cvlkra.com/kycpaninquiry.aspx" target="_blank" class="hover:text-white">Check your KYC status</a></li>
+            <li><a href="https://irdai.gov.in/grievance-redressal-mechanism1" target="_blank" class="hover:text-white">IRDAI Grievances Redressal</a></li>
+            <li><a href="https://www.amfiindia.com/investor-corner/online-center/SEBI-Score.html" target="_blank" class="hover:text-white">AMFI Grievances Redressal</a></li>
+            <li><a href="https://cybercrime.gov.in/Webform/Accept.aspx" target="_blank" class="hover:text-white">Cyber Crime Complaint Filing</a></li>
+            <li><a href="http://www.singhassociates.store/" target="_blank" class="hover:text-white">Singh And Associates</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-top mt-12 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 Soumitra Goswami. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright strip -->
+  <div class="container-fluid copyright py-4">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-300 text-sm">
+        <div class="text-center md:text-left">
+          <div>AMFI Registered Mutual Fund Distributor: ARN-309045</div>
+          <a class="border-bottom" href="/pdf/privacypolicy.pdf" download>Privacy Policy</a> |
+          <a class="border-bottom" href="/pdf/termscondition.pdf" download>Terms and Conditions.</a>
+        </div>
+        <div class="text-center md:text-right">
+          Designed By <a class="border-bottom" href="">Sree Vinayaka Infotech</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional app mount -->
+  <div id="app"></div>
+
+  <!-- Floating Financial Tools Widget (from SIP page, large, left, visible) -->
+  <div id="widget-navbar" class="fixed bottom-20 left-6 z-50 flex flex-col items-start space-y-2 sm:bottom-6">
+    <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-24 h-24 flex items-center justify-center text-5xl focus:outline-none focus:ring-4 focus:ring-blue-400 transition-all">
+      <i class="fas fa-calculator"></i>
+    </button>
+    <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-3xl shadow-2xl p-8 w-[28rem] animate-fade-in-up">
+      <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
+      <div class="flex gap-2 mb-4">
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition text-sm" data-tool="emi-calc">EMI</button>
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-orange-50 text-orange-700 font-semibold hover:bg-orange-100 transition text-sm" data-tool="ret-calc">Retirement</button>
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-gray-50 text-gray-700 font-semibold hover:bg-gray-100 transition text-sm" data-tool="inf-calc">Inflation</button>
+      </div>
+      <!-- SIP Calculator -->
+      <div id="sip-calc" class="widget-tool">
+        <form id="sip-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Monthly Investment (₹)" required /></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required /></div>
+          <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Investment Period (months)" required /></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Maturity Value" readonly /></div>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+      <!-- EMI Calculator -->
+      <div id="emi-calc" class="widget-tool hidden">
+        <form id="emi-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Loan Amount (₹)" required /></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Interest Rate (%)" required /></div>
+          <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Tenure (months)" required /></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Monthly EMI" readonly /></div>
+          <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+      <!-- Retirement Calculator -->
+      <div id="ret-calc" class="widget-tool hidden">
+        <form id="ret-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Savings (₹)" required /></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required /></div>
+          <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years to Grow" required /></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly /></div>
+          <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+      <!-- Inflation Calculator -->
+      <div id="inf-calc" class="widget-tool hidden">
+        <form id="inf-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Value (₹)" required /></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Inflation Rate (%)" required /></div>
+          <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years" required /></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly /></div>
+          <button type="submit" class="w-full bg-gray-600 hover:bg-gray-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendor scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Init WOW + UX scripts -->
+  <script>
+    new WOW().init();
+
+    // desktop dropdown hover intent
+    document.querySelectorAll('#main-menu-desktop .group').forEach(group => {
+      let t; const dd = group.querySelector('ul'); if (!dd) return;
+      const show = () => { clearTimeout(t); dd.style.opacity='1'; dd.style.pointerEvents='auto'; };
+      const hide = () => { t=setTimeout(()=>{ dd.style.opacity=''; dd.style.pointerEvents=''; }, 180); };
+      group.addEventListener('mouseenter', show);
+      group.addEventListener('mouseleave', hide);
+      group.addEventListener('focusin', show);
+      group.addEventListener('focusout', hide);
+    });
+
+    // ripple
+    function createRipple(e) {
+      const target = e.currentTarget; const rect = target.getBoundingClientRect();
+      const d = Math.max(target.clientWidth, target.clientHeight); const r = d / 2;
+      const circle = document.createElement('span'); circle.className = 'ripple';
+      circle.style.width = circle.style.height = d + 'px';
+      circle.style.left = (e.clientX - rect.left - r) + 'px';
+      circle.style.top  = (e.clientY - rect.top  - r) + 'px';
+      target.querySelector('.ripple')?.remove(); target.appendChild(circle);
+    }
+    document.querySelectorAll('nav a, .btn, button').forEach(el => el.addEventListener('click', createRipple));
+
+    // mobile menu & accordions
+    (function () {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (!toggle || !menu) return;
+
+      const open = () => { menu.classList.remove('hidden'); menu.classList.add('show'); toggle.setAttribute('aria-expanded','true'); };
+      const close = () => { menu.classList.add('hidden'); menu.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); };
+
+      toggle.addEventListener('click', e => { e.stopPropagation(); (menu.classList.contains('hidden') ? open : close)(); });
+      document.addEventListener('click', e => {
+        if (!menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== toggle) close();
+      });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+
+      // collapsible submenus
+      menu.querySelectorAll('[data-accordion]').forEach(btn => {
+        const sel = btn.getAttribute('data-accordion'); const panel = document.querySelector(sel);
+        btn.addEventListener('click', () => {
+          const openNow = !panel.classList.contains('hidden');
+          // close all panels
+          menu.querySelectorAll('.mobile-drawer ul[id]').forEach(p => p.classList.add('hidden'));
+          if (!openNow) panel.classList.remove('hidden'); else panel.classList.add('hidden');
+          btn.setAttribute('aria-expanded', String(!openNow));
+        });
+      });
+    })();
+
+    // OTP modal logic
+    (function () {
+      let pending = null, otp = null;
+      const modal = document.getElementById('otp-modal'),
+            input = document.getElementById('otp-input'),
+            btnV  = document.getElementById('otp-verify-btn'),
+            btnC  = document.getElementById('otp-cancel-btn'),
+            err   = document.getElementById('otp-error'),
+            demo  = document.getElementById('otp-demo-value');
+
+      function show(cb) {
+        otp = String(Math.floor(100000 + Math.random() * 900000));
+        input.value = ''; err.classList.add('hidden'); demo.textContent = otp;
+        modal.classList.remove('hidden'); input.focus(); pending = cb;
+      }
+      function hide() { modal.classList.add('hidden'); pending = null; }
+
+      btnV?.addEventListener('click', () => {
+        if (input.value === otp) { err.classList.add('hidden'); hide(); pending && pending(); }
+        else err.classList.remove('hidden');
+      });
+      btnC?.addEventListener('click', hide);
+      input?.addEventListener('keydown', e => { if (e.key === 'Enter') btnV.click(); });
+
+      const form = document.getElementById('contact-form');
+      form?.addEventListener('submit', e => {
+        e.preventDefault();
+        show(() => form.submit()); // replace with fetch() to avoid reload
+      });
+    })();
+  </script>
+
+  <!-- Calculators -->
+  <!-- <script src="/src/financial-tools.js"></script> -->
+
+  <script>
+    // Floating widget navbar toggle (from SIP page)
+    document.addEventListener('DOMContentLoaded', function() {
+      const widgetToggle = document.getElementById('widget-toggle');
+      const widgetMenu = document.getElementById('widget-menu');
+      if (widgetToggle && widgetMenu) {
+        widgetToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          widgetMenu.classList.toggle('hidden');
+        });
+        document.addEventListener('click', function() {
+          if (!widgetMenu.classList.contains('hidden')) widgetMenu.classList.add('hidden');
+        });
+        widgetMenu.addEventListener('click', function(e) { e.stopPropagation(); });
+      }
+    });
+  </script>
+</body>
 </html>

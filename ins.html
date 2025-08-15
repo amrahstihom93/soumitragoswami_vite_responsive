@@ -1,0 +1,625 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insurance Services - Soumitra Goswami</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-white text-gray-900 font-inter">
+    <style>
+      .section-separator {
+        border-bottom: 1px solid #e5e7eb; /* Subtle gray border */
+      }
+
+      .section-tint-1 {
+        background-color: #f8fafc; /* Light cool gray */
+      }
+
+      .section-tint-2 {
+        background-color: #f0f4f8; /* Slightly darker cool gray */
+      }
+
+      .section-tint-3 {
+        background-color: #e2e8f0; /* Another subtle cool gray */
+      }
+    </style>
+
+
+
+    <!-- Fixed Top Navbar (copied from index.html for consistency) -->
+    <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: var(--nav-h)">
+        <a href="index.html" class="flex items-center gap-3 shrink-0">
+          <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
+          <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
+          <li><a href="/" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
+
+          <li class="relative group">
+            <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1"
+                    aria-haspopup="true" aria-expanded="false">
+              Services <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <!-- dropdown -->
+            <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Mutual Funds/SIP</a></li>
+              <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Insurance</a></li>
+              <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Loans</a></li>
+              <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">IT Filing & GST</a></li>
+              <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Other Services</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+          <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+          <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+
+          <li class="relative group">
+            <a href="#" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center border-l border-r border-gray-200 md:border-l md:border-r md:border-gray-200">More <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+            <ul class="absolute left-0 md:left-1/2 md:-translate-x-1/2 right-auto top-full mt-1 min-w-[14rem] max-w-sm w-auto bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto pointer-events-none transition-all duration-200 z-40 backdrop-blur-md">
+              <li><a href="about.html#cert" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Certification</a></li>
+              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Risk Profiler</a></li>
+              <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-100 focus:text-blue-800 rounded-lg transition-all duration-150">Disclosure</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const toggle = document.getElementById('menu-toggle');
+          const menu = document.getElementById('main-menu');
+          if(toggle && menu) {
+            toggle.addEventListener('click', function() {
+              menu.classList.toggle('hidden');
+            });
+          }
+        });
+      </script>
+
+      <!-- Mobile toggle -->
+      <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
+              aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="md:hidden hidden mobile-drawer bg-white border-t border-blue-100 shadow-2xl">
+      <ul class="px-4 py-3 space-y-1">
+        <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
+        <li><a href="/" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
+
+        <!-- Services (collapsible) -->
+        <li>
+          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
+                  data-accordion="#m-services" aria-expanded="false">
+            Services <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
+            <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
+            <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
+            <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
+            <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
+            <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
+        <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
+        <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
+
+        <!-- More (collapsible) -->
+        <li>
+          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
+                  data-accordion="#m-more" aria-expanded="false">
+            More <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
+            <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
+            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
+            <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Floating Financial Tools Widget Navbar (from SIP page, large, left, visible) -->
+<div id="widget-navbar" class="fixed bottom-20 left-6 z-50 flex flex-col items-start space-y-2 sm:bottom-6">
+  <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-24 h-24 flex items-center justify-center text-5xl focus:outline-none focus:ring-4 focus:ring-blue-400 transition-all">
+    <i class="fas fa-calculator"></i>
+  </button>
+  <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-3xl shadow-2xl p-8 w-[28rem] animate-fade-in-up">
+    <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
+    <div class="flex gap-2 mb-4">
+      <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
+      <button class="widget-tool-btn px-3 py-1 rounded-lg bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition text-sm" data-tool="emi-calc">EMI</button>
+      <button class="widget-tool-btn px-3 py-1 rounded-lg bg-orange-50 text-orange-700 font-semibold hover:bg-orange-100 transition text-sm" data-tool="ret-calc">Retirement</button>
+      <button class="widget-tool-btn px-3 py-1 rounded-lg bg-gray-50 text-gray-700 font-semibold hover:bg-gray-100 transition text-sm" data-tool="inf-calc">Inflation</button>
+    </div>
+    <!-- SIP Calculator -->
+    <div id="sip-calc" class="widget-tool">
+      <form id="sip-calc-form" class="space-y-2">
+        <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Monthly Investment (₹)" required /></div>
+        <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required /></div>
+        <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Investment Period (months)" required /></div>
+        <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Maturity Value" readonly /></div>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-1 font-semibold">Calculate</button>
+      </form>
+    </div>
+    <!-- EMI Calculator -->
+    <div id="emi-calc" class="widget-tool hidden">
+      <form id="emi-calc-form" class="space-y-2">
+        <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Loan Amount (₹)" required /></div>
+        <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Interest Rate (%)" required /></div>
+        <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Tenure (months)" required /></div>
+        <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Monthly EMI" readonly /></div>
+        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-1 font-semibold">Calculate</button>
+      </form>
+    </div>
+    <!-- Retirement Calculator -->
+    <div id="ret-calc" class="widget-tool hidden">
+      <form id="ret-calc-form" class="space-y-2">
+        <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Savings (₹)" required /></div>
+        <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required /></div>
+        <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years to Grow" required /></div>
+        <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly /></div>
+        <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white rounded py-1 font-semibold">Calculate</button>
+      </form>
+    </div>
+    <!-- Inflation Calculator -->
+    <div id="inf-calc" class="widget-tool hidden">
+      <form id="inf-calc-form" class="space-y-2">
+        <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Value (₹)" required /></div>
+        <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Inflation Rate (%)" required /></div>
+        <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years" required /></div>
+        <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly /></div>
+        <button type="submit" class="w-full bg-gray-600 hover:bg-gray-700 text-white rounded py-1 font-semibold">Calculate</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+    <!-- Hero Section (refined for clarity and spacing) -->
+    <section class="hero-section relative py-16 md:py-24 flex items-center justify-center overflow-hidden mt-[80px] section-separator section-tint-1">
+      <div class="absolute inset-0 pointer-events-none select-none opacity-20" style="background: url('/img/bg.png') center/cover no-repeat;"></div>
+      <div class="absolute inset-0 pointer-events-none select-none z-0">
+        <!-- Decorative SVG background (unchanged) -->
+        <svg width="100%" height="100%" viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+          <defs>
+            <radialGradient id="insRadial" cx="50%" cy="50%" r="80%" fx="50%" fy="50%">
+              <stop offset="0%" stop-color="#c7d2fe" stop-opacity="0.7" />
+              <stop offset="60%" stop-color="#f3e8ff" stop-opacity="0.4" />
+              <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.2" />
+            </radialGradient>
+            <linearGradient id="insLinear" x1="0" y1="0" x2="1440" y2="500" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#6366f1" stop-opacity="0.12" />
+              <stop offset="1" stop-color="#a78bfa" stop-opacity="0.08" />
+            </linearGradient>
+          </defs>
+          <ellipse cx="720" cy="250" rx="700" ry="200" fill="url(#insRadial)" />
+          <ellipse cx="400" cy="120" rx="180" ry="60" fill="#6366f1" opacity="0.10" filter="url(#blur1)" />
+          <ellipse cx="1100" cy="380" rx="160" ry="50" fill="#a78bfa" opacity="0.10" filter="url(#blur2)" />
+          <rect x="0" y="450" width="1440" height="50" fill="url(#insLinear)" />
+          <filter id="blur1"><feGaussianBlur stdDeviation="30" /></filter>
+          <filter id="blur2"><feGaussianBlur stdDeviation="20" /></filter>
+        </svg>
+      </div>
+      <div class="relative z-10 max-w-3xl mx-auto text-center">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-green-900 mb-4 animate-fade-in">Protect Your Future with <span class="text-green-600">Insurance</span></h1>
+        <p class="text-lg md:text-2xl text-green-800 mb-8 animate-fade-in delay-100">Comprehensive insurance solutions for you and your family. Secure your health, life, and assets today.</p>
+        <div class="hero-options flex flex-wrap justify-center gap-4 mb-8 animate-fade-in delay-200">
+          <button class="option-btn flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-green-100">
+            <i class="fas fa-heartbeat text-red-500"></i>
+            <span class="font-medium text-green-900">Health Insurance</span>
+          </button>
+          <button class="option-btn flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-green-100">
+            <i class="fas fa-user-shield text-blue-500"></i>
+            <span class="font-medium text-green-900">Life Insurance</span>
+          </button>
+          <button class="option-btn flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-green-100">
+            <i class="fas fa-car text-purple-500"></i>
+            <span class="font-medium text-green-900">Asset Insurance</span>
+          </button>
+        </div>
+        <a href="#enquiry" class="get-insured-btn inline-block bg-green-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-green-700 transition duration-300 ease-in-out transform hover:-translate-y-1">Get Insured</a>
+      </div>
+    </section>
+
+    <!-- Insurance Plans Section -->
+    <section class="py-16 md:py-24 section-separator section-tint-2">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-green-900 mb-2">Insurance Services</h2>
+          <p class="text-lg text-gray-600">Protect your family and assets with comprehensive insurance solutions.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-white rounded-2xl shadow-lg border border-green-100 p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all">
+            <div class="bg-green-600 rounded-full p-4 mb-4">
+              <i class="fas fa-shield-alt text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-green-800 mb-2">Life & Health Insurance</h3>
+            <p class="text-gray-600 mb-6">Comprehensive coverage for you and your loved ones. Get expert advice and best plans.</p>
+            <a href="#" class="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all">
+            <div class="bg-blue-600 rounded-full p-4 mb-4">
+              <i class="fas fa-car text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Vehicle & Asset Insurance</h3>
+            <p class="text-gray-600 mb-6">Protect your car, home, and valuables with tailored insurance solutions.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-green-800 flex items-center gap-2"><i class="fas fa-shield-alt text-green-500"></i> Popular Insurance Plans</h2>
+        <ul class="divide-y divide-green-50 mb-6 text-gray-700 text-base md:text-lg">
+          <li class="py-3 flex items-center gap-3"><i class="fas fa-heartbeat text-red-400"></i> Health Insurance (Individual & Family)</li>
+          <li class="py-3 flex items-center gap-3"><i class="fas fa-user-shield text-blue-400"></i> Life Insurance (Term & Endowment)</li>
+          <li class="py-3 flex items-center gap-3"><i class="fas fa-car text-purple-400"></i> Motor/Asset Insurance</li>
+        </ul>
+        <div class="mb-6 text-sm text-green-700 flex flex-wrap gap-4">
+          <a href="https://www.policybazaar.com/" target="_blank" class="hover:underline flex items-center gap-1"><i class="fas fa-external-link-alt"></i> Compare Plans</a>
+        </div>
+
+      <!-- Interactive Contact Form (refined for clarity and spacing) -->
+      <section class="container-sm py-12">
+        <form id="enquiry" class="bg-white rounded-xl shadow-lg p-8 max-w-xl mx-auto space-y-6 border border-green-100">
+          <h2 class="text-2xl font-bold mb-4 text-center">Get Your Insurance Quote</h2>
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input class="form-input" type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input class="form-input" type="tel" id="phone" name="phone" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="adults">No. of Adults</label>
+            <input class="form-input" type="number" id="adults" name="adults" min="1" max="20" value="1" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="children">No. of Children</label>
+            <input class="form-input" type="number" id="children" name="children" min="0" max="10" value="0" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="insurance-type">Insurance Type</label>
+            <select class="form-select" id="insurance-type" name="insurance-type" required>
+              <option value="">Select Type</option>
+              <option value="health">Health Insurance</option>
+              <option value="life">Life Insurance</option>
+              <option value="asset">Asset Insurance</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Additional Details</label>
+            <textarea class="form-textarea" id="message" name="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success w-full">Request Quote</button>
+        </form>
+      </section>
+
+    <!-- Enquiry Form Validation Script -->
+    <script src="src/enquiry-validation.js"></script>
+
+      <!-- Testimonials Slider -->
+      <div class="max-w-2xl mx-auto mb-12">
+        <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center gap-2"><i class="fas fa-comments text-green-400"></i> What Our Insurance Clients Say</h3>
+        <div class="relative bg-white rounded-2xl shadow-lg p-8 border border-green-100 overflow-hidden">
+          <div class="testimonial-slider flex transition-transform duration-500" style="will-change: transform;">
+            <div class="testimonial-slide w-full flex-shrink-0">
+              <p class="text-lg text-gray-700 italic mb-2">“The health insurance plan was tailored for my family. The process was smooth and transparent.”</p>
+              <div class="flex items-center gap-3">
+                <img src="/img/testimonial-3.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-green-200">
+                <span class="font-semibold text-green-700">Amit Patel</span>
+              </div>
+            </div>
+            <div class="testimonial-slide w-full flex-shrink-0 hidden">
+              <p class="text-lg text-gray-700 italic mb-2">“Got my life insurance policy with expert guidance. Highly recommend Soumitra’s team!”</p>
+              <div class="flex items-center gap-3">
+                <img src="/img/testimonial-2.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-green-200">
+                <span class="font-semibold text-green-700">Priya Sharma</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end gap-2 mt-4">
+            <button type="button" class="testimonial-prev w-10 h-10 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center text-green-700 shadow"><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="testimonial-next w-10 h-10 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center text-green-700 shadow"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="max-w-2xl mx-auto mb-12">
+        <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center gap-2"><i class="fas fa-question-circle text-green-400"></i> Insurance FAQs</h3>
+        <div class="space-y-4" id="faq-accordion">
+          <div class="bg-white border border-green-100 rounded-xl shadow-lg">
+            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-green-800 focus:outline-none faq-toggle">
+              What types of insurance do you offer?
+              <i class="fas fa-chevron-down transition-transform"></i>
+            </button>
+            <div class="faq-content px-4 pb-3 text-gray-600 hidden">We offer health, life, and asset insurance plans tailored to your needs.</div>
+          </div>
+          <div class="bg-white border border-green-100 rounded-lg shadow-sm">
+            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-green-800 focus:outline-none faq-toggle">
+              How do I choose the right insurance plan?
+              <i class="fas fa-chevron-down transition-transform"></i>
+            </button>
+            <div class="faq-content px-4 pb-3 text-gray-600 hidden">Our advisors help you select the best plan based on your requirements and budget.</div>
+          </div>
+          <div class="bg-white border border-green-100 rounded-lg shadow-sm">
+            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-green-800 focus:outline-none faq-toggle">
+              Is the claim process easy?
+              <i class="fas fa-chevron-down transition-transform"></i>
+            </button>
+            <div class="faq-content px-4 pb-3 text-gray-600 hidden">Yes, we assist you throughout the claim process for a hassle-free experience.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (copied from index.html for consistency) -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
+    
+          <!-- Office Info -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Office</h4>
+            <p class="text-gray-400 mb-2">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              1st Cross Road, Salt Lake City, India
+            </p>
+            <p class="text-gray-400 mb-2">
+              <i class="fas fa-phone-alt mr-2"></i>
+              +91 9804452151
+            </p>
+            <p class="text-gray-400 mb-4">
+              <i class="fas fa-envelope mr-2"></i>
+              sgswamee.ib@gmail.com
+            </p>
+            <div class="flex space-x-3">
+              <a href="https://x.com/sgswamee" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+    
+          <!-- Services -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Services</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="sip.html" class="hover:text-white transition-colors">Mutual Funds</a></li>
+              <li><a href="ins.html" class="hover:text-white transition-colors">Insurance</a></li>
+              <li><a href="loan.html" class="hover:text-white transition-colors">Loans</a></li>
+              <li><a href="itr.html" class="hover:text-white transition-colors">IT Filing & GST</a></li>
+              <li><a href="other.html" class="hover:text-white transition-colors">Add-on Services</a></li>
+            </ul>
+          </div>
+    
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="/about.html#cert" class="hover:text-white transition-colors">Certification</a></li>
+              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="hover:text-white transition-colors">Risk Profiler</a></li>
+              <li><a href="/pdf/TER_May_2025.pdf" download class="hover:text-white transition-colors">Disclosure</a></li>
+              <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
+            </ul>
+          </div>
+    
+          <!-- Important Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Important Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="https://www.cvlkra.com/kycpaninquiry.aspx" target="_blank" class="hover:text-white transition-colors">Check your KYC status</a></li>
+              <li><a href="https://irdai.gov.in/grievance-redressal-mechanism1" target="_blank" class="hover:text-white transition-colors">IRDAI Grievances Redressal</a></li>
+              <li><a href="https://www.amfiindia.com/investor-corner/online-center/SEBI-Score.html" target="_blank" class="hover:text-white transition-colors">AMFI Grievances Redressal</a></li>
+              <li><a href="https://cybercrime.gov.in/Webform/Accept.aspx" target="_blank" class="hover:text-white transition-colors">Cyber Crime Complaint Filing</a></li>
+              <li><a href="http://www.singhassociates.store/" target="_blank" class="hover:text-white transition-colors">Singh And Associates</a></li>
+            </ul>
+          </div>
+        </div>
+    
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 Soumitra Goswami. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    
+        <!-- Footer End -->
+    
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4 wow fadeIn" data-wow-delay="0.6s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <a class="" >AMFI Registered Mutual Fund Distributor: ARN-309045</a><br>
+                        <a class="border-bottom" href="/pdf/privacypolicy.pdf" download>Privacy Policy</a> | 
+                        <a class="border-bottom" href="/pdf/termscondition.pdf" download>Terms and Conditions.</a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        Designed By <br><a class="border-bottom" href="">Sree Vinayaka Infotech</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+        
+        <!-- Initialize WOW animations -->
+        <script>
+            // Initialize WOW.js
+            new WOW().init();
+            
+            // Enhanced navbar scroll effects
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('nav');
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Add hide/show navbar on scroll
+                if (currentScroll > lastScrollTop && currentScroll > 100) {
+                    // Scrolling down
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    navbar.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            });
+            
+            // Add smooth transitions for navbar links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add ripple effect to buttons and links
+            function createRipple(event) {
+                const button = event.currentTarget;
+                const circle = document.createElement('span');
+                const diameter = Math.max(button.clientWidth, button.clientHeight);
+                const radius = diameter / 2;
+                
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+                circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+                circle.classList.add('ripple');
+                
+                const ripple = button.getElementsByClassName('ripple')[0];
+                if (ripple) {
+                    ripple.remove();
+                }
+                
+                button.appendChild(circle);
+            }
+            
+            // Apply ripple effect to navbar links
+            document.querySelectorAll('nav a, .btn').forEach(element => {
+                element.addEventListener('click', createRipple);
+            });
+            
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.iframe-container, .footer, .copyright').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        </script>
+
+    <script>
+      // Testimonial slider logic
+      document.addEventListener('DOMContentLoaded', function() {
+        let idx = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const prev = document.querySelector('.testimonial-prev');
+        const next = document.querySelector('.testimonial-next');
+        function showSlide(i) {
+          slides.forEach((slide, j) => {
+            slide.classList.toggle('hidden', j !== i);
+          });
+        }
+        if (prev && next && slides.length > 1) {
+          prev.addEventListener('click', function() {
+            idx = (idx - 1 + slides.length) % slides.length;
+            showSlide(idx);
+          });
+          next.addEventListener('click', function() {
+            idx = (idx + 1) % slides.length;
+            showSlide(idx);
+          });
+          showSlide(idx);
+        }
+        // FAQ accordion logic
+        document.querySelectorAll('.faq-toggle').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const content = btn.parentElement.querySelector('.faq-content');
+            if (content) {
+              content.classList.toggle('hidden');
+              btn.querySelector('i').classList.toggle('rotate-180');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+    <!-- Global Financial Tools Widget Navbar -->
+    
+
+    <script>
+      // Floating widget navbar logic
+      document.addEventListener('DOMContentLoaded', function() {
+        const widgetToggle = document.getElementById('widget-toggle');
+        const widgetMenu = document.getElementById('widget-menu');
+        if(widgetToggle && widgetMenu) {
+          widgetToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            widgetMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', function(e) {
+            if (!widgetMenu.classList.contains('hidden')) {
+              widgetMenu.classList.add('hidden');
+            }
+          });
+          widgetMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+          });
+        }
+      });
+    </script>
+</html>

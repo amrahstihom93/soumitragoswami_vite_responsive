@@ -1,4 +1,7 @@
+// Add-on carousel logic
+import './js/addon-carousel.js';
 import './style.css';
+import './financial-tools.js';
 
 // Liquid Glass Navigation System
 class LiquidGlassNavigation {
@@ -103,12 +106,15 @@ class LiquidGlassNavigation {
   }
 
   moveDropletToItem(index) {
+    this.activeIndex = index;
+    
+    // Always update active states regardless of mobile/desktop
+    this.updateActiveStates(index);
+    
     // Skip droplet movement on mobile
     if (this.isMobile || this.isAnimating || !this.dropletSelector || !this.navItems[index]) return;
     
     this.isAnimating = true;
-    this.activeIndex = index;
-    
     const targetItem = this.navItems[index];
     
     // Wait for DOM stability and use multiple frames for accuracy
@@ -171,9 +177,6 @@ class LiquidGlassNavigation {
         
         // Create ripple effect
         this.createLiquidRipple(targetItem);
-        
-        // Update active states
-        this.updateActiveStates(index);
         
         // Reset animation state
         setTimeout(() => {
@@ -339,7 +342,88 @@ class ComponentSystem {
   }
 }
 
-// Initialize when DOM is ready
+
+// Dropdown toggling for all navbars (desktop & mobile)
+function setupDropdownToggles() {
+  // Desktop dropdowns
+  document.querySelectorAll('nav .relative.group > button[aria-haspopup="true"]').forEach(btn => {
+    const dropdown = btn.nextElementSibling;
+    if (!dropdown) return;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      // Close other open dropdowns
+      document.querySelectorAll('nav .relative.group > button[aria-haspopup="true"].active').forEach(b => {
+        if (b !== btn) {
+          b.classList.remove('active');
+          if (b.nextElementSibling) b.nextElementSibling.classList.remove('dropdown-open');
+        }
+      });
+      btn.classList.toggle('active');
+      dropdown.classList.toggle('dropdown-open');
+    });
+  });
+
+  // Mobile drawer dropdowns (accordion style)
+  document.querySelectorAll('nav [data-accordion]').forEach(btn => {
+    const target = document.querySelector(btn.getAttribute('data-accordion'));
+    if (!target) return;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      // Close other open accordions
+      document.querySelectorAll('nav [data-accordion].active').forEach(b => {
+        if (b !== btn) {
+          b.classList.remove('active');
+          const t = document.querySelector(b.getAttribute('data-accordion'));
+          if (t) t.classList.add('hidden');
+        }
+      });
+      btn.classList.toggle('active');
+      target.classList.toggle('hidden');
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('nav .relative.group > button[aria-haspopup="true"].active').forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.nextElementSibling) btn.nextElementSibling.classList.remove('dropdown-open');
+    });
+    document.querySelectorAll('nav [data-accordion].active').forEach(btn => {
+      btn.classList.remove('active');
+      const t = document.querySelector(btn.getAttribute('data-accordion'));
+      if (t) t.classList.add('hidden');
+    });
+  });
+
+  // Prevent closing when clicking inside dropdown
+  document.querySelectorAll('nav .relative.group > ul, nav .mobile-drawer ul').forEach(ul => {
+    ul.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  });
+}
+
+// Add dropdown-open class to enable fade/slide transitions in CSS
+const style = document.createElement('style');
+style.innerHTML = `
+  nav .relative.group > ul,
+  nav .relative.group > .dropdown-open {
+    transition: opacity 0.7s, visibility 0.7s;
+  }
+  nav .relative.group > ul:not(.dropdown-open) {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+  nav .relative.group > ul.dropdown-open {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+`;
+document.head.appendChild(style);
+
 document.addEventListener('DOMContentLoaded', () => {
   new ComponentSystem();
+  setupDropdownToggles();
 });

@@ -1,0 +1,56 @@
+Backend Setup (Node.js/Express):
+
+Create an API endpoint /api/send-otp that receives a phone number.
+Generate a random OTP and store it (in-memory or DB) with expiry.
+Use Fast2SMS API to send the OTP to the user's phone.
+Create another endpoint /api/verify-otp to verify the OTP.
+Frontend Changes:
+
+On form submission, before final submit, show an OTP input.
+Call /api/send-otp with the phone number.
+User enters OTP, call /api/verify-otp.
+If OTP is correct, allow form submission.
+Testing (Jest + Supertest):
+
+Test /api/send-otp returns success and sends OTP.
+Test /api/verify-otp validates correct and incorrect OTPs.
+
+
+
+
+
+// Filename: server.js
+const express = require('express');
+const bodyParser = require('body-parser');
+const axios = require('axios');
+const app = express();
+app.use(bodyParser.json());
+
+const otpStore = {}; // { phone: { otp, expires } }
+
+function generateOTP() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+app.post('/api/send-otp', async (req, res) => {
+  const { phone } = req.body;
+  if (!phone) return res.status(400).json({ error: 'Phone required' });
+  const otp = generateOTP();
+  otpStore[phone] = { otp, expires: Date.now() + 5 * 60 * 1000 };
+  // Send OTP via Fast2SMS (mocked for test)
+  // await axios.post('https://www.fast2sms.com/dev/bulkV2', { ... });
+  res.json({ success: true, message: 'OTP sent' });
+});
+
+app.post('/api/verify-otp', (req, res) => {
+  const { phone, otp } = req.body;
+  const record = otpStore[phone];
+  if (!record || record.expires < Date.now())
+    return res.status(400).json({ error: 'OTP expired' });
+  if (record.otp !== otp)
+    return res.status(400).json({ error: 'Invalid OTP' });
+  delete otpStore[phone];
+  res.json({ success: true });
+});
+
+module.exports = app;

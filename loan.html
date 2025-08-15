@@ -47,97 +47,125 @@
   </head>
 
   <body class="bg-white text-gray-900 font-inter">
+
+    
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  }
+
+  // Mobile dropdown accordion (Services, More)
+  document.querySelectorAll('.accordion-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const targetId = btn.getAttribute('data-target');
+      const submenu = document.getElementById(targetId);
+
+      if (submenu) {
+        submenu.classList.toggle('hidden');
+        
+        // Optional: rotate chevron icon
+        const icon = btn.querySelector('.fas');
+        if (icon) icon.classList.toggle('rotate-180');
+      }
+    });
+  });
+});
+</script>
     <!-- Fixed Top Navbar (EXACT COPY from index.html for 100% consistency) -->
-    <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
-      <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: var(--nav-h)">
-        <a href="index.html" class="flex items-center gap-3 shrink-0">
-          <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
-        </a>
+     <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: 72px">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
+    </a>
 
-        <!-- Desktop Menu -->
-        <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
-          <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
-          <li><a href="/" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
-
-          <li class="relative group">
-            <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1"
-                    aria-haspopup="true" aria-expanded="false">
-              Services <i class="fas fa-chevron-down text-xs"></i>
-            </button>
-            <!-- dropdown -->
-            <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
-              <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Mutual Funds/SIP</a></li>
-              <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Insurance</a></li>
-              <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Loans</a></li>
-              <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">IT Filing & GST</a></li>
-              <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Other Services</a></li>
-            </ul>
-          </li>
-
-          <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
-          <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
-          <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
-
-          <li class="relative group">
-            <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1"
-                    aria-haspopup="true" aria-expanded="false">
-              More <i class="fas fa-chevron-down text-xs"></i>
-            </button>
-            <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
-              <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Certification</a></li>
-              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Risk Profiler</a></li>
-              <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Disclosure</a></li>
-            </ul>
-          </li>
-        </ul>
-
-        <!-- Mobile toggle -->
-        <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
-                aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
-          <i class="fas fa-bars"></i>
+    <!-- Desktop Menu -->
+    <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
+      <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
+      <li><a href="index.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
+      <li class="relative group">
+        <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1">
+          Services <i class="fas fa-chevron-down text-xs"></i>
         </button>
-      </div>
-
-      <!-- Mobile Drawer -->
-      <div id="mobile-menu" class="md:hidden hidden mobile-drawer bg-white border-t border-blue-100 shadow-2xl">
-        <ul class="px-4 py-3 space-y-1">
-          <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
-          <li><a href="/" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
-
-          <!-- Services (collapsible) -->
-          <li>
-            <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
-                    data-accordion="#m-services" aria-expanded="false">
-              Services <i class="fas fa-chevron-down text-xs"></i>
-            </button>
-            <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
-              <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
-              <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
-              <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
-              <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
-              <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
-            </ul>
-          </li>
-
-          <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
-          <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
-          <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
-
-          <!-- More (collapsible) -->
-          <li>
-            <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
-                    data-accordion="#m-more" aria-expanded="false">
-              More <i class="fas fa-chevron-down text-xs"></i>
-            </button>
-            <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
-              <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
-              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
-              <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
-            </ul>
-          </li>
+        <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
+          <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Mutual Funds/SIP</a></li>
+          <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Insurance</a></li>
+          <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Loans</a></li>
+          <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">IT Filing & GST</a></li>
+          <li><a href="other.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Other Services</a></li>
         </ul>
-      </div>
-    </nav>
+      </li>
+      <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+      <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+      <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+      <li class="relative group">
+        <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1">
+          More <i class="fas fa-chevron-down text-xs"></i>
+        </button>
+        <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
+          <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Certification</a></li>
+          <li><a href="#" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Risk Profiler</a></li>
+          <li><a href="#" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Disclosure</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Mobile toggle -->
+    <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-blue-100 shadow-2xl">
+    <ul class="px-4 py-3 space-y-1">
+      <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
+      <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
+      <li>
+        <button class="accordion-btn w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-target="m-services">
+          Services <i class="fas fa-chevron-down text-xs"></i>
+        </button>
+        <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
+          <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
+          <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
+          <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
+          <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
+          <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
+        </ul>
+      </li>
+      <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
+      <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
+      <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
+      <li>
+        <button class="accordion-btn w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-target="m-more">
+          More <i class="fas fa-chevron-down text-xs"></i>
+        </button>
+        <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
+          <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
+          <li><a href="#" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
+          <li><a href="#" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 
     <!-- Mobile Drawer (hidden by default, like index.html) -->
   <div id="mobile-menu" class="md:hidden hidden mobile-drawer bg-white border-t border-blue-100 shadow-2xl absolute top-[84px] left-0 w-full z-50">
@@ -527,17 +555,7 @@
     </script>
 
     <!-- Menus + ripple + observers (same utility as index) -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const toggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if(toggle && mobileMenu) {
-          toggle.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-          });
-        }
-      });
-    </script>
+   
 
     <!-- Page-specific: testimonial slider + FAQ -->
     <script>
@@ -565,20 +583,6 @@
 
     <!-- Shared calculators logic -->
     <script src="/src/financial-tools.js"></script>
-    <script>
-      // Floating widget navbar toggle
-      document.addEventListener('DOMContentLoaded', function() {
-        const widgetToggle = document.getElementById('widget-toggle');
-        const widgetMenu = document.getElementById('widget-menu');
-        if (widgetToggle && widgetMenu) {
-          widgetToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            widgetMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', function() { if (!widgetMenu.classList.contains('hidden')) widgetMenu.classList.add('hidden'); });
-          widgetMenu.addEventListener('click', function(e) { e.stopPropagation(); });
-        }
-      });
-    </script>
+    
   </body>
 </html>

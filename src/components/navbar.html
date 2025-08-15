@@ -41,40 +41,75 @@
       <i class="fas fa-bars"></i>
     </button>
   </div>
-  <!-- Mobile Drawer -->
-  <div id="mobile-menu" class="md:hidden hidden mobile-drawer bg-white border-t border-blue-100 shadow-2xl">
-    <ul class="px-4 py-3 space-y-1">
-      <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
-      <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
-      <!-- Services (collapsible) -->
-      <li>
-        <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
-                data-accordion="#m-services" aria-expanded="false">
-          Services <i class="fas fa-chevron-down text-xs"></i>
+  <!-- Modern Mobile Drawer -->
+  <div id="mobile-menu" class="md:hidden fixed inset-0 z-[999] hidden bg-white/70 backdrop-blur-lg transition-all duration-300">
+    <div class="absolute top-0 right-0 w-11/12 max-w-xs h-full bg-white/90 rounded-l-3xl shadow-2xl flex flex-col overflow-y-auto border-l border-blue-100">
+      <div class="flex items-center justify-between px-6 py-5 border-b border-blue-100">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="/img/logo.png" alt="Logo" class="h-10 w-auto" />
+        </a>
+        <button id="menu-close" class="text-2xl p-2 rounded-lg hover:bg-blue-50 focus:outline-none" aria-label="Close menu">
+          <i class="fas fa-times"></i>
         </button>
-        <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
-          <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
-          <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
-          <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
-          <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
-          <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
-        </ul>
-      </li>
-      <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
-      <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
-      <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
-      <!-- More (collapsible) -->
-      <li>
-        <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
-                data-accordion="#m-more" aria-expanded="false">
-          More <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
-          <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
-          <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
-          <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
-        </ul>
-      </li>
-    </ul>
+      </div>
+  <ul class="flex-1 px-4 py-4 space-y-1 overflow-visible">
+        <li>
+          <a href="login.html" class="flex items-center gap-3 px-3 py-3 rounded-xl font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50 transition">
+            <i class="fas fa-sign-in-alt w-5"></i> Login
+          </a>
+        </li>
+        <li>
+          <a href="index.html" class="flex items-center gap-3 px-3 py-3 rounded-xl font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50 transition">
+            <i class="fas fa-home w-5"></i> Home
+          </a>
+        </li>
+        <!-- Services (collapsible) -->
+        <li>
+          <button class="w-full flex items-center justify-between px-3 py-3 rounded-xl font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50 transition" data-accordion="#m-services" aria-expanded="false">
+            <span class="flex items-center gap-3"><i class="fas fa-briefcase w-5"></i> Services</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul id="m-services" class="hidden w-full pl-4 py-1 space-y-1 bg-white rounded-xl shadow-inner mt-2">
+            <li><a href="sip.html" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-blue-50"><i class="fas fa-chart-line w-4"></i> Mutual Funds/SIP</a></li>
+            <li><a href="ins.html" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-blue-50"><i class="fas fa-shield-alt w-4"></i> Insurance</a></li>
+            <li><a href="loan.html" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-blue-50"><i class="fas fa-university w-4"></i> Loans</a></li>
+            <li><a href="itr.html" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-blue-50"><i class="fas fa-file-invoice w-4"></i> IT Filing & GST</a></li>
+            <li><a href="other.html" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-blue-50"><i class="fas fa-ellipsis-h w-4"></i> Other Services</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#about" class="flex items-center gap-3 px-3 py-3 rounded-xl font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50 transition">
+            <i class="fas fa-user w-5"></i> About
+          </a>
+        </li>
+        <li>
+          <a href="#team" class="flex items-center gap-3 px-3 py-3 rounded-xl font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50 transition">
+            <i class="fas fa-users w-5"></i> Team
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="flex items-center gap-3 px-3 py-3 rounded-xl font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50 transition">
+            <i class="fas fa-envelope w-5"></i> Contact
+          </a>
+        </li>
+        <!-- More (collapsible) -->
+        <li>
+          <button class="w-full flex items-center justify-between px-3 py-3 rounded-xl font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50 transition" data-accordion="#m-more" aria-expanded="false">
+            <span class="flex items-center gap-3"><i class="fas fa-ellipsis-v w-5"></i> More</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul id="m-more" class="hidden w-full pl-4 py-1 space-y-1 bg-white rounded-xl shadow-inner mt-2">
+            <li><a href="cert.html" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-blue-50"><i class="fas fa-certificate w-4"></i> Certification</a></li>
+            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-blue-50"><i class="fas fa-user-shield w-4"></i> Risk Profiler</a></li>
+            <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-blue-50"><i class="fas fa-file-alt w-4"></i> Disclosure</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="px-6 py-4 border-t border-blue-100">
+        <a href="enquiry.html" class="block w-full text-center bg-blue-600 text-white font-bold py-3 rounded-2xl shadow hover:bg-blue-700 transition">Enquire Now</a>
+      </div>
+    </div>
+    <!-- Clickable overlay to close -->
+    <button class="absolute inset-0 w-full h-full bg-transparent" tabindex="-1" aria-label="Close menu overlay" id="mobile-menu-overlay"></button>
   </div>
 </nav>

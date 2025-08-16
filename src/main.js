@@ -363,36 +363,22 @@ function setupDropdownToggles() {
     });
   });
 
-  // Mobile drawer dropdowns (accordion style)
-  document.querySelectorAll('nav [data-accordion]').forEach(btn => {
-    const target = document.querySelector(btn.getAttribute('data-accordion'));
-    if (!target) return;
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      // Close other open accordions
-      document.querySelectorAll('nav [data-accordion].active').forEach(b => {
-        if (b !== btn) {
-          b.classList.remove('active');
-          const t = document.querySelector(b.getAttribute('data-accordion'));
-          if (t) t.classList.add('hidden');
-        }
-      });
-      btn.classList.toggle('active');
-      target.classList.toggle('hidden');
-    });
-  });
 
-  // Close dropdowns when clicking outside
+  // Close desktop dropdowns when clicking outside
   document.addEventListener('click', function(e) {
     document.querySelectorAll('nav .relative.group > button[aria-haspopup="true"].active').forEach(btn => {
       btn.classList.remove('active');
       if (btn.nextElementSibling) btn.nextElementSibling.classList.remove('dropdown-open');
     });
-    document.querySelectorAll('nav [data-accordion].active').forEach(btn => {
-      btn.classList.remove('active');
-      const t = document.querySelector(btn.getAttribute('data-accordion'));
-      if (t) t.classList.add('hidden');
-    });
+    // Only close mobile accordions if click is outside the mobile menu
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu && !mobileMenu.classList.contains('hidden') && !mobileMenu.contains(e.target)) {
+      mobileMenu.querySelectorAll('[data-accordion].active').forEach(btn => {
+        btn.classList.remove('active');
+        const t = document.querySelector(btn.getAttribute('data-accordion'));
+        if (t) t.classList.add('hidden');
+      });
+    }
   });
 
   // Prevent closing when clicking inside dropdown
@@ -426,4 +412,89 @@ document.head.appendChild(style);
 document.addEventListener('DOMContentLoaded', () => {
   new ComponentSystem();
   setupDropdownToggles();
+
+  // --- Mobile menu open/close logic (works on all pages) ---
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuClose = document.getElementById('menu-close');
+  const menuOverlay = document.getElementById('mobile-menu-overlay');
+
+  // Use event delegation for mobile menu dropdowns, but only attach once
+  let mobileAccordionListener = null;
+  function attachMobileAccordionListeners() {
+    if (!mobileMenu) return;
+    if (mobileAccordionListener) {
+      mobileMenu.removeEventListener('click', mobileAccordionListener);
+    }
+    mobileAccordionListener = function(e) {
+      const btn = e.target.closest('[data-accordion]');
+      if (!btn || !mobileMenu.contains(btn)) return;
+      e.stopPropagation();
+      const target = document.querySelector(btn.getAttribute('data-accordion'));
+      if (!target) return;
+      // Close other open accordions in the same drawer
+      const parentDrawer = btn.closest('.mobile-drawer, #mobile-menu');
+      if (parentDrawer) {
+        parentDrawer.querySelectorAll('[data-accordion]').forEach(b => {
+          if (b !== btn) {
+            b.classList.remove('active');
+            b.setAttribute('aria-expanded', 'false');
+            const t = document.querySelector(b.getAttribute('data-accordion'));
+            if (t) t.classList.add('hidden');
+          }
+        });
+      }
+      const isActive = btn.classList.toggle('active');
+      btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      target.classList.toggle('hidden', !isActive);
+    };
+    mobileMenu.addEventListener('click', mobileAccordionListener);
+  }
+
+  function openMobileMenu() {
+    if (mobileMenu) {
+      mobileMenu.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      attachMobileAccordionListeners();
+    }
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+  }
+  function closeMobileMenu() {
+    if (mobileMenu) {
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  // Use event delegation for menu toggle to avoid lost listeners
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('#menu-toggle');
+    if (target && mobileMenu) {
+      e.stopPropagation();
+      if (mobileMenu.classList.contains('hidden')) {
+        openMobileMenu();
+      } else {
+        closeMobileMenu();
+      }
+    }
+  });
+  if (menuClose && mobileMenu) {
+    menuClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMobileMenu();
+    });
+  }
+  if (menuOverlay && mobileMenu) {
+    menuOverlay.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMobileMenu();
+    });
+  }
+  // Close on Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      closeMobileMenu();
+    }
+  });
 });

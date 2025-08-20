@@ -1,11 +1,20 @@
 
 <!-- Premium Modern Navbar Component (matches index.html) -->
-<nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: 72px">
+<nav class="fixed top-0 left-0 w-full z-50 glass-nav-bar liquid-glass-navbar" style="backdrop-filter: blur(18px) saturate(180%);-webkit-backdrop-filter: blur(18px) saturate(180%); background: rgba(255,255,255,0.92); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18), 0 2px 16px 0 rgba(0,122,255,0.10); border-bottom: 2.5px solid rgba(0,122,255,0.18);">
+  <!-- Liquid Glass Plate (Desktop Only) -->
+  <div class="hidden md:block absolute left-1/2 top-0 -translate-x-1/2 z-0" style="width: 92vw; height: 110px; filter: url(#liquidGlassLense); background: linear-gradient(120deg, rgba(255,255,255,0.82) 60%, rgba(59,130,246,0.10) 100%); border-radius: 0 0 3.5rem 3.5rem; box-shadow: 0 12px 48px 0 rgba(31,38,135,0.18), 0 4px 32px 0 rgba(0,122,255,0.10); border-bottom: 3.5px solid rgba(0,122,255,0.18); pointer-events: none;"></div>
+  <!-- SVG Lensing/Refraction Filter for Liquid Glass Effect -->
+  <svg width="0" height="0" style="position:absolute">
+    <filter id="liquidGlassLense" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence id="turb" type="turbulence" baseFrequency="0.015 0.03" numOctaves="2" seed="2" result="turb"/>
+      <feDisplacementMap in2="turb" in="SourceGraphic" scale="12" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 relative liquid-glass-inner" style="height: 72px; filter: url(#liquidGlassLense); background: rgba(255,255,255,0.98); border-radius: 0 0 2.5rem 2.5rem; box-shadow: 0 2px 24px 0 rgba(0,122,255,0.10) inset, 0 1.5px 8px 0 rgba(59,130,246,0.10) inset; z-index: 1001;">
     <a href="index.html" class="flex items-center gap-3 shrink-0">
       <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
     </a>
-    <!-- Desktop Menu -->
+    <!-- Desktop Menu Only (hide mobile nav on desktop) -->
     <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
       <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
       <li><a href="index.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
@@ -37,13 +46,13 @@
     </ul>
     <!-- Mobile toggle -->
     <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
-            aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+            aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" style="display: flex; z-index: 1002;">
       <i class="fas fa-bars"></i>
     </button>
   </div>
-  <!-- Modern Mobile Drawer -->
-  <div id="mobile-menu" class="md:hidden fixed inset-0 z-[999] hidden bg-white/70 backdrop-blur-lg transition-all duration-300">
-    <div class="absolute top-0 right-0 w-11/12 max-w-xs h-full bg-white/90 rounded-l-3xl shadow-2xl flex flex-col overflow-y-auto border-l border-blue-100">
+  <!-- Modern Mobile Drawer (hidden on desktop) -->
+  <div id="mobile-menu" class="md:hidden fixed inset-0 z-[9999] hidden bg-white/80 backdrop-blur-lg transition-all duration-300">
+  <div class="absolute top-0 right-0 w-11/12 max-w-xs h-full bg-white/95 rounded-l-3xl shadow-2xl flex flex-col overflow-y-auto border-l border-blue-100" style="z-index:10000;">
       <div class="flex items-center justify-between px-6 py-5 border-b border-blue-100">
         <a href="index.html" class="flex items-center gap-2">
           <img src="/img/logo.png" alt="Logo" class="h-10 w-auto" />
@@ -52,7 +61,7 @@
           <i class="fas fa-times"></i>
         </button>
       </div>
-  <ul class="flex-1 px-4 py-4 space-y-1 overflow-visible">
+      <ul class="flex-1 px-4 py-4 space-y-1 overflow-visible">
         <li>
           <a href="login.html" class="flex items-center gap-3 px-3 py-3 rounded-xl font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50 transition">
             <i class="fas fa-sign-in-alt w-5"></i> Login
@@ -110,6 +119,73 @@
       </div>
     </div>
     <!-- Clickable overlay to close -->
-    <button class="absolute inset-0 w-full h-full bg-transparent" tabindex="-1" aria-label="Close menu overlay" id="mobile-menu-overlay"></button>
+  <button class="absolute inset-0 w-full h-full bg-transparent" tabindex="-1" aria-label="Close menu overlay" id="mobile-menu-overlay" style="z-index:9999;"></button>
   </div>
 </nav>
+<style>
+/* Liquid Glass Enhancements + Lensing */
+.liquid-glass-navbar {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 2px 16px 0 rgba(0,122,255,0.10);
+  border-bottom: 2.5px solid rgba(0,122,255,0.18);
+  border-radius: 0 0 2.5rem 2.5rem;
+  position: relative;
+  overflow: visible;
+  background: rgba(255,255,255,0.92);
+  z-index: 1000;
+}
+.liquid-glass-inner {
+  box-shadow: 0 2px 24px 0 rgba(0,122,255,0.10) inset, 0 1.5px 8px 0 rgba(59,130,246,0.10) inset;
+  border-radius: 0 0 2.5rem 2.5rem;
+  background: rgba(255,255,255,0.98);
+  position: relative;
+  z-index: 1001;
+}
+.liquid-glass-menu {
+  box-shadow: 0 2px 16px 0 rgba(59,130,246,0.10), 0 1.5px 8px 0 rgba(59,130,246,0.10);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.45);
+  border: 1.5px solid rgba(255,255,255,0.35);
+  position: relative;
+  z-index: 3;
+}
+.liquid-glass-pill {
+  background: linear-gradient(120deg, rgba(255,255,255,0.65) 0%, rgba(59,130,246,0.13) 100%);
+  transition: left 0.35s cubic-bezier(.4,1.6,.6,1), width 0.35s cubic-bezier(.4,1.6,.6,1), background 0.3s, box-shadow 0.3s;
+}
+@media (max-width: 1024px) {
+  .liquid-glass-navbar, .liquid-glass-inner {
+    border-radius: 0 0 1.5rem 1.5rem;
+    background: rgba(255,255,255,0.98) !important;
+    z-index: 1000;
+  }
+  #menu-toggle {
+    display: flex !important;
+    z-index: 1002 !important;
+  }
+  #mobile-menu {
+    z-index: 9999 !important;
+  }
+}
+</style>
+
+/* Liquid Glass Plate for Desktop Navbar */
+.liquid-glass-navbar .liquid-glass-plate {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 92vw;
+  height: 110px;
+  background: linear-gradient(120deg, rgba(255,255,255,0.82) 60%, rgba(59,130,246,0.10) 100%);
+  border-radius: 0 0 3.5rem 3.5rem;
+  box-shadow: 0 12px 48px 0 rgba(31,38,135,0.18), 0 4px 32px 0 rgba(0,122,255,0.10);
+  border-bottom: 3.5px solid rgba(0,122,255,0.18);
+  filter: url(#liquidGlassLense);
+  pointer-events: none;
+  z-index: 0;
+}
+@media (max-width: 768px) {
+  .liquid-glass-navbar .liquid-glass-plate {
+    display: none;
+  }
+}

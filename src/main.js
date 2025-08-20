@@ -2,6 +2,7 @@
 import './js/addon-carousel.js';
 import './style.css';
 import './financial-tools.js';
+import './navbar-mobile.js';
 
 // Liquid Glass Navigation System
 class LiquidGlassNavigation {
@@ -419,16 +420,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuClose = document.getElementById('menu-close');
   const menuOverlay = document.getElementById('mobile-menu-overlay');
 
-  // Use event delegation for mobile menu dropdowns, but only attach once
-  let mobileAccordionListener = null;
-  function attachMobileAccordionListeners() {
-    if (!mobileMenu) return;
-    if (mobileAccordionListener) {
-      mobileMenu.removeEventListener('click', mobileAccordionListener);
-    }
-    mobileAccordionListener = function(e) {
+  // Use event delegation for mobile menu dropdowns, attach to the <ul> only once
+  const mobileMenuList = mobileMenu ? mobileMenu.querySelector('ul') : null;
+  if (mobileMenuList) {
+    mobileMenuList.addEventListener('click', function(e) {
       const btn = e.target.closest('[data-accordion]');
-      if (!btn || !mobileMenu.contains(btn)) return;
+      if (!btn || !mobileMenuList.contains(btn)) return;
       e.stopPropagation();
       const target = document.querySelector(btn.getAttribute('data-accordion'));
       if (!target) return;
@@ -447,15 +444,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const isActive = btn.classList.toggle('active');
       btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
       target.classList.toggle('hidden', !isActive);
-    };
-    mobileMenu.addEventListener('click', mobileAccordionListener);
+    });
   }
 
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  }
   function openMobileMenu() {
     if (mobileMenu) {
       mobileMenu.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
-      attachMobileAccordionListeners();
     }
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
   }
@@ -466,8 +473,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
   }
-
-  // Use event delegation for menu toggle to avoid lost listeners
   document.addEventListener('click', (e) => {
     const target = e.target.closest('#menu-toggle');
     if (target && mobileMenu) {

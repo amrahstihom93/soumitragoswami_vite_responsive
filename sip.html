@@ -29,98 +29,263 @@
     <!-- Site CSS (Tailwind build/custom styles) -->
     <link rel="stylesheet" href="/src/style.css" />
 
-    <!-- Small helper styles to match index.html -->
+    <!-- Small helpers (copied from index.html for parity) -->
     <style>
+      @media (max-width: 1023px) {
+        .liquid-glass-inner {
+          max-width: 100vw !important;
+          padding-left: 1rem !important;
+          padding-right: 1rem !important;
+        }
+      }
+      @media (max-width: 1023px) {
+        #main-menu-desktop {
+          display: none !important;
+        }
+        #menu-toggle {
+          display: flex !important;
+          z-index: 11000 !important;
+          position: relative;
+        }
+        .liquid-glass-inner {
+          height: 60px !important;
+          min-height: 60px !important;
+          padding-left: 0.75rem !important;
+          padding-right: 0.75rem !important;
+        }
+      }
+      @media (min-width: 1024px) {
+        #mobile-menu {
+          display: none !important;
+        }
+        #main-menu-desktop {
+          display: flex !important;
+        }
+        #menu-toggle {
+          display: none !important;
+        }
+      }
+      :root { --nav-h: 72px; }
+      body { font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; }
+      .footer { background-color: #212529 !important; }
+      .copyright { background-color: #1a1e21; border-top: 1px solid #495057; }
+      .btn-link { color: #adb5bd; text-decoration: none; display: block; padding: 2px 0; border: none; background: none; text-align: left; }
+      .btn-link:hover { color: #ffffff; }
+      .btn-square { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+      .border-bottom { border-bottom: 1px solid #6c757d !important; color: #adb5bd; text-decoration: none; }
+      .border-bottom:hover { color: #ffffff; }
+      /* ripple */
       .ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: ripple 600ms linear; background-color: rgba(0,0,0,0.15); pointer-events: none; }
       @keyframes ripple { to { transform: scale(4); opacity: 0; } }
       nav a, .btn, button { position: relative; overflow: hidden; }
-      body {
-        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
-          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
-          "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      /* mobile drawer */
+      .mobile-drawer { transform: translateY(-8px); }
+      .mobile-drawer.show { transform: translateY(0); }
+      /* hide scrollbar helper (for card row) */
+      .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .hide-scrollbar::-webkit-scrollbar { display: none; }
+      /* account for fixed nav */
+      body.has-sticky { padding-top: var(--nav-h); }
+    </style>
+    <style>
+      /* Navbar Professional Look (copied from index.html) */
+      .liquid-glass-inner {
+        background: rgba(255,255,255,0.92) !important;
+        border-radius: 0 !important;
+        box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
+        border-bottom: 2px solid rgba(0,122,255,0.13);
+        position: relative;
+        z-index: 1;
+      }
+      #main-menu-desktop a, #main-menu-desktop button {
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.9rem;
+        font-weight: 500;
+        color: #1e293b;
+        background: none;
+        transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        position: relative;
+      }
+      #main-menu-desktop a:hover, #main-menu-desktop button:hover, #main-menu-desktop a:focus, #main-menu-desktop button:focus {
+        background: #e6f0ff;
+        color: #2563eb;
+        box-shadow: 0 0 0 2px #3b82f6;
+      }
+      #main-menu-desktop .nav-active, #main-menu-desktop .nav-active:focus {
+        background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+        color: #2563eb !important;
+        border-radius: 0.9rem;
+        box-shadow: 0 2px 8px 0 rgba(59,130,246,0.10);
+        border: 1.5px solid #b6d2ff;
+        font-weight: 600;
+      }
+      #main-menu-desktop .group:focus-within > button, #main-menu-desktop .group:hover > button {
+        background: #e6f0ff;
+        color: #2563eb;
+      }
+      .menu-dropdown {
+        background: #fff;
+        border-radius: 1.25rem;
+        box-shadow: 0 4px 24px 0 rgba(59,130,246,0.12), 0 1.5px 8px 0 rgba(59,130,246,0.10) inset;
+        border: 1.5px solid #e0e7ef;
+        padding: 0.75rem 0;
+        min-width: 14rem;
+        transition: box-shadow 0.2s, border 0.2s;
+        backdrop-filter: blur(8px);
+      }
+      .menu-dropdown li a {
+        border-radius: 0.75rem;
+        padding: 0.75rem 2rem;
+        font-weight: 500;
+        color: #222;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        display: block;
+      }
+      .menu-dropdown li a:hover, .menu-dropdown li a:focus {
+        background: #e6f0ff;
+        color: #2563eb;
+        box-shadow: 0 0 0 2px #3b82f6;
+      }
+      #mobile-menu {
+        background: rgba(255,255,255,0.98) !important;
+        backdrop-filter: blur(12px) !important;
+      }
+      #mobile-menu .rounded-l-3xl {
+        border-radius: 1.5rem 0 0 1.5rem !important;
+        box-shadow: 0 4px 24px 0 rgba(59,130,246,0.10);
+      }
+      #mobile-menu a, #mobile-menu button {
+        font-weight: 500;
+        color: #1e293b;
+        border-radius: 0.9rem;
+        transition: background 0.18s, color 0.18s;
+      }
+      #mobile-menu a:hover, #mobile-menu button:hover, #mobile-menu a:focus, #mobile-menu button:focus {
+        background: #e6f0ff;
+        color: #2563eb;
+      }
+      #mobile-menu .nav-active {
+        background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+        color: #2563eb !important;
+        border: 1.5px solid #b6d2ff;
+        font-weight: 600;
+      }
+    </style>
+    <style>
+      .nav-active, .menu-dropdown .nav-active {
+        background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+        color: #2563eb !important;
+        border-radius: 0.9rem;
+        box-shadow: 0 2px 8px 0 rgba(59,130,246,0.10);
+        border: 1.5px solid #b6d2ff;
+        font-weight: 600;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
       }
     </style>
   </head>
 
   <body class="bg-white text-gray-900 font-inter">
 
-    <!-- Fixed Top Navbar (copied from index.html for perfect desktop experience) -->
-<nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: 72px">
-    <a href="index.html" class="flex items-center gap-3 shrink-0">
-      <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
-    </a>
-
-    <!-- Desktop Menu (copied from index.html for consistency) -->
-    <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
-      <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
-      <li><a href="/" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
-      <li class="relative group">
-        <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-          Services <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
-          <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Mutual Funds/SIP</a></li>
-          <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Insurance</a></li>
-          <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Loans</a></li>
-          <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">IT Filing & GST</a></li>
-          <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Other Services</a></li>
+    <!-- Fixed Top Navbar (EXACT COPY from login.html for 100% consistency) -->
+    <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
+      <div class="liquid-glass-inner max-w-auto mx-auto flex items-center justify-between px-4 md:px-8" style="height: var(--nav-h)">
+        <a href="index.html" class="flex items-center gap-3 shrink-0">
+          <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
+        </a>
+        <!-- Desktop Menu -->
+        <ul id="main-menu-desktop" class="hidden lg:flex items-center gap-2">
+          <li><a href="index.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
+          <li class="relative group">
+            <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+              Services <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <ul class="menu-dropdown absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40">
+              <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Mutual Funds/SIP</a></li>
+              <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Insurance</a></li>
+              <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Loans</a></li>
+              <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">IT Filing & GST</a></li>
+              <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Other Services</a></li>
+            </ul>
+          </li>
+          <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+          <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+          <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+          <li class="relative group">
+            <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+              More <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <ul class="menu-dropdown absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40">
+              <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Certification</a></li>
+              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Risk Profiler</a></li>
+              <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Disclosure</a></li>
+            </ul>
+          </li>
+          <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
         </ul>
-      </li>
-      <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
-      <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
-      <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
-      <li class="relative group">
-        <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-          More <i class="fas fa-chevron-down text-xs"></i>
+        <!-- Mobile toggle -->
+        <button id="menu-toggle" class="lg:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
+                aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
         </button>
-        <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
-          <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Certification</a></li>
-          <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Risk Profiler</a></li>
-          <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Disclosure</a></li>
-        </ul>
-      </li>
-    </ul>
-
-    <!-- Mobile toggle -->
-    <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-
-  <!-- Mobile Drawer -->
-  <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-blue-100 shadow-2xl">
-    <ul class="px-4 py-3 space-y-1">
-      <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
-      <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
-      <li>
-        <button class="accordion-btn w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-target="m-services">
-          Services <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
-          <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
-          <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
-          <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
-          <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
-          <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
-        </ul>
-      </li>
-      <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
-      <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
-      <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
-      <li>
-        <button class="accordion-btn w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-target="m-more">
-          More <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
-          <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
-          <li><a href="#" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
-          <li><a href="#" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
+      </div>
+      <!-- Mobile Drawer -->
+      <div id="mobile-menu" class="lg:hidden fixed top-0 right-0 z-[9999] hidden w-full h-full">
+        <!-- Overlay -->
+        <div id="mobile-menu-overlay" class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-blue-100/60 to-blue-200/60 backdrop-blur-xl transition-opacity duration-300 opacity-100 m-0 p-0" tabindex="-1" aria-label="Close menu overlay" style="z-index:9998;"></div>
+        <!-- Drawer -->
+        <div class="mobile-drawer fixed right-0 w-[88vw] max-w-xs bg-white/80 rounded-l-2xl shadow-2xl flex flex-col border-l border-blue-100 animate-slide-in" style="z-index:10000; top:72px; height:calc(100vh - 72px); overflow-y:auto; backdrop-filter: blur(32px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 2px 16px 0 rgba(0,122,255,0.08), -8px 0 16px 0 rgba(59,130,246,0.07);">
+          <div class="flex items-center justify-between px-7 py-6 border-b border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-tl-3xl" style="backdrop-filter: blur(12px);">
+            <a href="index.html" class="flex items-center gap-2">
+              <img src="/img/logo.png" alt="Logo" class="h-11 w-auto drop-shadow" />
+            </a>
+            <button id="menu-close" class="text-3xl p-3 rounded-full hover:bg-blue-100 focus:outline-none text-blue-600 transition-all duration-200 shadow-lg border border-blue-100" aria-label="Close menu" style="min-width:48px; min-height:48px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.85);">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:flex-start;">
+            <ul class="px-2 py-3 space-y-1 text-[15px]">
+              <li><a href="login.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-sign-in-alt w-5"></i> Login</a></li>
+              <li><a href="index.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-home w-5"></i> Home</a></li>
+              <!-- Services (collapsible) -->
+              <li class="relative">
+                <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-services" aria-expanded="false">
+                  <span class="flex items-center gap-3"><i class="fas fa-briefcase w-5"></i> Services</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <ul id="m-services" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                  <li><a href="sip.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-chart-line w-4"></i> Mutual Funds/SIP</a></li>
+                  <li><a href="ins.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-shield-alt w-4"></i> Insurance</a></li>
+                  <li><a href="loan.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-university w-4"></i> Loans</a></li>
+                  <li><a href="itr.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-invoice w-4"></i> IT Filing & GST</a></li>
+                  <li><a href="other.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-ellipsis-h w-4"></i> Other Services</a></li>
+                </ul>
+              </li>
+              <li><a href="#about" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-user w-5"></i> About</a></li>
+              <li><a href="#team" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-users w-5"></i> Team</a></li>
+              <li><a href="#contact" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-envelope w-5"></i> Contact</a></li>
+              <!-- More (collapsible) -->
+              <li class="relative">
+                <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-more" aria-expanded="false">
+                  <span class="flex items-center gap-3"><i class="fas fa-ellipsis-v w-5"></i> More</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <ul id="m-more" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                  <li><a href="cert.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-certificate w-4"></i> Certification</a></li>
+                  <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-user-shield w-4"></i> Risk Profiler</a></li>
+                  <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-alt w-4"></i> Disclosure</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div class="px-2 pt-3 pb-4 border-t border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-bl-2xl mt-1">
+              <a href="enquiry.html" class="block w-full text-center bg-gradient-to-r from-blue-500 to-blue-400 text-white font-bold py-2.5 rounded-lg shadow hover:from-blue-700 hover:to-blue-600 transition">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
 
 
     <!-- Hero Section -->
@@ -201,6 +366,74 @@
         </div>
       </div>
     </section>
+
+    <!-- ...existing code... -->
+<section class="relative py-16 md:py-24 bg-gradient-to-br from-blue-50/80 to-blue-100/80 border-t-2 border-blue-100">
+  <div class="max-w-4xl mx-auto px-2 sm:px-4">
+    <div class="backdrop-blur-xl bg-white/40 border border-blue-200 shadow-2xl rounded-3xl p-4 sm:p-8 md:p-10" style="box-shadow: 0 8px 40px 0 rgba(37,99,235,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.04);">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-blue-900 mb-8 flex items-center gap-3 drop-shadow">
+        <span class="inline-flex items-center justify-center bg-blue-100/70 rounded-full w-12 h-12 text-2xl text-blue-500 shadow-lg">
+          <i class="fas fa-calculator"></i>
+        </span>
+        SIP Calculator
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Calculator Form (Left) -->
+        <form id="sip-graph-form" class="space-y-8 bg-white/60 backdrop-blur rounded-2xl shadow-lg p-4 md:p-6">
+          <div>
+            <label for="sip-amount" class="block text-blue-800 font-semibold mb-2">Monthly Investment (₹): 
+              <span id="sip-amount-value" class="font-bold text-blue-700 ml-2">5000</span>
+            </label>
+            <input type="range" id="sip-amount" min="500" max="100000" step="500" value="5000"
+              class="w-full accent-blue-600 h-2 rounded-lg appearance-none cursor-pointer bg-blue-200/60">
+            <div class="flex justify-between text-xs text-blue-400 mt-1">
+              <span>₹500</span>
+              <span>₹1L</span>
+            </div>
+          </div>
+          <div>
+            <label for="sip-rate" class="block text-blue-800 font-semibold mb-2">Expected Annual Return (%): 
+              <span id="sip-rate-value" class="font-bold text-blue-700 ml-2">12</span>
+            </label>
+            <input type="range" id="sip-rate" min="1" max="25" step="0.1" value="12"
+              class="w-full accent-green-600 h-2 rounded-lg appearance-none cursor-pointer bg-green-200/60">
+            <div class="flex justify-between text-xs text-green-400 mt-1">
+              <span>1%</span>
+              <span>25%</span>
+            </div>
+          </div>
+          <div>
+            <label for="sip-months" class="block text-blue-800 font-semibold mb-2">Investment Period (months): 
+              <span id="sip-months-value" class="font-bold text-blue-700 ml-2">60</span>
+            </label>
+            <input type="range" id="sip-months" min="12" max="360" step="1" value="60"
+              class="w-full accent-orange-500 h-2 rounded-lg appearance-none cursor-pointer bg-orange-200/60">
+            <div class="flex justify-between text-xs text-orange-400 mt-1">
+              <span>12</span>
+              <span>360</span>
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-bold rounded-xl py-3 shadow-lg transition-all hover:scale-105 active:scale-95 tracking-wide text-lg">Calculate & Show Graph</button>
+          <div class="grid grid-cols-2 gap-4 mt-6">
+            <div class="bg-blue-100/60 backdrop-blur rounded-xl p-4 flex flex-col items-start shadow-inner w-full">
+              <div class="text-gray-700 text-base mb-1 font-medium">Total Invested:</div>
+              <div id="sip-invested" class="text-xl font-extrabold text-blue-700 drop-shadow">₹0</div>
+            </div>
+            <div class="bg-green-100/60 backdrop-blur rounded-xl p-4 flex flex-col items-start shadow-inner w-full">
+              <div class="text-gray-700 text-base mb-1 font-medium">Maturity Value:</div>
+              <div id="sip-maturity" class="text-xl font-extrabold text-green-700 drop-shadow">₹0</div>
+            </div>
+          </div>
+        </form>
+        <!-- Graph (Right) -->
+        <div class="bg-white/60 backdrop-blur rounded-2xl shadow-lg p-4 flex items-center justify-center min-h-[340px] w-full">
+          <canvas id="sip-graph" height="240"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ...existing code... -->
 
     <main class="container mx-auto px-4 py-8 border-t-2 border-blue-100 pt-8">
       <!-- Interactive Contact Form -->
@@ -425,100 +658,65 @@
       </div>
     </div>
 
+
     <!-- Vendor scripts (match index.html) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Init WOW + navbar effects (same as index.html) -->
+    <!-- Init WOW + UX scripts (copied from index.html) -->
     <script>
       new WOW().init();
+
+      // Ripple effect for nav links and buttons
+      function createRipple(e) {
+        const target = e.currentTarget; const rect = target.getBoundingClientRect();
+        const d = Math.max(target.clientWidth, target.clientHeight); const r = d / 2;
+        const circle = document.createElement('span'); circle.className = 'ripple';
+        circle.style.width = circle.style.height = d + 'px';
+        circle.style.left = (e.clientX - rect.left - r) + 'px';
+        circle.style.top  = (e.clientY - rect.top  - r) + 'px';
+        target.querySelector('.ripple')?.remove(); target.appendChild(circle);
+      }
+      document.querySelectorAll('nav a, .btn, button').forEach(el => el.addEventListener('click', createRipple));
+
+      // OTP modal logic (if present)
       (function () {
-        let lastScrollTop = 0;
-        const navbar = document.querySelector('nav');
-        window.addEventListener('scroll', function () {
-          const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-          if (currentScroll > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled');
-          if (currentScroll > lastScrollTop && currentScroll > 100) navbar.style.transform = 'translateY(-100%)';
-          else navbar.style.transform = 'translateY(0)';
-          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        let pending = null, otp = null;
+        const modal = document.getElementById('otp-modal'),
+              input = document.getElementById('otp-input'),
+              btnV  = document.getElementById('otp-verify-btn'),
+              btnC  = document.getElementById('otp-cancel-btn'),
+              err   = document.getElementById('otp-error'),
+              demo  = document.getElementById('otp-demo-value');
+
+        function show(cb) {
+          otp = String(Math.floor(100000 + Math.random() * 900000));
+          input.value = ''; err.classList.add('hidden'); demo.textContent = otp;
+          modal.classList.remove('hidden'); input.focus(); pending = cb;
+        }
+        function hide() { modal.classList.add('hidden'); pending = null; }
+
+        btnV?.addEventListener('click', () => {
+          if (input.value === otp) { err.classList.add('hidden'); hide(); pending && pending(); }
+          else err.classList.remove('hidden');
         });
-        document.querySelectorAll('nav a').forEach(link => {
-          link.addEventListener('mouseenter', function () { this.style.transform = 'translateY(-2px)'; });
-          link.addEventListener('mouseleave', function () { this.style.transform = 'translateY(0)'; });
+        btnC?.addEventListener('click', hide);
+        input?.addEventListener('keydown', e => { if (e.key === 'Enter') btnV.click(); });
+
+        const form = document.getElementById('contact-form');
+        form?.addEventListener('submit', e => {
+          e.preventDefault();
+          show(() => form.submit()); // replace with fetch() to avoid reload
         });
       })();
+      // Mobile menu and accordions are handled by main.js only for consistency.
     </script>
 
-    <!-- Menus + ripple + observers (same utility as index) -->
+    <!-- Calculators (keep your SIP logic) -->
+    <script type="module" src="/src/financial-tools.js"></script>
+
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu toggle
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Close when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-  }
-
-  // Mobile dropdown accordion (Services, More)
-  document.querySelectorAll('.accordion-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const targetId = btn.getAttribute('data-target');
-      const submenu = document.getElementById(targetId);
-
-      if (submenu) {
-        submenu.classList.toggle('hidden');
-        
-        // Optional: rotate chevron icon
-        const icon = btn.querySelector('.fas');
-        if (icon) icon.classList.toggle('rotate-180');
-      }
-    });
-  });
-});
-</script>
-
-    <!-- Page-specific: testimonial slider + FAQ -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Testimonial slider logic
-        let idx = 0;
-        const slides = document.querySelectorAll('.testimonial-slide');
-        const prev = document.querySelector('.testimonial-prev');
-        const next = document.querySelector('.testimonial-next');
-        function showSlide(i) { slides.forEach((s, j) => s.classList.toggle('hidden', j !== i)); }
-        if (prev && next && slides.length > 1) {
-          prev.addEventListener('click', function() { idx = (idx - 1 + slides.length) % slides.length; showSlide(idx); });
-          next.addEventListener('click', function() { idx = (idx + 1) % slides.length; showSlide(idx); });
-          showSlide(idx);
-        }
-        // FAQ accordion logic
-        document.querySelectorAll('.faq-toggle').forEach(btn => {
-          btn.addEventListener('click', function() {
-            const content = btn.parentElement.querySelector('.faq-content');
-            if (content) { content.classList.toggle('hidden'); btn.querySelector('i').classList.toggle('rotate-180'); }
-          });
-        });
-      });
-    </script>
-
-    <!-- Widget calculators (shared logic) -->
-  <script type="module" src="/src/financial-tools.js"></script>
-    <script>
-      // Floating widget navbar toggle
+      // Floating widget navbar toggle (from SIP page)
       document.addEventListener('DOMContentLoaded', function() {
         const widgetToggle = document.getElementById('widget-toggle');
         const widgetMenu = document.getElementById('widget-menu');
@@ -527,10 +725,120 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             widgetMenu.classList.toggle('hidden');
           });
-          document.addEventListener('click', function() { if (!widgetMenu.classList.contains('hidden')) widgetMenu.classList.add('hidden'); });
+          document.addEventListener('click', function() {
+            if (!widgetMenu.classList.contains('hidden')) widgetMenu.classList.add('hidden');
+          });
           widgetMenu.addEventListener('click', function(e) { e.stopPropagation(); });
         }
       });
     </script>
+    <!-- Chart.js CDN (add before closing </body> tag if not already present) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Sliders and value displays
+        const amountSlider = document.getElementById('sip-amount');
+        const rateSlider = document.getElementById('sip-rate');
+        const monthsSlider = document.getElementById('sip-months');
+        const amountValue = document.getElementById('sip-amount-value');
+        const rateValue = document.getElementById('sip-rate-value');
+        const monthsValue = document.getElementById('sip-months-value');
+
+        function updateSliderLabels() {
+          amountValue.textContent = parseInt(amountSlider.value).toLocaleString();
+          rateValue.textContent = parseFloat(rateSlider.value).toLocaleString();
+          monthsValue.textContent = parseInt(monthsSlider.value).toLocaleString();
+        }
+        amountSlider.addEventListener('input', updateSliderLabels);
+        rateSlider.addEventListener('input', updateSliderLabels);
+        monthsSlider.addEventListener('input', updateSliderLabels);
+        updateSliderLabels();
+
+        // SIP Calculator logic
+        const form = document.getElementById('sip-graph-form');
+        const investedEl = document.getElementById('sip-invested');
+        const maturityEl = document.getElementById('sip-maturity');
+        const ctx = document.getElementById('sip-graph').getContext('2d');
+        let chart;
+
+        function calculateSIP(P, r, n) {
+          const i = r / 12 / 100;
+          const maturity = P * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+          const invested = P * n;
+          return { invested: Math.round(invested), maturity: Math.round(maturity) };
+        }
+
+        function generateGraphData(P, r, n) {
+          const i = r / 12 / 100;
+          let investedArr = [], valueArr = [];
+          let totalInvested = 0, totalValue = 0;
+          for (let month = 1; month <= n; month++) {
+            totalInvested += P;
+            totalValue = P * ((Math.pow(1 + i, month) - 1) / i) * (1 + i);
+            investedArr.push(Math.round(totalInvested));
+            valueArr.push(Math.round(totalValue));
+          }
+          return { investedArr, valueArr };
+        }
+
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const P = parseFloat(amountSlider.value);
+          const r = parseFloat(rateSlider.value);
+          const n = parseInt(monthsSlider.value, 10);
+
+          if (isNaN(P) || isNaN(r) || isNaN(n) || P <= 0 || r <= 0 || n <= 0) return;
+
+          const { invested, maturity } = calculateSIP(P, r, n);
+          investedEl.textContent = '₹' + invested.toLocaleString();
+          maturityEl.textContent = '₹' + maturity.toLocaleString();
+
+          const { investedArr, valueArr } = generateGraphData(P, r, n);
+
+          if (chart) chart.destroy();
+          chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: Array.from({length: n}, (_, i) => `M${i+1}`),
+              datasets: [
+                {
+                  label: 'Invested Amount',
+                  data: investedArr,
+                  borderColor: '#2563eb',
+                  backgroundColor: 'rgba(37,99,235,0.08)',
+                  fill: true,
+                  tension: 0.3,
+                  pointRadius: 0,
+                },
+                {
+                  label: 'Maturity Value',
+                  data: valueArr,
+                  borderColor: '#22c55e',
+                  backgroundColor: 'rgba(34,197,94,0.08)',
+                  fill: true,
+                  tension: 0.3,
+                  pointRadius: 0,
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { display: true },
+                tooltip: { mode: 'index', intersect: false }
+              },
+              scales: {
+                x: { display: false },
+                y: { beginAtZero: true }
+              }
+            }
+          });
+        });
+
+        // Auto-calculate on load for default values
+        form.dispatchEvent(new Event('submit'));
+      });
+    </script>
+</script>
   </body>
 </html>

@@ -30,29 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Mobile menu toggle
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  if (toggle && menu) {
-    toggle.addEventListener('click', function (e) {
-      if (isDesktop()) return; // Only for mobile
-      e.stopPropagation();
-      menu.classList.toggle('hidden');
-      document.body.style.overflow = menu.classList.contains('hidden') ? '' : 'hidden';
-    });
-    document.addEventListener('click', function (e) {
-      if (!isDesktop() && !menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== toggle) {
-        menu.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
-    });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      if (!isDesktop()) {
-        menu.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
-    }));
-  }
+  // Mobile menu toggle logic removed. Handled by main.js for consistency.
 
   // Mobile accordion dropdowns
   document.querySelectorAll('[data-accordion]').forEach(btn => {

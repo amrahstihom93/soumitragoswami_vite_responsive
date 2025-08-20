@@ -1,622 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifications - Soumitra Goswami</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certifications - Soumitra Goswami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  
+  <style>
+    body {
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    }
+    .section-separator { border-top: 1px solid #e5e7eb; }
+    .tint-1 { background-color: #f8fafc; }
+    .tint-2 { background-color: #f0f4f8; }
+    .ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: ripple 600ms linear; background-color: rgba(0,0,0,0.15); pointer-events: none; }
+    @keyframes ripple { to { transform: scale(4); opacity: 0; } }
+    nav a, .btn, button { position: relative; overflow: hidden; }
+    /* Carousel Styles */
+    .cert-carousel-section .carousel-control {
+  background: rgba(255,255,255,0.82);
+  border: 1.5px solid #b6d2ff;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 2px 16px 0 rgba(0,122,255,0.08);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  color: #2563eb;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, border 0.18s;
+  opacity: 1;
+    }
+    .cert-carousel-section .carousel-control:hover,
+.cert-carousel-section .carousel-control:focus {
+  background: #e6f0ff;
+  color: #1e40af;
+  box-shadow: 0 0 0 4px #3b82f6, 0 8px 32px 0 rgba(31,38,135,0.13);
+  border-color: #3b82f6;
+}
+.cert-carousel-section .carousel-control:active {
+  background: #dbeafe;
+  color: #1e40af;
+  box-shadow: 0 2px 8px 0 rgba(59,130,246,0.10);
+}
+.cert-carousel-section .carousel-control i {
+  filter: drop-shadow(0 1px 2px rgba(59,130,246,0.10));
+}
+    .cert-carousel-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 100px auto 40px auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 2px 16px 0 rgba(0,122,255,0.08), -8px 0 16px 0 rgba(59,130,246,0.07);
+      overflow: hidden;
+      position: relative;
+      padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cert-carousel-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .cert-carousel-desc {
+      font-size: 1.1rem;
+      color: #334155;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .carousel-wrapper {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      background: #f1f5f9;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px 0 rgba(31,38,135,0.07);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 370px;
+    }
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(.4,0,.2,1);
+      width: 100%;
+      height: 370px;
+    }
+    .carousel-item {
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      position: relative;
+    }
+    .carousel-item.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    .carousel-item img {
+      max-width: 95%;
+      max-height: 320px;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px 0 rgba(59,130,246,0.10);
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      -o-object-fit: contain;
+         object-fit: contain;
+      transition: box-shadow 0.3s;
+    }
+    .carousel-caption {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #2563eb;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    .carousel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 2px 8px 0 rgba(59,130,246,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.85;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .carousel-control:hover { background: #1e40af; opacity: 1; }
+    .carousel-prev { left: 16px; }
+    .carousel-next { right: 16px; }
+    .carousel-indicators {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
     
-    <style>
-        /* Add custom styles for full-page carousel if needed */
-        .full-page-carousel {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            background-color: #f3f4f6; /* Light gray background */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .carousel-container {
-            position: relative;
-            width: 90%;
-            max-width: 1200px;
-            height: 80vh; /* Adjust height as needed */
-            margin: auto;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            background-color: white;
-        }
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            height: 100%;
-        }
-        .carousel-item {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .carousel-item img {
-            display: block;
-            max-width: 100%;
-            max-height: 100%;
-            -o-object-fit: contain;
-               object-fit: contain; /* Ensure the whole image is visible */
-            border-radius: 10px;
-        }
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            z-index: 10;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
-        }
-        .carousel-control:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        .carousel-prev {
-            left: 20px;
-        }
-        .carousel-next {
-            right: 20px;
-        }
-        .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-        .indicator-dot {
-            width: 10px;
-            height: 10px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .indicator-dot.active {
-            background-color: white;
-        }
-    </style>
-  <link rel="stylesheet" href="/assets/style-e857ab2b.css">
+    .indicator-dot {
+      width: 12px;
+      height: 12px;
+      background: #cbd5e1;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+      border: 2px solid transparent;
+    }
+    .indicator-dot.active {
+      background: #2563eb;
+      border-color: #2563eb;
+    }
+    @media (max-width: 700px) {
+      .cert-carousel-container { padding: 1.2rem 0.2rem 2rem 0.2rem; }
+      .carousel-wrapper { min-height: 220px; }
+      .carousel-inner { height: 220px; }
+      .carousel-item img { max-height: 160px; }
+      .cert-carousel-title { font-size: 1.4rem; }
+    }
+    /* Floating Widget Button */
+    #widget-navbar {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+    @media (max-width: 1023px) {
+      #widget-navbar { right: 16px; bottom: 16px; }
+    }
+    @media (max-width: 700px) {
+      #widget-navbar { right: 8px; bottom: 8px; }
+    }
+    /* Hide widget on print */
+    @media print {
+      #widget-navbar { display: none !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="/assets/style-fa1360ea.css">
 </head>
 <body class="bg-white text-gray-900 font-inter">
-    <!-- Fixed Top Navbar (copied from index.html for consistency) -->
- 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu toggle
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
 
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Close when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-  }
-
-  // Mobile dropdown accordion (Services, More)
-  document.querySelectorAll('.accordion-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const targetId = btn.getAttribute('data-target');
-      const submenu = document.getElementById(targetId);
-
-      if (submenu) {
-        submenu.classList.toggle('hidden');
-        
-        // Optional: rotate chevron icon
-        const icon = btn.querySelector('.fas');
-        if (icon) icon.classList.toggle('rotate-180');
-      }
-    });
-  });
-});
-</script>
-    <!-- Fixed Top Navbar (EXACT COPY from index.html for 100% consistency) -->
-     <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: 72px">
-    <a href="index.html" class="flex items-center gap-3 shrink-0">
-      <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
-    </a>
-
-    <!-- Desktop Menu -->
-    <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
-      <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
-      <li><a href="index.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
-      <li class="relative group">
-        <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1">
-          Services <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
-          <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Mutual Funds/SIP</a></li>
-          <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Insurance</a></li>
-          <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Loans</a></li>
-          <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">IT Filing & GST</a></li>
-          <li><a href="other.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Other Services</a></li>
-        </ul>
-      </li>
-      <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
-      <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
-      <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
-      <li class="relative group">
-        <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1">
-          More <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
-          <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Certification</a></li>
-          <li><a href="#" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Risk Profiler</a></li>
-          <li><a href="#" class="block px-7 py-3 text-base font-semibold hover:bg-blue-50 hover:text-blue-700">Disclosure</a></li>
-        </ul>
-      </li>
-    </ul>
-
-    <!-- Mobile toggle -->
-    <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-
-  <!-- Mobile Drawer -->
-  <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-blue-100 shadow-2xl">
-    <ul class="px-4 py-3 space-y-1">
-      <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
-      <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
-      <li>
-        <button class="accordion-btn w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-target="m-services">
-          Services <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
-          <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
-          <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
-          <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
-          <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
-          <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
-        </ul>
-      </li>
-      <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
-      <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
-      <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
-      <li>
-        <button class="accordion-btn w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-target="m-more">
-          More <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
-          <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
-          <li><a href="#" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
-          <li><a href="#" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-    <!-- Global Financial Tools Widget Navbar -->
-    <div id="widget-navbar" class="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">
-      <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-20 h-20 flex items-center justify-center text-4xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
-        <i class="fas fa-calculator"></i>
-      </button>
-      <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 w-80 animate-fade-in-up">
-        <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
-        <div class="flex gap-2 mb-4">
-          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
-          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition text-sm" data-tool="emi-calc">EMI</button>
-          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-orange-50 text-orange-700 font-semibold hover:bg-orange-100 transition text-sm" data-tool="ret-calc">Retirement</button>
-          <button class="widget-tool-btn px-3 py-1 rounded-lg bg-gray-50 text-gray-700 font-semibold hover:bg-gray-100 transition text-sm" data-tool="inf-calc">Inflation</button>
-        </div>
-        <!-- SIP Calculator -->
-        <div id="sip-calc" class="widget-tool">
-          <form id="sip-calc-form" class="space-y-2">
-            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Monthly Investment (₹)" required></div>
-            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
-            <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Investment Period (months)" required></div>
-            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Maturity Value" readonly></div>
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-1 font-semibold">Calculate</button>
-          </form>
-        </div>
-        <!-- EMI Calculator -->
-        <div id="emi-calc" class="widget-tool hidden">
-          <form id="emi-calc-form" class="space-y-2">
-            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Loan Amount (₹)" required></div>
-            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Interest Rate (%)" required></div>
-            <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Tenure (months)" required></div>
-            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Monthly EMI" readonly></div>
-            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-1 font-semibold">Calculate</button>
-          </form>
-        </div>
-        <!-- Retirement Calculator -->
-        <div id="ret-calc" class="widget-tool hidden">
-          <form id="ret-calc-form" class="space-y-2">
-            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Savings (₹)" required></div>
-            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
-            <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years to Grow" required></div>
-            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
-            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white rounded py-1 font-semibold">Calculate</button>
-          </form>
-        </div>
-        <!-- Inflation Calculator -->
-        <div id="inf-calc" class="widget-tool hidden">
-          <form id="inf-calc-form" class="space-y-2">
-            <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Value (₹)" required></div>
-            <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Inflation Rate (%)" required></div>
-            <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years" required></div>
-            <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
-            <button type="submit" class="w-full bg-gray-600 hover:bg-gray-700 text-white rounded py-1 font-semibold">Calculate</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      // Floating widget navbar logic
-      document.addEventListener('DOMContentLoaded', function() {
-        const widgetToggle = document.getElementById('widget-toggle');
-        const widgetMenu = document.getElementById('widget-menu');
-        if(widgetToggle && widgetMenu) {
-          widgetToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            widgetMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', function(e) {
-            if (!widgetMenu.classList.contains('hidden')) {
-              widgetMenu.classList.add('hidden');
-            }
-          });
-          widgetMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-          });
-        }
-      });
-    </script>
+  <!-- Fixed Top Navbar (EXACT COPY from other pages for 100% consistency) -->
+  <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: 72px">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
+      </a>
+      <!-- Desktop Menu -->
+      <ul id="main-menu-desktop" class="hidden lg:flex items-center gap-2">
+        <li><a href="index.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
+        <li class="relative group">
+          <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+            Services <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
+            <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Mutual Funds/SIP</a></li>
+            <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Insurance</a></li>
+            <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Loans</a></li>
+            <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">IT Filing & GST</a></li>
+            <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Other Services</a></li>
+          </ul>
+        </li>
+        <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+        <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+        <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+        <li class="relative group">
+          <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+            More <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
+            <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Certification</a></li>
+            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Risk Profiler</a></li>
+            <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Disclosure</a></li>
+          </ul>
+        </li>
+        <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
+      </ul>
       <!-- Mobile toggle -->
-      <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
+      <button id="menu-toggle" class="lg:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
               aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
         <i class="fas fa-bars"></i>
       </button>
     </div>
-
     <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="md:hidden hidden mobile-drawer bg-white border-t border-blue-100 shadow-2xl">
-      <ul class="px-4 py-3 space-y-1">
-        <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
-        <li><a href="/" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
-
-        <!-- Services (collapsible) -->
-        <li>
-          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
-                  data-accordion="#m-services" aria-expanded="false">
-            Services <i class="fas fa-chevron-down text-xs"></i>
+    <div id="mobile-menu" class="lg:hidden fixed top-0 right-0 z-[9999] hidden w-full h-full">
+      <!-- Overlay -->
+      <div id="mobile-menu-overlay" class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-blue-100/60 to-blue-200/60 backdrop-blur-xl transition-opacity duration-300 opacity-100 m-0 p-0" tabindex="-1" aria-label="Close menu overlay" style="z-index:9998;"></div>
+      <!-- Drawer -->
+      <div class="mobile-drawer fixed right-0 w-[88vw] max-w-xs bg-white/80 rounded-l-2xl shadow-2xl flex flex-col border-l border-blue-100 animate-slide-in" style="z-index:10000; top:72px; height:calc(100vh - 72px); overflow-y:auto; backdrop-filter: blur(32px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 2px 16px 0 rgba(0,122,255,0.08), -8px 0 16px 0 rgba(59,130,246,0.07);">
+        <div class="flex items-center justify-between px-7 py-6 border-b border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-tl-3xl" style="backdrop-filter: blur(12px);">
+          <a href="index.html" class="flex items-center gap-2">
+            <img src="/img/logo.png" alt="Logo" class="h-11 w-auto drop-shadow" />
+          </a>
+          <button id="menu-close" class="text-3xl p-3 rounded-full hover:bg-blue-100 focus:outline-none text-blue-600 transition-all duration-200 shadow-lg border border-blue-100" aria-label="Close menu" style="min-width:48px; min-height:48px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.85);">
+            <i class="fas fa-times"></i>
           </button>
-          <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
-            <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
-            <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
-            <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
-            <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
-            <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:flex-start;">
+          <ul class="px-2 py-3 space-y-1 text-[15px]">
+            <li><a href="login.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-sign-in-alt w-5"></i> Login</a></li>
+            <li><a href="index.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-home w-5"></i> Home</a></li>
+            <!-- Services (collapsible) -->
+            <li class="relative">
+              <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-services" aria-expanded="false">
+                <span class="flex items-center gap-3"><i class="fas fa-briefcase w-5"></i> Services</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              <ul id="m-services" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                <li><a href="sip.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-chart-line w-4"></i> Mutual Funds/SIP</a></li>
+                <li><a href="ins.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-shield-alt w-4"></i> Insurance</a></li>
+                <li><a href="loan.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-university w-4"></i> Loans</a></li>
+                <li><a href="itr.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-invoice w-4"></i> IT Filing & GST</a></li>
+                <li><a href="other.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-ellipsis-h w-4"></i> Other Services</a></li>
+              </ul>
+            </li>
+            <li><a href="#about" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-user w-5"></i> About</a></li>
+            <li><a href="#team" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-users w-5"></i> Team</a></li>
+            <li><a href="#contact" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-envelope w-5"></i> Contact</a></li>
+            <!-- More (collapsible) -->
+            <li class="relative">
+              <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-more" aria-expanded="false">
+                <span class="flex items-center gap-3"><i class="fas fa-ellipsis-v w-5"></i> More</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              <ul id="m-more" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                <li><a href="cert.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-certificate w-4"></i> Certification</a></li>
+                <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-user-shield w-4"></i> Risk Profiler</a></li>
+                <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-alt w-4"></i> Disclosure</a></li>
+              </ul>
+            </li>
           </ul>
-        </li>
-
-        <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
-        <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
-        <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
-
-        <!-- More (collapsible) -->
-        <li>
-          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50"
-                  data-accordion="#m-more" aria-expanded="false">
-            More <i class="fas fa-chevron-down text-xs"></i>
-          </button>
-          <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
-            <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
-            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
-            <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
-          </ul>
-        </li>
-      </ul>
+          <div class="px-2 pt-3 pb-4 border-t border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-bl-2xl mt-1">
+            <a href="enquiry.html" class="block w-full text-center bg-gradient-to-r from-blue-500 to-blue-400 text-white font-bold py-2.5 rounded-lg shadow hover:from-blue-700 hover:to-blue-600 transition">Enquire Now</a>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 
-    <!-- Full Page Image Carousel -->
-    <section class="full-page-carousel mt-[80px]"> <!-- Adjusted margin-top -->
-        <div class="carousel-container">
-            <div class="carousel-inner" id="certificate-carousel-inner">
-                <!-- Images will be loaded here by JavaScript -->
-                <div class="carousel-item">
-                    <img src="/img/certificates/adityabirla.jpeg" alt="Certificate 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="/img/certificates/amfi.jpeg" alt="Certificate 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="/img/certificates/kotak.jpeg" alt="Certificate 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="/img/certificates/nism.jpeg" alt="Certificate 4">
-                </div>
-                 <div class="carousel-item">
-                    <img src="/img/certificates/nismcert.jpeg" alt="Certificate 5">
-                </div>
-                 <div class="carousel-item">
-                    <img src="/img/certificates/policybazar.jpg" alt="Certificate 6">
-                </div>
-            </div>
-            <button class="carousel-control carousel-prev" id="carousel-prev">&#10094;</button>
-            <button class="carousel-control carousel-next" id="carousel-next">&#10095;</button>
-            <div class="carousel-indicators" id="carousel-indicators">
-                <!-- Indicators will be loaded here by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Footer (copied from index.html for consistency) -->
-    <footer class="bg-gray-900 text-white py-16">
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-    
-          <!-- Office Info -->
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Office</h4>
-            <p class="text-gray-400 mb-2">
-              <i class="fas fa-map-marker-alt mr-2"></i>
-              1st Cross Road, Salt Lake City, India
-            </p>
-            <p class="text-gray-400 mb-2">
-              <i class="fas fa-phone-alt mr-2"></i>
-              +91 9804452151
-            </p>
-            <p class="text-gray-400 mb-4">
-              <i class="fas fa-envelope mr-2"></i>
-              sgswamee.ib@gmail.com
-            </p>
-            <div class="flex space-x-3">
-              <a href="https://x.com/sgswamee" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                <i class="fab fa-youtube"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
+  <!-- Certificate Carousel Section -->
+  <section class="cert-carousel-section section-separator tint-1">
+    <div class="cert-carousel-container animate__animated animate__fadeInUp">
+      <h1 class="cert-carousel-title">Our Certifications</h1>
+      <div class="cert-carousel-desc">Browse through our professional certifications and credentials.</div>
+      <div class="carousel-wrapper">
+        <button class="carousel-control carousel-prev" id="carousel-prev" aria-label="Previous certificate"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-inner" id="certificate-carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/certificates/adityabirla.jpeg" alt="Aditya Birla Certificate"/>
+            <div class="carousel-caption">Aditya Birla Certification</div>
           </div>
-    
-          <!-- Services -->
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Services</h4>
-            <ul class="space-y-2 text-gray-400">
-              <li><a href="sip.html" class="hover:text-white transition-colors">Mutual Funds</a></li>
-              <li><a href="ins.html" class="hover:text-white transition-colors">Insurance</a></li>
-              <li><a href="loan.html" class="hover:text-white transition-colors">Loans</a></li>
-              <li><a href="itr.html" class="hover:text-white transition-colors">IT Filing & GST</a></li>
-              <li><a href="other.html" class="hover:text-white transition-colors">Add-on Services</a></li>
-            </ul>
+          <div class="carousel-item">
+            <img src="/img/certificates/amfi.jpeg" alt="AMFI Certificate"/>
+            <div class="carousel-caption">AMFI Certification</div>
           </div>
-    
-          <!-- Quick Links -->
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul class="space-y-2 text-gray-400">
-              <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
-              <li><a href="cert.html" class="hover:text-white transition-colors">Certification</a></li>
-              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="hover:text-white transition-colors">Risk Profiler</a></li>
-              <li><a href="/pdf/TER_May_2025.pdf" download class="hover:text-white transition-colors">Disclosure</a></li>
-              <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
-            </ul>
+          <div class="carousel-item">
+            <img src="/img/certificates/kotak.jpeg" alt="Kotak Certificate"/>
+            <div class="carousel-caption">Kotak Certification</div>
           </div>
-    
-          <!-- Important Links -->
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Important Links</h4>
-            <ul class="space-y-2 text-gray-400">
-              <li><a href="https://www.cvlkra.com/kycpaninquiry.aspx" target="_blank" class="hover:text-white transition-colors">Check your KYC status</a></li>
-              <li><a href="https://irdai.gov.in/grievance-redressal-mechanism1" target="_blank" class="hover:text-white transition-colors">IRDAI Grievances Redressal</a></li>
-              <li><a href="https://www.amfiindia.com/investor-corner/online-center/SEBI-Score.html" target="_blank" class="hover:text-white transition-colors">AMFI Grievances Redressal</a></li>
-              <li><a href="https://cybercrime.gov.in/Webform/Accept.aspx" target="_blank" class="hover:text-white transition-colors">Cyber Crime Complaint Filing</a></li>
-              <li><a href="http://www.singhassociates.store/" target="_blank" class="hover:text-white transition-colors">Singh And Associates</a></li>
-            </ul>
+          <div class="carousel-item">
+            <img src="/img/certificates/nism.jpeg" alt="NISM Certificate"/>
+            <div class="carousel-caption">NISM Certification</div>
+          </div>
+          <div class="carousel-item">
+            <img src="/img/certificates/nismcert.jpeg" alt="NISM Certificate 2"/>
+            <div class="carousel-caption">NISM Certification (Additional)</div>
+          </div>
+          <div class="carousel-item">
+            <img src="/img/certificates/policybazar.jpg" alt="Policybazaar Certificate"/>
+            <div class="carousel-caption">Policybazaar Certification</div>
           </div>
         </div>
-    
-        <!-- Bottom Bar -->
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Soumitra Goswami. All rights reserved.</p>
+        <button class="carousel-control carousel-next" id="carousel-next" aria-label="Next certificate"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="carousel-indicators" id="carousel-indicators"></div>
+    </div>
+  </section>
+
+  <!-- Floating Widget Navbar (Calculator) -->
+  <div id="widget-navbar">
+    <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-20 h-20 flex items-center justify-center text-4xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
+      <i class="fas fa-calculator"></i>
+    </button>
+    <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 w-80 animate-fade-in-up">
+      <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
+      <div class="flex gap-2 mb-4">
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition text-sm" data-tool="emi-calc">EMI</button>
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-orange-50 text-orange-700 font-semibold hover:bg-orange-100 transition text-sm" data-tool="ret-calc">Retirement</button>
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-gray-50 text-gray-700 font-semibold hover:bg-gray-100 transition text-sm" data-tool="inf-calc">Inflation</button>
+      </div>
+      <!-- SIP Calculator -->
+      <div id="sip-calc" class="widget-tool">
+        <form id="sip-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Monthly Investment (₹)" required></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
+          <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Investment Period (months)" required></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Maturity Value" readonly></div>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+      <!-- EMI Calculator -->
+      <div id="emi-calc" class="widget-tool hidden">
+        <form id="emi-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Loan Amount (₹)" required></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Interest Rate (%)" required></div>
+          <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Tenure (months)" required></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Monthly EMI" readonly></div>
+          <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+      <!-- Retirement Calculator -->
+      <div id="ret-calc" class="widget-tool hidden">
+        <form id="ret-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Savings (₹)" required></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required></div>
+          <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years to Grow" required></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
+          <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+      <!-- Inflation Calculator -->
+      <div id="inf-calc" class="widget-tool hidden">
+        <form id="inf-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Value (₹)" required></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Inflation Rate (%)" required></div>
+          <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years" required></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly></div>
+          <button type="submit" class="w-full bg-gray-600 hover:bg-gray-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer (copied from other pages for consistency) -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 animate__animated animate__fadeInUp">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 animate__animated animate__fadeInUp animate__delay-0.3s">
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Office</h4>
+          <p class="text-gray-400 mb-2">
+            <i class="fas fa-map-marker-alt mr-2"></i>
+            1st Cross Road, Salt Lake City, India
+          </p>
+          <p class="text-gray-400 mb-2">
+            <i class="fas fa-phone-alt mr-2"></i>
+            +91 9804452151
+          </p>
+          <p class="text-gray-400 mb-4">
+            <i class="fas fa-envelope mr-2"></i>
+            sgswamee.ib@gmail.com
+          </p>
+          <div class="flex space-x-3">
+            <a href="https://x.com/sgswamee" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Services</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="sip.html" class="hover:text-white transition-colors">Mutual Funds</a></li>
+            <li><a href="ins.html" class="hover:text-white transition-colors">Insurance</a></li>
+            <li><a href="loan.html" class="hover:text-white transition-colors">Loans</a></li>
+            <li><a href="itr.html" class="hover:text-white transition-colors">IT Filing & GST</a></li>
+            <li><a href="other.html" class="hover:text-white transition-colors">Add-on Services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="cert.html" class="hover:text-white transition-colors">Certification</a></li>
+            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="hover:text-white transition-colors">Risk Profiler</a></li>
+            <li><a href="/pdf/TER_May_2025.pdf" download class="hover:text-white transition-colors">Disclosure</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Important Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="https://www.cvlkra.com/kycpaninquiry.aspx" target="_blank" class="hover:text-white transition-colors">Check your KYC status</a></li>
+            <li><a href="https://irdai.gov.in/grievance-redressal-mechanism1" target="_blank" class="hover:text-white transition-colors">IRDAI Grievances Redressal</a></li>
+            <li><a href="https://www.amfiindia.com/investor-corner/online-center/SEBI-Score.html" target="_blank" class="hover:text-white transition-colors">AMFI Grievances Redressal</a></li>
+            <li><a href="https://cybercrime.gov.in/Webform/Accept.aspx" target="_blank" class="hover:text-white transition-colors">Cyber Crime Complaint Filing</a></li>
+            <li><a href="http://www.singhassociates.store/" target="_blank" class="hover:text-white transition-colors">Singh And Associates</a></li>
+          </ul>
         </div>
       </div>
-    </footer>
-    
-        <!-- Footer End -->
-    
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright py-4 wow fadeIn" data-wow-delay="0.6s">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <a class="" >AMFI Registered Mutual Fund Distributor: ARN-309045</a><br>
-                        <a class="border-bottom" href="/pdf/privacypolicy.pdf" download>Privacy Policy</a> | 
-                        <a class="border-bottom" href="/pdf/termscondition.pdf" download>Terms and Conditions.</a>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        Designed By <br><a class="border-bottom" href="">Sree Vinayaka Infotech</a>
-                    </div>
-                </div>
-            </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 animate__animated animate__fadeInUp animate__delay-0.5s">
+        <p>&copy; 2025 Soumitra Goswami. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright strip -->
+  <div class="container-fluid copyright py-4 wow fadeIn" data-wow-delay="0.6s">
+    <div class="container">
+      <div class="row flex flex-col md:flex-row justify-between items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 md:mb-0">
+          <a>AMFI Registered Mutual Fund Distributor: ARN-309045</a><br />
+          <a class="border-bottom" href="/pdf/privacypolicy.pdf" download>Privacy Policy</a> |
+          <a class="border-bottom" href="/pdf/termscondition.pdf" download>Terms and Conditions.</a>
         </div>
-        <!-- Copyright End -->
-         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-        
-        <!-- Initialize WOW animations -->
-        <script>
-            // Initialize WOW.js
-            new WOW().init();
-            
-            // Enhanced navbar scroll effects
-            let lastScrollTop = 0;
-            window.addEventListener('scroll', function() {
-                const navbar = document.querySelector('nav');
-                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (currentScroll > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                
-                // Add hide/show navbar on scroll
-                if (currentScroll > lastScrollTop && currentScroll > 100) {
-                    // Scrolling down
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    // Scrolling up
-                    navbar.style.transform = 'translateY(0)';
-                }
-                
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-            });
-            
-            // Add smooth transitions for navbar links
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-2px)';
-                });
-                
-                link.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // Add ripple effect to buttons and links
-            function createRipple(event) {
-                const button = event.currentTarget;
-                const circle = document.createElement('span');
-                const diameter = Math.max(button.clientWidth, button.clientHeight);
-                const radius = diameter / 2;
-                
-                circle.style.width = circle.style.height = `${diameter}px`;
-                circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-                circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-                circle.classList.add('ripple');
-                
-                const ripple = button.getElementsByClassName('ripple')[0];
-                if (ripple) {
-                    ripple.remove();
-                }
-                
-                button.appendChild(circle);
-            }
-            
-            // Apply ripple effect to navbar links
-            document.querySelectorAll('nav a, .btn').forEach(element => {
-                element.addEventListener('click', createRipple);
-            });
-            
-            // Intersection Observer for fade-in animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe elements for animation
-            document.querySelectorAll('.iframe-container, .footer, .copyright').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s ease-out';
-                observer.observe(el);
-            });
-        </script>
+        <div class="col-md-6 text-center text-md-end">
+          Designed By <br /><a class="border-bottom" href="">Sree Vinayaka Infotech</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const carouselInner = document.getElementById('certificate-carousel-inner');
-            const prevButton = document.getElementById('carousel-prev');
-            const nextButton = document.getElementById('carousel-next');
-            const indicatorsContainer = document.getElementById('carousel-indicators');
-            const items = carouselInner.querySelectorAll('.carousel-item');
-            const totalItems = items.length;
-            let currentIndex = 0;
+  <!-- Vendor scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-            // Create indicators
-            items.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('indicator-dot');
-                if (index === 0) {
-                    dot.classList.add('active');
-                }
-                dot.addEventListener('click', () => goToSlide(index));
-                indicatorsContainer.appendChild(dot);
-            });
+  <!-- Init WOW + navbar effects -->
+  <script>
+    new WOW().init();
+    (function () {
+      let lastScrollTop = 0;
+      const navbar = document.querySelector('nav');
+      window.addEventListener('scroll', function () {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled');
+        if (currentScroll > lastScrollTop && currentScroll > 100) navbar.style.transform = 'translateY(-100%)';
+        else navbar.style.transform = 'translateY(0)';
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+      });
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('mouseenter', function () { this.style.transform = 'translateY(-2px)'; });
+        link.addEventListener('mouseleave', function () { this.style.transform = 'translateY(0)'; });
+      });
+    })();
+  </script>
 
-            const indicators = indicatorsContainer.querySelectorAll('.indicator-dot');
+  <!-- Mobile menu and accordion logic (EXACT as in other pages) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuClose = document.getElementById('menu-close');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
-            function updateCarousel() {
-                const offset = -currentIndex * 100;
-                carouselInner.style.transform = `translateX(${offset}%)`;
-                indicators.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-            }
-
-            function goToSlide(index) {
-                currentIndex = index;
-                updateCarousel();
-            }
-
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                updateCarousel();
-            });
-
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalItems;
-                updateCarousel();
-            });
-
-            // Initial update
-            updateCarousel();
+      // Open mobile menu
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.style.display = 'block';
+          setTimeout(() => mobileMenu.classList.add('open'), 10);
+          document.body.style.overflow = 'hidden';
         });
-    </script>
+      }
+
+      // Close mobile menu
+      function closeMobileMenu() {
+        if (mobileMenu) {
+          mobileMenu.classList.remove('open');
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.style.display = 'none';
+          }, 200);
+        }
+        document.body.style.overflow = '';
+      }
+      if (menuClose) menuClose.addEventListener('click', function(e) { e.stopPropagation(); closeMobileMenu(); });
+      if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', function(e) { e.stopPropagation(); closeMobileMenu(); });
+
+      // Prevent menu click from closing
+      if (mobileMenu) mobileMenu.addEventListener('click', function(e) { e.stopPropagation(); });
+
+      // Accordion for mobile menu
+      document.querySelectorAll('[data-accordion]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const target = btn.getAttribute('data-accordion');
+          const submenu = document.querySelector(target);
+          if (submenu) {
+            submenu.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', submenu.classList.contains('hidden') ? 'false' : 'true');
+            const icon = btn.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up, .fas.fa-chevron-right, .fas.fa-chevron-left');
+            if (icon) icon.classList.toggle('rotate-180');
+          }
+        });
+      });
+
+      // Only close menu on outside click if menu is open and click is outside the menu
+      document.addEventListener('click', function(e) {
+        if (
+          mobileMenu &&
+          !mobileMenu.classList.contains('hidden') &&
+          !mobileMenu.contains(e.target) &&
+          e.target !== menuToggle
+        ) {
+          closeMobileMenu();
+        }
+      });
+
+      // Hide menu on resize to desktop
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 1024) {
+          closeMobileMenu();
+        }
+      });
+    });
+  </script>
+
+  <!-- Certificate Carousel Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const carouselInner = document.getElementById('certificate-carousel-inner');
+      const prevButton = document.getElementById('carousel-prev');
+      const nextButton = document.getElementById('carousel-next');
+      const indicatorsContainer = document.getElementById('carousel-indicators');
+      const items = carouselInner.querySelectorAll('.carousel-item');
+      const totalItems = items.length;
+      let currentIndex = 0;
+      let autoPlayTimer = null;
+
+      // Create indicators
+      items.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('indicator-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        indicatorsContainer.appendChild(dot);
+      });
+      const indicators = indicatorsContainer.querySelectorAll('.indicator-dot');
+
+      function updateCarousel() {
+        carouselInner.style.transform = `translateX(${-currentIndex * 100}%)`;
+        items.forEach((item, idx) => item.classList.toggle('active', idx === currentIndex));
+        indicators.forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
+      }
+
+      function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+        resetAutoPlay();
+      }
+
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+        resetAutoPlay();
+      });
+
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+        resetAutoPlay();
+      });
+
+      // Auto-play
+      function autoPlay() {
+        autoPlayTimer = setInterval(() => {
+          currentIndex = (currentIndex + 1) % totalItems;
+          updateCarousel();
+        }, 4000);
+      }
+      function resetAutoPlay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+        autoPlay();
+      }
+
+      // Touch/Swipe support
+      let startX = 0;
+      let isDragging = false;
+      carouselInner.addEventListener('touchstart', function(e) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+      });
+      carouselInner.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        let diff = e.touches[0].clientX - startX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) prevButton.click();
+          else nextButton.click();
+          isDragging = false;
+        }
+      });
+      carouselInner.addEventListener('touchend', function() { isDragging = false; });
+
+      // Initial update and autoplay
+      updateCarousel();
+      autoPlay();
+    });
+  </script>
+
+  <!-- Floating Widget Navbar Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const widgetToggle = document.getElementById('widget-toggle');
+      const widgetMenu = document.getElementById('widget-menu');
+      const toolBtns = document.querySelectorAll('.widget-tool-btn');
+      const tools = document.querySelectorAll('.widget-tool');
+      if(widgetToggle && widgetMenu) {
+        widgetToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          widgetMenu.classList.toggle('hidden');
+        });
+        document.addEventListener('click', function(e) {
+          if (!widgetMenu.classList.contains('hidden')) {
+            widgetMenu.classList.add('hidden');
+          }
+        });
+        widgetMenu.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+      // Tool switching
+      toolBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const toolId = btn.getAttribute('data-tool');
+          tools.forEach(t => t.classList.add('hidden'));
+          document.getElementById(toolId).classList.remove('hidden');
+        });
+      });
+      // SIP Calculator
+      document.getElementById('sip-calc-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const amount = parseFloat(this.amount.value) || 0;
+        const rate = parseFloat(this.rate.value) || 0;
+        const months = parseInt(this.months.value) || 0;
+        const r = rate / 12 / 100;
+        const maturity = amount * ((Math.pow(1 + r, months) - 1) / r) * (1 + r);
+        this.result.value = isFinite(maturity) ? '₹' + maturity.toLocaleString(undefined, {maximumFractionDigits:0}) : '';
+      });
+      // EMI Calculator
+      document.getElementById('emi-calc-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const amount = parseFloat(this.amount.value) || 0;
+        const rate = parseFloat(this.rate.value) || 0;
+        const months = parseInt(this.months.value) || 0;
+        const r = rate / 12 / 100;
+        const emi = amount * r * Math.pow(1 + r, months) / (Math.pow(1 + r, months) - 1);
+        this.result.value = isFinite(emi) ? '₹' + emi.toLocaleString(undefined, {maximumFractionDigits:0}) : '';
+      });
+      // Retirement Calculator
+      document.getElementById('ret-calc-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const amount = parseFloat(this.amount.value) || 0;
+        const rate = parseFloat(this.rate.value) || 0;
+        const years = parseInt(this.years.value) || 0;
+        const fv = amount * Math.pow(1 + rate/100, years);
+        this.result.value = isFinite(fv) ? '₹' + fv.toLocaleString(undefined, {maximumFractionDigits:0}) : '';
+      });
+      // Inflation Calculator
+      document.getElementById('inf-calc-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const amount = parseFloat(this.amount.value) || 0;
+        const rate = parseFloat(this.rate.value) || 0;
+        const years = parseInt(this.years.value) || 0;
+        const fv = amount * Math.pow(1 + rate/100, years);
+        this.result.value = isFinite(fv) ? '₹' + fv.toLocaleString(undefined, {maximumFractionDigits:0}) : '';
+      });
+    });
+  </script>
 </body>
 </html>

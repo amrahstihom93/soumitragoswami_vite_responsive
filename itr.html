@@ -1,249 +1,427 @@
+<!-- <!DOCTYPE html> -->
+
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ITR & GST Services - Soumitra Goswami</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/src/style.css">
-    <script type="module" src="/src/main.js"></script>
-  </head>
-  <body class="bg-white text-gray-900 font-inter">
-  <!-- Only the new premium navbar should remain. -->
-      
-      <!-- Fixed Top Navbar (EXACTLY as in index.html for desktop layout) -->
-      <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: 72px">
-    <a href="index.html" class="flex items-center gap-3 shrink-0">
-      <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
-    </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soumitra Goswami - Financial Advisor & Investment Consultant</title>
 
-    <!-- Desktop Menu (copied from index.html for consistency) -->
-    <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
-      <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
-      <li><a href="/" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
-      <li class="relative group">
-        <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-          Services <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
-          <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Mutual Funds/SIP</a></li>
-          <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Insurance</a></li>
-          <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Loans</a></li>
-          <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">IT Filing & GST</a></li>
-          <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Other Services</a></li>
-        </ul>
-      </li>
-      <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
-      <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
-      <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
-      <li class="relative group">
-        <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-          More <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
-          <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Certification</a></li>
-          <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Risk Profiler</a></li>
-          <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Disclosure</a></li>
-        </ul>
-      </li>
-    </ul>
+  <!-- App entry (Vite/your bundle) -->
+  <script type="module" src="/src/main.js"></script>
 
-    <!-- Mobile toggle -->
-    <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-  <!-- Mobile Drawer -->
-  <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-blue-100 shadow-2xl">
-    <ul class="px-4 py-3 space-y-1">
-      <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
-      <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
-      <li>
-        <button class="accordion-btn w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-target="m-services">
-          Services <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
-          <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
-          <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
-          <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
-          <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
-          <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
-        </ul>
-      </li>
-      <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
-      <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
-      <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
-      <li>
-        <button class="accordion-btn w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-target="m-more">
-          More <i class="fas fa-chevron-down text-xs"></i>
-        </button>
-        <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
-          <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
-          <li><a href="#" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
-          <li><a href="#" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <!-- Your site CSS (Tailwind build, etc.) -->
+  <link rel="stylesheet" href="/src/style.css" />
 
-    <!-- Hero Section (refined for clarity and spacing) -->
-  <section class="hero-section relative py-20 md:py-32 flex items-center justify-center overflow-hidden mt-[90px] section-separator tint-1">
-      
+  <!-- Small helpers -->
+  <style>
+    @media (max-width: 1023px) {
+      .liquid-glass-inner {
+        max-width: 100vw !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+    }
+    @media (max-width: 1023px) {
+      #main-menu-desktop {
+        display: none !important;
+      }
+      #menu-toggle {
+        display: flex !important;
+        z-index: 11000 !important; /* Ensure toggler is always above nav */
+        position: relative;
+      }
+  /* #mobile-menu: toggled by .hidden class only. Do NOT set display:none elsewhere! */
+      .liquid-glass-inner {
+        height: 60px !important;
+        min-height: 60px !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      #mobile-menu {
+        display: none !important;
+      }
+      #main-menu-desktop {
+        display: flex !important;
+      }
+      #menu-toggle {
+        display: none !important;
+      }
+    }
+    :root { --nav-h: 72px; }
+    body { font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; }
+    .footer { background-color: #212529 !important; }
+    .copyright { background-color: #1a1e21; border-top: 1px solid #495057; }
+    .btn-link { color: #adb5bd; text-decoration: none; display: block; padding: 2px 0; border: none; background: none; text-align: left; }
+    .btn-link:hover { color: #ffffff; }
+    .btn-square { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+    .border-bottom { border-bottom: 1px solid #6c757d !important; color: #adb5bd; text-decoration: none; }
+    .border-bottom:hover { color: #ffffff; }
+    /* ripple */
+    .ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: ripple 600ms linear; background-color: rgba(0,0,0,0.15); pointer-events: none; }
+    @keyframes ripple { to { transform: scale(4); opacity: 0; } }
+    nav a, .btn, button { position: relative; overflow: hidden; }
+    /* mobile drawer */
+    .mobile-drawer { transform: translateY(-8px); }
+    .mobile-drawer.show { transform: translateY(0); }
+    /* hide scrollbar helper (for card row) */
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    /* account for fixed nav */
+    body.has-sticky { padding-top: var(--nav-h); }
+  </style>
+  <style>
+    /* Navbar Professional Look */
+    .liquid-glass-inner {
+      background: rgba(255,255,255,0.92) !important;
+      border-radius: 0 !important;
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
+      border-bottom: 2px solid rgba(0,122,255,0.13);
+      position: relative;
+      z-index: 1;
+    }
+    #main-menu-desktop a, #main-menu-desktop button {
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.9rem;
+      font-weight: 500;
+      color: #1e293b;
+      background: none;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      position: relative;
+    }
+    #main-menu-desktop a:hover, #main-menu-desktop button:hover, #main-menu-desktop a:focus, #main-menu-desktop button:focus {
+      background: #e6f0ff;
+      color: #2563eb;
+      box-shadow: 0 0 0 2px #3b82f6;
+    }
+    #main-menu-desktop .nav-active, #main-menu-desktop .nav-active:focus {
+      background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+      color: #2563eb !important;
+      border-radius: 0.9rem;
+      box-shadow: 0 2px 8px 0 rgba(59,130,246,0.10);
+      border: 1.5px solid #b6d2ff;
+      font-weight: 600;
+    }
+    #main-menu-desktop .group:focus-within > button, #main-menu-desktop .group:hover > button {
+      background: #e6f0ff;
+      color: #2563eb;
+    }
+    .menu-dropdown {
+      background: #fff;
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 24px 0 rgba(59,130,246,0.12), 0 1.5px 8px 0 rgba(59,130,246,0.10) inset;
+      border: 1.5px solid #e0e7ef;
+      padding: 0.75rem 0;
+      min-width: 14rem;
+      transition: box-shadow 0.2s, border 0.2s;
+      backdrop-filter: blur(8px);
+    }
+    .menu-dropdown li a {
+      border-radius: 0.75rem;
+      padding: 0.75rem 2rem;
+      font-weight: 500;
+      color: #222;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+    .menu-dropdown li a:hover, .menu-dropdown li a:focus {
+      background: #e6f0ff;
+      color: #2563eb;
+      box-shadow: 0 0 0 2px #3b82f6;
+    }
+    /* Mobile menu improvements */
+    #mobile-menu {
+      background: rgba(255,255,255,0.98) !important;
+      backdrop-filter: blur(12px) !important;
+    }
+    #mobile-menu .rounded-l-3xl {
+      border-radius: 1.5rem 0 0 1.5rem !important;
+      box-shadow: 0 4px 24px 0 rgba(59,130,246,0.10);
+    }
+    #mobile-menu a, #mobile-menu button {
+      font-weight: 500;
+      color: #1e293b;
+      border-radius: 0.9rem;
+      transition: background 0.18s, color 0.18s;
+    }
+    #mobile-menu a:hover, #mobile-menu button:hover, #mobile-menu a:focus, #mobile-menu button:focus {
+      background: #e6f0ff;
+      color: #2563eb;
+    }
+    #mobile-menu .nav-active {
+      background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+      color: #2563eb !important;
+      border: 1.5px solid #b6d2ff;
+      font-weight: 600;
+    }
+  </style>
+  <style>
+    .nav-active, .menu-dropdown .nav-active {
+      background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+      color: #2563eb !important;
+      border-radius: 0.9rem;
+      box-shadow: 0 2px 8px 0 rgba(59,130,246,0.10);
+      border: 1.5px solid #b6d2ff;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 font-inter has-sticky">
+
+  <!-- Fixed Top Navbar: Single Source of Truth (imported from src/components/navbar.html) -->
+  <!-- Liquid Glass Plate (Desktop Only) -->
+  <nav class="fixed top-0 left-0 w-full z-50 glass-nav-bar liquid-glass-navbar" style="backdrop-filter: blur(18px) saturate(180%);-webkit-backdrop-filter: blur(18px) saturate(180%); background: transparent; box-shadow: none; border-bottom: none;">
+    <!-- SVG Lensing/Refraction Filter for Liquid Glass Effect -->
+  <!-- Glass Plate with Lensing Effect Only (No Morph) -->
+  <!-- <div class="hidden md:block absolute left-1/2 top-0 -translate-x-1/2 z-0" style="width: 96vw; max-width: 1600px; height: 90px; filter: url(#liquidGlassLense); background: rgba(255,255,255,0.90); border-radius: 0 0 2.5rem 2.5rem; box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 2px 16px 0 rgba(0,122,255,0.08); border-bottom: 2px solid rgba(0,122,255,0.10); pointer-events: none;"></div> -->
+  <div class="max-w-auto mx-auto flex items-center justify-between px-4 md:px-8 relative liquid-glass-inner" style="height: 72px; background: rgba(255,255,255,0.82); border-radius: 0; box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); border-bottom: 2px solid rgba(0,122,255,0.13); position:relative; z-index:1;">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
+      </a>
+      <!-- Desktop Menu Only (hide mobile nav on desktop) -->
+  <ul id="main-menu-desktop" class="hidden lg:flex items-center gap-2 font-medium text-lg">
+        <li><a href="index.html" class="nav-active">Home</a></li>
+        <li class="relative group">
+          <button class="flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+            Services <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] menu-dropdown opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40">
+            <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Mutual Funds/SIP</a></li>
+            <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Insurance</a></li>
+            <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Loans</a></li>
+            <li><a href="itr.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">IT Filing & GST</a></li>
+            <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Other Services</a></li>
+          </ul>
+        </li>
+        <li><a href="#about" class="px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+        <li><a href="#team" class="px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+        <li><a href="#contact" class="px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
+        <li class="relative group">
+          <button class="px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+            More <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] menu-dropdown opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40">
+            <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Certification</a></li>
+            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Risk Profiler</a></li>
+            <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Disclosure</a></li>
+          </ul>
+        </li>
+        <li><a href="login.html" class="">Login</a></li>
+      </ul>
+      <!-- Hamburger menu toggler for mobile/tablet -->
+  <button id="menu-toggle" class="lg:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center ml-2" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" style="display: flex; z-index: 1002;">
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Mobile menu overlay and drawer -->
+  <div id="mobile-menu" class="lg:hidden fixed top-0 right-0 z-[9999] hidden w-full h-full">
+        <!-- Overlay -->
+  <div id="mobile-menu-overlay" class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-blue-100/60 to-blue-200/60 backdrop-blur-xl transition-opacity duration-300 opacity-100 m-0 p-0" tabindex="-1" aria-label="Close menu overlay" style="z-index:9998;"></div>
+        <!-- Drawer: always anchored to right edge -->
+        <div class="mobile-drawer fixed right-0 w-[88vw] max-w-xs bg-white/80 rounded-l-2xl shadow-2xl flex flex-col border-l border-blue-100 animate-slide-in" style="z-index:10000; top:72px; height:calc(100vh - 72px); overflow-y:auto; backdrop-filter: blur(32px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 2px 16px 0 rgba(0,122,255,0.08), -8px 0 16px 0 rgba(59,130,246,0.07);">
+          <div class="flex items-center justify-between px-7 py-6 border-b border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-tl-3xl" style="backdrop-filter: blur(12px);">
+            <a href="index.html" class="flex items-center gap-2">
+              <img src="/img/logo.png" alt="Logo" class="h-11 w-auto drop-shadow" />
+            </a>
+            <button id="menu-close" class="text-3xl p-3 rounded-full hover:bg-blue-100 focus:outline-none text-blue-600 transition-all duration-200 shadow-lg border border-blue-100" aria-label="Close menu" style="min-width:48px; min-height:48px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.85);">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:flex-start;">
+            <ul class="px-2 py-3 space-y-1 text-[15px]">
+              <li><a href="login.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-sign-in-alt w-5"></i> Login</a></li>
+              <li><a href="index.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-home w-5"></i> Home</a></li>
+              <!-- Services (collapsible) -->
+              <li class="relative">
+                <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-services" aria-expanded="false">
+                  <span class="flex items-center gap-3"><i class="fas fa-briefcase w-5"></i> Services</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <ul id="m-services" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                  <li><a href="sip.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-chart-line w-4"></i> Mutual Funds/SIP</a></li>
+                  <li><a href="ins.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-shield-alt w-4"></i> Insurance</a></li>
+                  <li><a href="loan.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-university w-4"></i> Loans</a></li>
+                  <li><a href="itr.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-invoice w-4"></i> IT Filing & GST</a></li>
+                  <li><a href="other.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-ellipsis-h w-4"></i> Other Services</a></li>
+                </ul>
+              </li>
+              <li><a href="#about" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-user w-5"></i> About</a></li>
+              <li><a href="#team" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-users w-5"></i> Team</a></li>
+              <li><a href="#contact" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-envelope w-5"></i> Contact</a></li>
+              <!-- More (collapsible) -->
+              <li class="relative">
+                <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-more" aria-expanded="false">
+                  <span class="flex items-center gap-3"><i class="fas fa-ellipsis-v w-5"></i> More</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <ul id="m-more" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                  <li><a href="cert.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-certificate w-4"></i> Certification</a></li>
+                  <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-user-shield w-4"></i> Risk Profiler</a></li>
+                  <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-alt w-4"></i> Disclosure</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div class="px-2 pt-3 pb-4 border-t border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-bl-2xl mt-1">
+              <a href="enquiry.html" class="block w-full text-center bg-gradient-to-r from-blue-500 to-blue-400 text-white font-bold py-2.5 rounded-lg shadow hover:from-blue-700 hover:to-blue-600 transition">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+<style>
+@keyframes slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.animate-slide-in {
+  animation: slide-in 0.35s cubic-bezier(.4,1.6,.6,1);
+}
+@media (max-width: 1023px) {
+  #mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    max-width: 400px;
+    height: 100vh;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(18px) saturate(180%);
+    z-index: 12000;
+    box-shadow: -2px 0 24px 0 rgba(59,130,246,0.10);
+    transition: transform 0.35s cubic-bezier(.4,1.6,.6,1), opacity 0.25s;
+    overflow-y: auto;
+  }
+  #mobile-menu .rounded-l-3xl {
+    border-radius: 1.5rem 0 1.5rem 1.5rem !important;
+    box-shadow: 0 4px 24px 0 rgba(59,130,246,0.10);
+    background: rgba(255,255,255,0.98);
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    padding-bottom: 1.5rem;
+  }
+  #mobile-menu ul li a, #mobile-menu ul li button {
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: #1e293b;
+    border-radius: 0.9rem;
+    padding: 0.85rem 1.2rem;
+    background: none;
+    transition: background 0.18s, color 0.18s;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  #mobile-menu ul li a:hover, #mobile-menu ul li button:hover, #mobile-menu ul li a:focus, #mobile-menu ul li button:focus {
+    background: #e6f0ff;
+    color: #2563eb;
+  }
+  #mobile-menu ul li .active, #mobile-menu ul li .nav-active {
+    background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+    color: #2563eb !important;
+    border: 1.5px solid #b6d2ff;
+    font-weight: 600;
+  }
+  #mobile-menu .px-6.py-4 {
+    background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+}
+</style>
+      </div>
+    </div>
+     
+  </nav>
+  
+
+ 
+   <!-- Main Content (replace with your ITR/GST content) -->
+    <section class="hero-section relative py-16 md:py-24 flex items-center justify-center overflow-hidden mt-[80px] section-separator tint-1">
       <div class="relative z-10 max-w-3xl mx-auto text-center">
-        <h1 class="text-3xl md:text-5xl font-extrabold text-orange-900 mb-4 animate-fade-in">ITR & <span class="text-orange-600">GST Filing</span> Services</h1>
-        <p class="text-lg md:text-2xl text-orange-800 mb-8 animate-fade-in delay-100">Hassle-free tax filing, GST registration, and compliance for individuals & businesses.</p>
-        <div class="hero-options flex flex-wrap justify-center gap-4 mb-8 animate-fade-in delay-200">
-          <button class="option-btn flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-orange-100">
-            <i class="fas fa-file-invoice-dollar text-orange-500"></i>
-            <span class="font-medium text-orange-900">ITR Filing</span>
-          </button>
-          <button class="option-btn flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-orange-100">
-            <i class="fas fa-file-contract text-blue-500"></i>
-            <span class="font-medium text-orange-900">GST Registration</span>
-          </button>
-          <button class="option-btn flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-orange-100">
-            <i class="fas fa-balance-scale text-green-500"></i>
-            <span class="font-medium text-orange-900">Tax Compliance</span>
-          </button>
-        </div>
-        <a href="#enquiry" class="get-insured-btn inline-block bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-orange-700 transition duration-300 ease-in-out transform hover:-translate-y-1">Get Started</a>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-blue-900 mb-4 animate-fade-in">IT Filing & <span class="text-blue-600">GST</span> Services</h1>
+        <p class="text-lg md:text-2xl text-blue-800 mb-8 animate-fade-in delay-100">Fast, accurate, and hassle-free Income Tax Return and GST filing for individuals and businesses.</p>
+        <a href="#enquiry" class="get-insured-btn inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:-translate-y-1">Get Started</a>
       </div>
     </section>
 
-    <!-- Services Cards Section -->
-    <section class="container mx-auto px-6 py-12">
-      <div class="max-w-4xl mx-auto mb-10 animate-fade-in-up">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div class="bg-orange-50 border border-orange-100 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition">
-            <i class="fas fa-file-invoice-dollar text-orange-500 text-3xl mb-3"></i>
-            <span class="font-semibold text-lg text-orange-900 mb-2">ITR Filing</span>
-            <p class="text-sm text-gray-600 text-center">Income tax return filing for salaried, business, and professionals.</p>
-          </div>
-          <div class="bg-orange-50 border border-orange-100 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition">
-            <i class="fas fa-file-contract text-blue-500 text-3xl mb-3"></i>
-            <span class="font-semibold text-lg text-orange-900 mb-2">GST Registration</span>
-            <p class="text-sm text-gray-600 text-center">GST registration and monthly/quarterly return filing.</p>
-          </div>
-          <div class="bg-orange-50 border border-orange-100 rounded-xl p-6 flex flex-col items-center shadow hover:shadow-lg transition">
-            <i class="fas fa-balance-scale text-green-500 text-3xl mb-3"></i>
-            <span class="font-semibold text-lg text-orange-900 mb-2">Tax Compliance</span>
-            <p class="text-sm text-gray-600 text-center">TDS, advance tax, and other compliance services.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Interactive Enquiry Form (refined for clarity and spacing) -->
-  <section class="container-sm py-16 mt-16">
-        <form id="enquiry" class="bg-white rounded-xl shadow-lg p-8 max-w-xl mx-auto space-y-6 border border-orange-200">
-          <h2 class="text-2xl font-bold mb-4 text-center">Get Your ITR/GST Quote</h2>
-          <div class="form-group">
-            <label class="form-label" for="name">Full Name</label>
-            <input class="form-input" type="text" id="name" name="name" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="email">Email Address</label>
-            <input class="form-input" type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="phone">Phone Number</label>
-            <input class="form-input" type="tel" id="phone" name="phone" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="service-type">Service Type</label>
-            <select class="form-select" id="service-type" name="service-type" required>
-              <option value="">Select Service</option>
-              <option value="itr">ITR Filing</option>
-              <option value="gst">GST Registration</option>
-              <option value="tax">Tax Compliance</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="pan">Upload PAN</label>
-            <input type="file" class="form-input" id="pan" name="pan" accept=".jpg,.jpeg,.png,.pdf" />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="aadhaar">Upload Aadhaar</label>
-            <input type="file" class="form-input" id="aadhaar" name="aadhaar" accept=".jpg,.jpeg,.png,.pdf" />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="message">Additional Details</label>
-            <textarea class="form-textarea" id="message" name="message" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn btn-success w-full">Send Enquiry</button>
-        </form>
-      </section>
-
-    <!-- Enquiry Form Validation Script -->
-  <script type="module" src="src/enquiry-validation.js"></script>
-
-    <!-- Testimonials Slider -->
-    <div class="max-w-3xl mx-auto my-20 animate-fade-in-up">
-        <h3 class="text-xl font-bold text-orange-800 mb-4 flex items-center gap-2"><i class="fas fa-comments text-orange-400"></i> What Our Clients Say</h3>
-        <div class="relative bg-white rounded-xl shadow p-6 border border-orange-100 overflow-hidden">
-          <div class="testimonial-slider flex transition-transform duration-500" style="will-change: transform;">
-            <div class="testimonial-slide w-full flex-shrink-0">
-              <p class="text-lg text-gray-700 italic mb-2">“Filing my ITR was so easy and quick. The team handled everything professionally.”</p>
-              <div class="flex items-center gap-3">
-                <img src="/img/testimonial-1.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-orange-200">
-                <span class="font-semibold text-orange-700">Rajesh Kumar</span>
-              </div>
-            </div>
-            <div class="testimonial-slide w-full flex-shrink-0 hidden">
-              <p class="text-lg text-gray-700 italic mb-2">“Got my GST registration done without any hassle. Highly recommend Soumitra’s team!”</p>
-              <div class="flex items-center gap-3">
-                <img src="/img/testimonial-2.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-orange-200">
-                <span class="font-semibold text-orange-700">Priya Sharma</span>
-              </div>
-            </div>
-          </div>
-          <div class="flex justify-end gap-2 mt-4">
-            <button type="button" class="testimonial-prev w-8 h-8 rounded-full bg-orange-100 hover:bg-orange-200 flex items-center justify-center text-orange-700"><i class="fas fa-chevron-left"></i></button>
-            <button type="button" class="testimonial-next w-8 h-8 rounded-full bg-orange-100 hover:bg-orange-200 flex items-center justify-center text-orange-700"><i class="fas fa-chevron-right"></i></button>
-          </div>
-        </div>
-      </div>
-
-  <!-- FAQ Accordion -->
-  <div class="max-w-3xl mx-auto animate-fade-in-up" style="margin-top: 60px; margin-bottom: 80px;">
-        <h3 class="text-xl font-bold text-orange-800 mb-4 flex items-center gap-2"><i class="fas fa-question-circle text-orange-400"></i> ITR & GST FAQs</h3>
-        <div class="space-y-3" id="faq-accordion">
-          <div class="bg-white border border-orange-100 rounded-lg shadow-sm">
-            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-orange-800 focus:outline-none faq-toggle">
-              What documents are needed for ITR filing?
-              <i class="fas fa-chevron-down transition-transform"></i>
-            </button>
-            <div class="faq-content px-4 pb-3 text-gray-600 hidden">PAN, Aadhaar, Form 16, bank statements, and investment proofs.</div>
-          </div>
-          <div class="bg-white border border-orange-100 rounded-lg shadow-sm">
-            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-orange-800 focus:outline-none faq-toggle">
-              Can you help with GST registration?
-              <i class="fas fa-chevron-down transition-transform"></i>
-            </button>
-            <div class="faq-content px-4 pb-3 text-gray-600 hidden">Yes, we assist with GST registration and regular return filing for businesses.</div>
-          </div>
-          <div class="bg-white border border-orange-100 rounded-lg shadow-sm">
-            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-orange-800 focus:outline-none faq-toggle">
-              Is my data safe?
-              <i class="fas fa-chevron-down transition-transform"></i>
-            </button>
-            <div class="faq-content px-4 pb-3 text-gray-600 hidden">Absolutely. We ensure complete confidentiality and data security for all clients.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white py-16">
+    <section class="py-20 md:py-28 tint-2 section-separator">
       <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-    
-          <!-- Office Info -->
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-3">Our IT & GST Services</h2>
+          <p class="text-lg text-gray-600">Expert assistance for all your tax and GST needs.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
+          <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all">
+            <div class="bg-blue-600 rounded-full p-4 mb-4"><i class="fas fa-file-invoice-dollar text-white text-2xl"></i></div>
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Income Tax Return Filing</h3>
+            <p class="text-gray-600 mb-6">Accurate and timely ITR filing for individuals, professionals, and businesses.</p>
+            <a href="#enquiry" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="bg-white rounded-2xl shadow-lg border border-green-100 p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all">
+            <div class="bg-green-600 rounded-full p-4 mb-4"><i class="fas fa-file-invoice text-white text-2xl"></i></div>
+            <h3 class="text-xl font-bold text-green-800 mb-2">GST Registration & Filing</h3>
+            <p class="text-gray-600 mb-6">End-to-end GST registration, return filing, and compliance support.</p>
+            <a href="#enquiry" class="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="enquiry" class="py-20 md:py-28 section-separator">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="max-w-3xl mx-auto animate-fade-in-up bg-white rounded-xl shadow-lg p-8 border border-blue-100">
+          <form id="enquiry-form" class="bg-white rounded-xl shadow-lg p-8 max-w-xl mx-auto space-y-6 border border-blue-200">
+            <h2 class="text-2xl font-bold mb-4 text-center">Enquire for IT/GST Services</h2>
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name</label>
+              <input class="form-input" type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Mobile Number</label>
+              <input class="form-input" type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="service">Service Interested In</label>
+              <select class="form-select" id="service" name="service" required>
+                <option value="">Select Service</option>
+                <option>Income Tax Return Filing</option>
+                <option>GST Registration</option>
+                <option>GST Return Filing</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Additional Details</label>
+              <textarea class="form-textarea" id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success w-full">Submit Now</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (copied from loan.html for consistency) -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 md:px-8 animate__animated animate__fadeInUp">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 animate__animated animate__fadeInUp animate__delay-0.3s">
           <div>
             <h4 class="text-lg font-semibold mb-4">Office</h4>
             <p class="text-gray-400 mb-2">
@@ -259,22 +437,20 @@
               sgswamee.ib@gmail.com
             </p>
             <div class="flex space-x-3">
-              <a href="https://x.com/sgswamee" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+              <a href="https://x.com/sgswamee" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="Twitter">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+              <a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="YouTube">
                 <i class="fab fa-youtube"></i>
               </a>
-              <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/soumitra-goswami-a94570339/" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
           </div>
-    
-          <!-- Services -->
           <div>
             <h4 class="text-lg font-semibold mb-4">Services</h4>
             <ul class="space-y-2 text-gray-400">
@@ -285,8 +461,6 @@
               <li><a href="other.html" class="hover:text-white transition-colors">Add-on Services</a></li>
             </ul>
           </div>
-    
-          <!-- Quick Links -->
           <div>
             <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
             <ul class="space-y-2 text-gray-400">
@@ -297,8 +471,6 @@
               <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
             </ul>
           </div>
-    
-          <!-- Important Links -->
           <div>
             <h4 class="text-lg font-semibold mb-4">Important Links</h4>
             <ul class="space-y-2 text-gray-400">
@@ -310,282 +482,241 @@
             </ul>
           </div>
         </div>
-    
-        <!-- Bottom Bar -->
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 animate__animated animate__fadeInUp animate__delay-0.5s">
           <p>&copy; 2025 Soumitra Goswami. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
-        <!-- Floating Financial Tools Widget -->
-      <div id="widget-navbar" class="fixed bottom-20 left-6 z-50 flex flex-col items-start space-y-2 sm:bottom-6">
-          <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-24 h-24 flex items-center justify-center text-5xl focus:outline-none focus:ring-4 focus:ring-blue-400 transition-all">
-            <i class="fas fa-calculator"></i>
-          </button>
-          <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-3xl shadow-2xl p-8 w-[28rem] animate-fade-in-up">
-            <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
-            <div class="flex gap-2 mb-4">
-              <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
-              <button class="widget-tool-btn px-3 py-1 rounded-lg bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition text-sm" data-tool="emi-calc">EMI</button>
-              <button class="widget-tool-btn px-3 py-1 rounded-lg bg-orange-50 text-orange-700 font-semibold hover:bg-orange-100 transition text-sm" data-tool="ret-calc">Retirement</button>
-              <button class="widget-tool-btn px-3 py-1 rounded-lg bg-gray-50 text-gray-700 font-semibold hover:bg-gray-100 transition text-sm" data-tool="inf-calc">Inflation</button>
-            </div>
-
-            <!-- SIP Calculator -->
-            <div id="sip-calc" class="widget-tool">
-              <form id="sip-calc-form" class="space-y-2">
-                <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Monthly Investment (₹)" required /></div>
-                <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required /></div>
-                <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Investment Period (months)" required /></div>
-                <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Maturity Value" readonly /></div>
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-1 font-semibold">Calculate</button>
-              </form>
-            </div>
-
-            <!-- EMI Calculator -->
-            <div id="emi-calc" class="widget-tool hidden">
-              <form id="emi-calc-form" class="space-y-2">
-                <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Loan Amount (₹)" required /></div>
-                <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Interest Rate (%)" required /></div>
-                <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Tenure (months)" required /></div>
-                <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Monthly EMI" readonly /></div>
-                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-1 font-semibold">Calculate</button>
-              </form>
-            </div>
-
-            <!-- Retirement Calculator -->
-            <div id="ret-calc" class="widget-tool hidden">
-              <form id="ret-calc-form" class="space-y-2">
-                <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Savings (₹)" required /></div>
-                <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required /></div>
-                <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years to Grow" required /></div>
-                <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly /></div>
-                <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white rounded py-1 font-semibold">Calculate</button>
-              </form>
-            </div>
-
-            <!-- Inflation Calculator -->
-            <div id="inf-calc" class="widget-tool hidden">
-              <form id="inf-calc-form" class="space-y-2">
-                <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Value (₹)" required /></div>
-                <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Inflation Rate (%)" required /></div>
-                <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years" required /></div>
-                <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly /></div>
-                <button type="submit" class="w-full bg-gray-600 hover:bg-gray-700 text-white rounded py-1 font-semibold">Calculate</button>
-              </form>
-            </div>
+    <!-- Copyright strip -->
+    <div class="container-fluid copyright py-4 wow fadeIn" data-wow-delay="0.6s">
+      <div class="container">
+        <div class="row flex flex-col md:flex-row justify-between items-center">
+          <div class="col-md-6 text-center text-md-start mb-3 md:mb-0">
+            <a>AMFI Registered Mutual Fund Distributor: ARN-309045</a><br />
+            <a class="border-bottom" href="/pdf/privacypolicy.pdf" download>Privacy Policy</a> |
+            <a class="border-bottom" href="/pdf/termscondition.pdf" download>Terms and Conditions.</a>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            Designed By <br /><a class="border-bottom" href="">Sree Vinayaka Infotech</a>
           </div>
         </div>
-    
-        <!-- Footer End -->
-    
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright py-4 wow fadeIn" data-wow-delay="0.6s">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <a class="" >AMFI Registered Mutual Fund Distributor: ARN-309045</a><br>
-                        <a class="border-bottom" href="/pdf/privacypolicy.pdf" download>Privacy Policy</a> | 
-                        <a class="border-bottom" href="/pdf/termscondition.pdf" download>Terms and Conditions.</a>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        Designed By <br><a class="border-bottom" href="">Sree Vinayaka Infotech</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Copyright End -->
-         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-        <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu toggle
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
+      </div>
+    </div>
 
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      mobileMenu.classList.toggle('hidden');
+
+
+  <!-- Optional app mount -->
+  <div id="app"></div>
+
+  <!-- Floating Financial Tools Widget (from SIP page, large, left, visible) -->
+  <div id="widget-navbar" class="fixed bottom-20 left-6 z-50 flex flex-col items-start space-y-2 sm:bottom-6">
+    <button id="widget-toggle" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-24 h-24 flex items-center justify-center text-5xl focus:outline-none focus:ring-4 focus:ring-blue-400 transition-all">
+      <i class="fas fa-calculator"></i>
+    </button>
+    <div id="widget-menu" class="hidden bg-white border border-blue-200 rounded-3xl shadow-2xl p-8 w-[28rem] animate-fade-in-up">
+      <h4 class="font-bold text-blue-700 text-lg mb-3 flex items-center gap-2"><i class="fas fa-tools"></i> Financial Tools</h4>
+      <div class="flex gap-2 mb-4">
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition text-sm" data-tool="sip-calc">SIP</button>
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-green-50 text-green-700 font-semibold hover:bg-green-100 transition text-sm" data-tool="emi-calc">EMI</button>
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-orange-50 text-orange-700 font-semibold hover:bg-orange-100 transition text-sm" data-tool="ret-calc">Retirement</button>
+        <button class="widget-tool-btn px-3 py-1 rounded-lg bg-gray-50 text-gray-700 font-semibold hover:bg-gray-100 transition text-sm" data-tool="inf-calc">Inflation</button>
+      </div>
+      <!-- SIP Calculator -->
+      <div id="sip-calc" class="widget-tool">
+        <form id="sip-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Monthly Investment (₹)" required /></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required /></div>
+          <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Investment Period (months)" required /></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Maturity Value" readonly /></div>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+      <!-- EMI Calculator -->
+      <div id="emi-calc" class="widget-tool hidden">
+        <form id="emi-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Loan Amount (₹)" required /></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Interest Rate (%)" required /></div>
+          <div><input name="months" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Tenure (months)" required /></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Monthly EMI" readonly /></div>
+          <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+      <!-- Retirement Calculator -->
+      <div id="ret-calc" class="widget-tool hidden">
+        <form id="ret-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Savings (₹)" required /></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Expected Annual Return (%)" required /></div>
+          <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years to Grow" required /></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly /></div>
+          <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+      <!-- Inflation Calculator -->
+      <div id="inf-calc" class="widget-tool hidden">
+        <form id="inf-calc-form" class="space-y-2">
+          <div><input name="amount" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Current Value (₹)" required /></div>
+          <div><input name="rate" type="number" min="1" step="0.01" class="w-full border rounded px-2 py-1" placeholder="Inflation Rate (%)" required /></div>
+          <div><input name="years" type="number" min="1" class="w-full border rounded px-2 py-1" placeholder="Years" required /></div>
+          <div><input name="result" type="text" class="w-full border rounded px-2 py-1 bg-gray-50" placeholder="Future Value" readonly /></div>
+          <button type="submit" class="w-full bg-gray-600 hover:bg-gray-700 text-white rounded py-1 font-semibold">Calculate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendor scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Init WOW + UX scripts -->
+  <script>
+    new WOW().init();
+
+    // desktop dropdown hover intent
+    document.querySelectorAll('#main-menu-desktop .group').forEach(group => {
+      let t; const dd = group.querySelector('ul'); if (!dd) return;
+      const show = () => { clearTimeout(t); dd.style.opacity='1'; dd.style.pointerEvents='auto'; };
+      const hide = () => { t=setTimeout(()=>{ dd.style.opacity=''; dd.style.pointerEvents=''; }, 180); };
+      group.addEventListener('mouseenter', show);
+      group.addEventListener('mouseleave', hide);
+      group.addEventListener('focusin', show);
+      group.addEventListener('focusout', hide);
     });
 
-    // Close when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
+    // ripple
+    function createRipple(e) {
+      const target = e.currentTarget; const rect = target.getBoundingClientRect();
+      const d = Math.max(target.clientWidth, target.clientHeight); const r = d / 2;
+      const circle = document.createElement('span'); circle.className = 'ripple';
+      circle.style.width = circle.style.height = d + 'px';
+      circle.style.left = (e.clientX - rect.left - r) + 'px';
+      circle.style.top  = (e.clientY - rect.top  - r) + 'px';
+      target.querySelector('.ripple')?.remove(); target.appendChild(circle);
+    }
+    document.querySelectorAll('nav a, .btn, button').forEach(el => el.addEventListener('click', createRipple));
+
+  // mobile menu & accordions handled by src/navbar-mobile.js
+
+    // OTP modal logic
+    (function () {
+      let pending = null, otp = null;
+      const modal = document.getElementById('otp-modal'),
+            input = document.getElementById('otp-input'),
+            btnV  = document.getElementById('otp-verify-btn'),
+            btnC  = document.getElementById('otp-cancel-btn'),
+            err   = document.getElementById('otp-error'),
+            demo  = document.getElementById('otp-demo-value');
+
+      function show(cb) {
+        otp = String(Math.floor(100000 + Math.random() * 900000));
+        input.value = ''; err.classList.add('hidden'); demo.textContent = otp;
+        modal.classList.remove('hidden'); input.focus(); pending = cb;
       }
-    });
-  }
+      function hide() { modal.classList.add('hidden'); pending = null; }
 
-  // Mobile dropdown accordion (Services, More)
-  document.querySelectorAll('.accordion-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
+      btnV?.addEventListener('click', () => {
+        if (input.value === otp) { err.classList.add('hidden'); hide(); pending && pending(); }
+        else err.classList.remove('hidden');
+      });
+      btnC?.addEventListener('click', hide);
+      input?.addEventListener('keydown', e => { if (e.key === 'Enter') btnV.click(); });
 
-      const targetId = btn.getAttribute('data-target');
-      const submenu = document.getElementById(targetId);
+      const form = document.getElementById('contact-form');
+      form?.addEventListener('submit', e => {
+        e.preventDefault();
+        show(() => form.submit()); // replace with fetch() to avoid reload
+      });
+    })();
+  </script>
 
-      if (submenu) {
-        submenu.classList.toggle('hidden');
-        
-        // Optional: rotate chevron icon
-        const icon = btn.querySelector('.fas');
-        if (icon) icon.classList.toggle('rotate-180');
-      }
-    });
-  });
-});
-</script>
-        <!-- Initialize WOW animations -->
-        <script>
-            // Initialize WOW.js
-            new WOW().init();
-            
-            // Enhanced navbar scroll effects
-            let lastScrollTop = 0;
-            window.addEventListener('scroll', function() {
-                const navbar = document.querySelector('nav');
-                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (currentScroll > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                
-                // Add hide/show navbar on scroll
-                if (currentScroll > lastScrollTop && currentScroll > 100) {
-                    // Scrolling down
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    // Scrolling up
-                    navbar.style.transform = 'translateY(0)';
-                }
-                
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-            });
-            
-            // Add smooth transitions for navbar links
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-2px)';
-                });
-                
-                link.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // Add ripple effect to buttons and links
-            function createRipple(event) {
-                const button = event.currentTarget;
-                const circle = document.createElement('span');
-                const diameter = Math.max(button.clientWidth, button.clientHeight);
-                const radius = diameter / 2;
-                
-                circle.style.width = circle.style.height = `${diameter}px`;
-                circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-                circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-                circle.classList.add('ripple');
-                
-                const ripple = button.getElementsByClassName('ripple')[0];
-                if (ripple) {
-                    ripple.remove();
-                }
-                
-                button.appendChild(circle);
-            }
-            
-            // Apply ripple effect to navbar links
-            document.querySelectorAll('nav a, .btn').forEach(element => {
-                element.addEventListener('click', createRipple);
-            });
-            
-            // Intersection Observer for fade-in animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe elements for animation
-            document.querySelectorAll('.iframe-container, .footer, .copyright').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s ease-out';
-                observer.observe(el);
-            });
-        </script>
+  <!-- Calculators -->
+  <script type="module" src="/src/financial-tools.js"></script>
 
-    <script>
-      // Testimonial slider logic
-      document.addEventListener('DOMContentLoaded', function() {
-        let idx = 0;
-        const slides = document.querySelectorAll('.testimonial-slide');
-        const prev = document.querySelector('.testimonial-prev');
-        const next = document.querySelector('.testimonial-next');
-        function showSlide(i) {
-          slides.forEach((slide, j) => {
-            slide.classList.toggle('hidden', j !== i);
-          });
-        }
-        if (prev && next && slides.length > 1) {
-          prev.addEventListener('click', function() {
-            idx = (idx - 1 + slides.length) % slides.length;
-            showSlide(idx);
-          });
-          next.addEventListener('click', function() {
-            idx = (idx + 1) % slides.length;
-            showSlide(idx);
-          });
-          showSlide(idx);
-        }
-        // FAQ accordion logic
-        document.querySelectorAll('.faq-toggle').forEach(btn => {
-          btn.addEventListener('click', function() {
-            const content = btn.parentElement.querySelector('.faq-content');
-            if (content) {
-              content.classList.toggle('hidden');
-              btn.querySelector('i').classList.toggle('rotate-180');
-            }
-          });
+  <script>
+    // Floating widget navbar toggle (from SIP page)
+    document.addEventListener('DOMContentLoaded', function() {
+      const widgetToggle = document.getElementById('widget-toggle');
+      const widgetMenu = document.getElementById('widget-menu');
+      if (widgetToggle && widgetMenu) {
+        widgetToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          widgetMenu.classList.toggle('hidden');
         });
-      });
-    </script>
-  </body>
-    <!-- Global Financial Tools Widget Navbar -->
-    
+        document.addEventListener('click', function() {
+          if (!widgetMenu.classList.contains('hidden')) widgetMenu.classList.add('hidden');
+        });
+        widgetMenu.addEventListener('click', function(e) { e.stopPropagation(); });
+      }
+    });
+  </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('#hero-carousel .carousel-slide');
+    const dots = document.querySelectorAll('#carousel-dots button');
+    let current = 0, timer = null, animating = false;
 
-    <script>
-      // Floating widget navbar logic
-      document.addEventListener('DOMContentLoaded', function() {
-        const widgetToggle = document.getElementById('widget-toggle');
-        const widgetMenu = document.getElementById('widget-menu');
-        if(widgetToggle && widgetMenu) {
-          widgetToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            widgetMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', function(e) {
-            if (!widgetMenu.classList.contains('hidden')) {
-              widgetMenu.classList.add('hidden');
-            }
-          });
-          widgetMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-          });
-        }
-      });
-    </script>
+    function showSlide(idx) {
+      if (animating || idx === current) return;
+      animating = true;
+      const prev = current;
+      const next = idx;
+
+      // Fade out previous
+      slides[prev].classList.remove('opacity-100');
+      slides[prev].classList.add('opacity-0');
+
+      // After fade out, hide previous, show next, then fade in next
+      setTimeout(() => {
+        slides[prev].classList.add('hidden');
+        slides[next].classList.remove('hidden', 'opacity-0');
+        // Force reflow for transition
+        void slides[next].offsetWidth;
+        slides[next].classList.add('opacity-100');
+
+        // Update dots
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('bg-blue-300', i === next);
+          dot.classList.toggle('bg-blue-100', i !== next);
+        });
+
+        current = next;
+        animating = false;
+        resetTimer();
+      }, 700); // match your transition duration
+    }
+
+    function nextSlide() {
+      showSlide((current + 1) % slides.length);
+    }
+    function prevSlide() {
+      showSlide((current - 1 + slides.length) % slides.length);
+    }
+    function resetTimer() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(nextSlide, 7000);
+    }
+
+    document.getElementById('carousel-prev').onclick = prevSlide;
+    document.getElementById('carousel-next').onclick = nextSlide;
+    dots.forEach((dot, i) => {
+      dot.onclick = () => showSlide(i);
+    });
+
+    // Initial state: only first slide visible and fully opaque
+    slides.forEach((slide, i) => {
+      if (i === 0) {
+        slide.classList.remove('hidden', 'opacity-0');
+        slide.classList.add('opacity-100');
+      } else {
+        slide.classList.add('hidden', 'opacity-0');
+        slide.classList.remove('opacity-100');
+      }
+    });
+    dots[0].classList.add('bg-blue-300');
+    resetTimer();
+  });
+</script>
+</body>
 </html>
+

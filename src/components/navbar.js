@@ -1,3 +1,29 @@
+// --- Premium glass nav pill animation ---
+document.addEventListener('DOMContentLoaded', function () {
+  const menu = document.querySelector('.glass-nav-menu');
+  const pill = document.querySelector('.glass-nav-pill');
+  const items = Array.from(menu.querySelectorAll('.glass-nav-item, .glass-nav-btn'));
+  function movePillTo(el) {
+    const menuRect = menu.getBoundingClientRect();
+    const rect = el.getBoundingClientRect();
+    pill.style.left = (rect.left - menuRect.left) + 'px';
+    pill.style.width = rect.width + 'px';
+  }
+  // Set initial pill position
+  const active = menu.querySelector('.active') || items[0];
+  movePillTo(active);
+  // Animate pill on hover/focus/click
+  items.forEach(item => {
+    item.addEventListener('mouseenter', () => movePillTo(item));
+    item.addEventListener('focus', () => movePillTo(item));
+    item.addEventListener('click', () => {
+      items.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      movePillTo(item);
+    });
+  });
+  menu.addEventListener('mouseleave', () => movePillTo(menu.querySelector('.active') || items[0]));
+});
 // Modern Premium Navbar Interactivity
 // Handles mobile drawer, dropdowns, and accessibility
 

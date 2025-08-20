@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     
-    <script type="module" crossorigin src="/assets/main-10c4572a.js"></script>
-    <script type="module" crossorigin src="/assets/enquiry-validation-696a9777.js"></script>
-    <link rel="stylesheet" href="/assets/style-e857ab2b.css">
+    <script type="module" crossorigin src="/assets/ins-42aa356c.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/main-b4adef48.js">
+    <link rel="stylesheet" href="/assets/style-fa1360ea.css">
   </head>
   <body class="bg-white text-gray-900 font-inter">
     <style>
@@ -35,32 +35,6 @@
     </style>
 
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu toggle and accordions (from login/index.html)
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  if (!toggle || !menu) return;
-  const open = () => { menu.classList.remove('hidden'); menu.classList.add('show'); toggle.setAttribute('aria-expanded','true'); };
-  const close = () => { menu.classList.add('hidden'); menu.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); };
-  toggle.addEventListener('click', e => { e.stopPropagation(); (menu.classList.contains('hidden') ? open : close)(); });
-  document.addEventListener('click', e => {
-    if (!menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== toggle) close();
-  });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
-  // collapsible submenus
-  menu.querySelectorAll('[data-accordion]').forEach(btn => {
-    const sel = btn.getAttribute('data-accordion');
-    const panel = document.querySelector(sel);
-    btn.addEventListener('click', () => {
-      const openNow = !panel.classList.contains('hidden');
-      menu.querySelectorAll('.mobile-drawer ul[id]').forEach(p => p.classList.add('hidden'));
-      if (!openNow) panel.classList.remove('hidden'); else panel.classList.add('hidden');
-      btn.setAttribute('aria-expanded', String(!openNow));
-    });
-  });
-});
-</script>
     <!-- Fixed Top Navbar (EXACT COPY from index.html for 100% consistency) -->
     <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
       <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: 72px">
@@ -69,8 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </a>
 
         <!-- Desktop Menu -->
-        <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
-          <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
+  <ul id="main-menu-desktop" class="hidden lg:flex items-center gap-2">
           <li><a href="index.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
           <li class="relative group">
             <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
@@ -98,48 +71,69 @@ document.addEventListener('DOMContentLoaded', function() {
               <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Disclosure</a></li>
             </ul>
           </li>
+          <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
         </ul>
 
         <!-- Mobile toggle -->
-        <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
+  <button id="menu-toggle" class="lg:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
                 aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
           <i class="fas fa-bars"></i>
         </button>
       </div>
 
-      <!-- Mobile Drawer -->
-      <div id="mobile-menu" class="md:hidden hidden mobile-drawer bg-white border-t border-blue-100 shadow-2xl">
-        <ul class="px-4 py-3 space-y-1">
-          <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
-          <li><a href="index.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
-          <!-- Services (collapsible) -->
-          <li>
-            <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-accordion="#m-services" aria-expanded="false">
-              Services <i class="fas fa-chevron-down text-xs"></i>
+      <!-- Mobile Drawer (copied from index.html for full parity) -->
+  <div id="mobile-menu" class="lg:hidden fixed top-0 right-0 z-[9999] hidden w-full h-full">
+        <!-- Overlay -->
+        <div id="mobile-menu-overlay" class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-blue-100/60 to-blue-200/60 backdrop-blur-xl transition-opacity duration-300 opacity-100 m-0 p-0" tabindex="-1" aria-label="Close menu overlay" style="z-index:9998;"></div>
+        <!-- Drawer: always anchored to right edge -->
+        <div class="mobile-drawer fixed right-0 w-[88vw] max-w-xs bg-white/80 rounded-l-2xl shadow-2xl flex flex-col border-l border-blue-100 animate-slide-in" style="z-index:10000; top:72px; height:calc(100vh - 72px); overflow-y:auto; backdrop-filter: blur(32px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 2px 16px 0 rgba(0,122,255,0.08), -8px 0 16px 0 rgba(59,130,246,0.07);">
+          <div class="flex items-center justify-between px-7 py-6 border-b border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-tl-3xl" style="backdrop-filter: blur(12px);">
+            <a href="index.html" class="flex items-center gap-2">
+              <img src="/img/logo.png" alt="Logo" class="h-11 w-auto drop-shadow" />
+            </a>
+            <button id="menu-close" class="text-3xl p-3 rounded-full hover:bg-blue-100 focus:outline-none text-blue-600 transition-all duration-200 shadow-lg border border-blue-100" aria-label="Close menu" style="min-width:48px; min-height:48px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.85);">
+              <i class="fas fa-times"></i>
             </button>
-            <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
-              <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
-              <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
-              <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
-              <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
-              <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:flex-start;">
+            <ul class="px-2 py-3 space-y-1 text-[15px]">
+              <li><a href="login.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-sign-in-alt w-5"></i> Login</a></li>
+              <li><a href="index.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-home w-5"></i> Home</a></li>
+              <!-- Services (collapsible) -->
+              <li class="relative">
+                <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-services" aria-expanded="false">
+                  <span class="flex items-center gap-3"><i class="fas fa-briefcase w-5"></i> Services</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <ul id="m-services" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                  <li><a href="sip.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-chart-line w-4"></i> Mutual Funds/SIP</a></li>
+                  <li><a href="ins.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-shield-alt w-4"></i> Insurance</a></li>
+                  <li><a href="loan.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-university w-4"></i> Loans</a></li>
+                  <li><a href="itr.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-invoice w-4"></i> IT Filing & GST</a></li>
+                  <li><a href="other.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-ellipsis-h w-4"></i> Other Services</a></li>
+                </ul>
+              </li>
+              <li><a href="#about" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-user w-5"></i> About</a></li>
+              <li><a href="#team" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-users w-5"></i> Team</a></li>
+              <li><a href="#contact" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-envelope w-5"></i> Contact</a></li>
+              <!-- More (collapsible) -->
+              <li class="relative">
+                <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-more" aria-expanded="false">
+                  <span class="flex items-center gap-3"><i class="fas fa-ellipsis-v w-5"></i> More</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <ul id="m-more" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                  <li><a href="cert.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-certificate w-4"></i> Certification</a></li>
+                  <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-user-shield w-4"></i> Risk Profiler</a></li>
+                  <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-alt w-4"></i> Disclosure</a></li>
+                </ul>
+              </li>
             </ul>
-          </li>
-          <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
-          <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
-          <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
-          <!-- More (collapsible) -->
-          <li>
-            <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-accordion="#m-more" aria-expanded="false">
-              More <i class="fas fa-chevron-down text-xs"></i>
-            </button>
-            <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
-              <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
-              <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
-              <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
-            </ul>
-          </li>
-        </ul>
+            <div class="px-2 pt-3 pb-4 border-t border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-bl-2xl mt-1">
+              <a href="enquiry.html" class="block w-full text-center bg-gradient-to-r from-blue-500 to-blue-400 text-white font-bold py-2.5 rounded-lg shadow hover:from-blue-700 hover:to-blue-600 transition">Enquire Now</a>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -199,8 +193,8 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </div>
 
-    <!-- Hero Section (refined for clarity and spacing) -->
-    <section class="hero-section relative py-16 md:py-24 flex items-center justify-center overflow-hidden mt-[80px] section-separator section-tint-1">
+    <!-- Hero Section (visually enhanced) -->
+    <section class="hero-section relative pt-32 pb-24 md:pt-40 md:pb-32 flex items-center justify-center overflow-hidden section-separator section-tint-1">
       <div class="absolute inset-0 pointer-events-none select-none opacity-20" style="background: url('/img/bg.png') center/cover no-repeat;"></div>
       <div class="absolute inset-0 pointer-events-none select-none z-0">
         <!-- Decorative SVG background (unchanged) -->
@@ -224,157 +218,177 @@ document.addEventListener('DOMContentLoaded', function() {
           <filter id="blur2"><feGaussianBlur stdDeviation="20" /></filter>
         </svg>
       </div>
-      <div class="relative z-10 max-w-3xl mx-auto text-center">
-        <h1 class="text-3xl md:text-5xl font-extrabold text-green-900 mb-4 animate-fade-in">Protect Your Future with <span class="text-green-600">Insurance</span></h1>
-        <p class="text-lg md:text-2xl text-green-800 mb-8 animate-fade-in delay-100">Comprehensive insurance solutions for you and your family. Secure your health, life, and assets today.</p>
-        <div class="hero-options flex flex-wrap justify-center gap-4 mb-8 animate-fade-in delay-200">
-          <button class="option-btn flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-green-100">
-            <i class="fas fa-heartbeat text-red-500"></i>
-            <span class="font-medium text-green-900">Health Insurance</span>
+      <div class="relative z-10 w-full max-w-4xl mx-auto text-center px-4 md:px-0">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-green-900 mb-6 animate-fade-in">Protect Your Future with <span class="text-green-600">Insurance</span></h1>
+        <p class="text-xl md:text-2xl text-green-800 mb-10 animate-fade-in delay-100">Comprehensive insurance solutions for you and your family. Secure your health, life, and assets today.</p>
+        <div class="hero-options flex flex-wrap justify-center gap-6 mb-10 animate-fade-in delay-200">
+          <button class="option-btn flex items-center gap-3 bg-white/90 rounded-xl px-6 py-3 shadow-lg border border-green-100 hover:scale-105 hover:shadow-xl transition-transform duration-200">
+            <i class="fas fa-heartbeat text-red-500 text-2xl"></i>
+            <span class="font-semibold text-green-900 text-lg">Health Insurance</span>
           </button>
-          <button class="option-btn flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-green-100">
-            <i class="fas fa-user-shield text-blue-500"></i>
-            <span class="font-medium text-green-900">Life Insurance</span>
+          <button class="option-btn flex items-center gap-3 bg-white/90 rounded-xl px-6 py-3 shadow-lg border border-green-100 hover:scale-105 hover:shadow-xl transition-transform duration-200">
+            <i class="fas fa-user-shield text-blue-500 text-2xl"></i>
+            <span class="font-semibold text-green-900 text-lg">Life Insurance</span>
           </button>
-          <button class="option-btn flex items-center gap-2 bg-white/80 rounded-lg px-4 py-2 shadow border border-green-100">
-            <i class="fas fa-car text-purple-500"></i>
-            <span class="font-medium text-green-900">Asset Insurance</span>
+          <button class="option-btn flex items-center gap-3 bg-white/90 rounded-xl px-6 py-3 shadow-lg border border-green-100 hover:scale-105 hover:shadow-xl transition-transform duration-200">
+            <i class="fas fa-car text-purple-500 text-2xl"></i>
+            <span class="font-semibold text-green-900 text-lg">Asset Insurance</span>
           </button>
         </div>
-        <a href="#enquiry" class="get-insured-btn inline-block bg-green-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-green-700 transition duration-300 ease-in-out transform hover:-translate-y-1">Get Insured</a>
+        <a href="#enquiry" class="get-insured-btn inline-block bg-gradient-to-r from-green-600 to-green-500 text-white font-bold py-4 px-12 rounded-xl shadow-xl hover:from-green-700 hover:to-green-600 transition duration-300 ease-in-out transform hover:-translate-y-1 text-lg">Get Insured</a>
       </div>
     </section>
 
-    <!-- Insurance Plans Section -->
-    <section class="py-16 md:py-24 section-separator section-tint-2">
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-green-900 mb-2">Insurance Services</h2>
-          <p class="text-lg text-gray-600">Protect your family and assets with comprehensive insurance solutions.</p>
+    <!-- Insurance Plans Section (visually enhanced) -->
+    <section class="py-20 md:py-28 section-separator section-tint-2">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-extrabold text-green-900 mb-3">Insurance Services</h2>
+          <p class="text-xl text-gray-600">Protect your family and assets with comprehensive insurance solutions.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div class="bg-white rounded-2xl shadow-lg border border-green-100 p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all">
-            <div class="bg-green-600 rounded-full p-4 mb-4">
-              <i class="fas fa-shield-alt text-white text-2xl"></i>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+          <div class="bg-white rounded-3xl shadow-xl border border-green-100 p-12 flex flex-col items-center text-center hover:shadow-2xl transition-all group">
+            <div class="bg-green-600 rounded-full p-6 mb-6 group-hover:scale-110 transition-transform duration-200">
+              <i class="fas fa-shield-alt text-white text-4xl"></i>
             </div>
-            <h3 class="text-xl font-bold text-green-800 mb-2">Life & Health Insurance</h3>
-            <p class="text-gray-600 mb-6">Comprehensive coverage for you and your loved ones. Get expert advice and best plans.</p>
-            <a href="#" class="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+            <h3 class="text-2xl font-bold text-green-800 mb-3">Life & Health Insurance</h3>
+            <p class="text-gray-600 mb-7">Comprehensive coverage for you and your loved ones. Get expert advice and best plans.</p>
+            <a href="#" class="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-2">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all">
-            <div class="bg-blue-600 rounded-full p-4 mb-4">
-              <i class="fas fa-car text-white text-2xl"></i>
+          <div class="bg-white rounded-3xl shadow-xl border border-blue-100 p-12 flex flex-col items-center text-center hover:shadow-2xl transition-all group">
+            <div class="bg-blue-600 rounded-full p-6 mb-6 group-hover:scale-110 transition-transform duration-200">
+              <i class="fas fa-car text-white text-4xl"></i>
             </div>
-            <h3 class="text-xl font-bold text-blue-800 mb-2">Vehicle & Asset Insurance</h3>
-            <p class="text-gray-600 mb-6">Protect your car, home, and valuables with tailored insurance solutions.</p>
-            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+            <h3 class="text-2xl font-bold text-blue-800 mb-3">Vehicle & Asset Insurance</h3>
+            <p class="text-gray-600 mb-7">Protect your car, home, and valuables with tailored insurance solutions.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors flex items-center gap-2">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
-        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-green-800 flex items-center gap-2"><i class="fas fa-shield-alt text-green-500"></i> Popular Insurance Plans</h2>
-        <ul class="divide-y divide-green-50 mb-6 text-gray-700 text-base md:text-lg">
-          <li class="py-3 flex items-center gap-3"><i class="fas fa-heartbeat text-red-400"></i> Health Insurance (Individual & Family)</li>
-          <li class="py-3 flex items-center gap-3"><i class="fas fa-user-shield text-blue-400"></i> Life Insurance (Term & Endowment)</li>
-          <li class="py-3 flex items-center gap-3"><i class="fas fa-car text-purple-400"></i> Motor/Asset Insurance</li>
-        </ul>
-        <div class="mb-6 text-sm text-green-700 flex flex-wrap gap-4">
-          <a href="https://www.policybazaar.com/" target="_blank" class="hover:underline flex items-center gap-1"><i class="fas fa-external-link-alt"></i> Compare Plans</a>
-        </div>
+        
 
-      <!-- Interactive Contact Form (refined for clarity and spacing) -->
-      <section class="container-sm py-12">
-        <form id="enquiry" class="bg-white rounded-xl shadow-lg p-8 max-w-xl mx-auto space-y-6 border border-green-100">
-          <h2 class="text-2xl font-bold mb-4 text-center">Get Your Insurance Quote</h2>
-          <div class="form-group">
-            <label class="form-label" for="name">Full Name</label>
-            <input class="form-input" type="text" id="name" name="name" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="email">Email Address</label>
-            <input class="form-input" type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="phone">Phone Number</label>
-            <input class="form-input" type="tel" id="phone" name="phone" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="adults">No. of Adults</label>
-            <input class="form-input" type="number" id="adults" name="adults" min="1" max="20" value="1" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="children">No. of Children</label>
-            <input class="form-input" type="number" id="children" name="children" min="0" max="10" value="0" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="insurance-type">Insurance Type</label>
-            <select class="form-select" id="insurance-type" name="insurance-type" required>
-              <option value="">Select Type</option>
-              <option value="health">Health Insurance</option>
-              <option value="life">Life Insurance</option>
-              <option value="asset">Asset Insurance</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="message">Additional Details</label>
-            <textarea class="form-textarea" id="message" name="message" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn btn-success w-full">Request Quote</button>
-        </form>
+
+      <!-- Interactive Contact Form (visually enhanced) -->
+      <section class="py-16">
+        <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl border border-green-100 px-10 py-12 md:px-16 md:py-16">
+          <form id="enquiry" class="space-y-8">
+            <h2 class="text-3xl font-bold mb-6 text-center text-green-800">Get Your Insurance Quote</h2>
+            <div class="form-group flex flex-col gap-2">
+              <label class="form-label font-semibold" for="name">Full Name</label>
+              <input class="form-input border border-green-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400" type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group flex flex-col gap-2">
+              <label class="form-label font-semibold" for="email">Email Address</label>
+              <input class="form-input border border-green-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400" type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group flex flex-col gap-2">
+              <label class="form-label font-semibold" for="phone">Phone Number</label>
+              <input class="form-input border border-green-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400" type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group flex flex-col gap-2" id="adults-group">
+              <label class="form-label font-semibold" for="adults">No. of Adults</label>
+              <input class="form-input border border-green-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400" type="number" id="adults" name="adults" min="1" max="20" value="1" required />
+            </div>
+            <div class="form-group flex flex-col gap-2" id="children-group">
+              <label class="form-label font-semibold" for="children">No. of Children</label>
+              <input class="form-input border border-green-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400" type="number" id="children" name="children" min="0" max="10" value="0" required />
+            </div>
+            <div class="form-group flex flex-col gap-2">
+              <label class="form-label font-semibold" for="insurance-type">Insurance Type</label>
+              <select class="form-select border border-green-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400" id="insurance-type" name="insurance-type" required>
+                <option value="">Select Type</option>
+                <option value="health">Health Insurance</option>
+                <option value="life">Life Insurance</option>
+                <option value="asset">Asset Insurance</option>
+              </select>
+            </div>
+            <div class="form-group flex flex-col gap-2">
+              <label class="form-label font-semibold" for="message">Additional Details</label>
+              <textarea class="form-textarea border border-green-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400" id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn bg-gradient-to-r from-green-600 to-green-500 text-white font-bold py-3 rounded-xl shadow-lg hover:from-green-700 hover:to-green-600 transition w-full text-lg">Request Quote</button>
+          </form>
+        </div>
+        <script>
+        // Show/disable adults/children fields only for Health Insurance
+        document.addEventListener('DOMContentLoaded', function() {
+          const insuranceType = document.getElementById('insurance-type');
+          const adultsGroup = document.getElementById('adults-group');
+          const childrenGroup = document.getElementById('children-group');
+          const adults = document.getElementById('adults');
+          const children = document.getElementById('children');
+          function updateFields() {
+            if (insuranceType.value === 'health') {
+              adultsGroup.style.display = '';
+              childrenGroup.style.display = '';
+              adults.disabled = false;
+              children.disabled = false;
+            } else {
+              adultsGroup.style.display = 'none';
+              childrenGroup.style.display = 'none';
+              adults.disabled = true;
+              children.disabled = true;
+            }
+          }
+          insuranceType.addEventListener('change', updateFields);
+          updateFields();
+        });
+        </script>
       </section>
 
     <!-- Enquiry Form Validation Script -->
   
 
-      <!-- Testimonials Slider -->
-      <div class="max-w-2xl mx-auto mb-12">
-        <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center gap-2"><i class="fas fa-comments text-green-400"></i> What Our Insurance Clients Say</h3>
-        <div class="relative bg-white rounded-2xl shadow-lg p-8 border border-green-100 overflow-hidden">
+      <!-- Testimonials Slider (visually enhanced) -->
+      <div class="max-w-2xl mx-auto mb-20">
+        <h3 class="text-2xl font-bold text-green-800 mb-8 flex items-center gap-3"><i class="fas fa-comments text-green-400 text-2xl"></i> What Our Insurance Clients Say</h3>
+        <div class="relative bg-white rounded-3xl shadow-2xl p-12 border border-green-100 overflow-hidden">
           <div class="testimonial-slider flex transition-transform duration-500" style="will-change: transform;">
             <div class="testimonial-slide w-full flex-shrink-0">
-              <p class="text-lg text-gray-700 italic mb-2">“The health insurance plan was tailored for my family. The process was smooth and transparent.”</p>
-              <div class="flex items-center gap-3">
-                <img src="/img/testimonial-3.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-green-200">
-                <span class="font-semibold text-green-700">Amit Patel</span>
+              <p class="text-xl text-gray-700 italic mb-4">“The health insurance plan was tailored for my family. The process was smooth and transparent.”</p>
+              <div class="flex items-center gap-4">
+                <img src="/img/testimonial-3.jpg" alt="Client" class="w-12 h-12 rounded-full border-2 border-green-200">
+                <span class="font-semibold text-green-700 text-lg">Amit Patel</span>
               </div>
             </div>
             <div class="testimonial-slide w-full flex-shrink-0 hidden">
-              <p class="text-lg text-gray-700 italic mb-2">“Got my life insurance policy with expert guidance. Highly recommend Soumitra’s team!”</p>
-              <div class="flex items-center gap-3">
-                <img src="/img/testimonial-2.jpg" alt="Client" class="w-10 h-10 rounded-full border-2 border-green-200">
-                <span class="font-semibold text-green-700">Priya Sharma</span>
+              <p class="text-xl text-gray-700 italic mb-4">“Got my life insurance policy with expert guidance. Highly recommend Soumitra’s team!”</p>
+              <div class="flex items-center gap-4">
+                <img src="/img/testimonial-2.jpg" alt="Client" class="w-12 h-12 rounded-full border-2 border-green-200">
+                <span class="font-semibold text-green-700 text-lg">Priya Sharma</span>
               </div>
             </div>
           </div>
-          <div class="flex justify-end gap-2 mt-4">
-            <button type="button" class="testimonial-prev w-10 h-10 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center text-green-700 shadow"><i class="fas fa-chevron-left"></i></button>
-            <button type="button" class="testimonial-next w-10 h-10 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center text-green-700 shadow"><i class="fas fa-chevron-right"></i></button>
+          <div class="flex justify-end gap-4 mt-8">
+            <button type="button" class="testimonial-prev w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center text-green-700 shadow-lg text-xl"><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="testimonial-next w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center text-green-700 shadow-lg text-xl"><i class="fas fa-chevron-right"></i></button>
           </div>
         </div>
       </div>
 
-      <!-- FAQ Accordion -->
-      <div class="max-w-2xl mx-auto mb-12">
-        <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center gap-2"><i class="fas fa-question-circle text-green-400"></i> Insurance FAQs</h3>
-        <div class="space-y-4" id="faq-accordion">
-          <div class="bg-white border border-green-100 rounded-xl shadow-lg">
-            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-green-800 focus:outline-none faq-toggle">
+      <!-- FAQ Accordion (visually enhanced) -->
+      <div class="max-w-2xl mx-auto mb-24">
+        <h3 class="text-2xl font-bold text-green-800 mb-8 flex items-center gap-3"><i class="fas fa-question-circle text-green-400 text-2xl"></i> Insurance FAQs</h3>
+        <div class="space-y-6" id="faq-accordion">
+          <div class="bg-white border border-green-100 rounded-3xl shadow-xl">
+            <button type="button" class="w-full flex justify-between items-center px-8 py-5 text-left font-semibold text-green-800 focus:outline-none faq-toggle text-lg">
               What types of insurance do you offer?
               <i class="fas fa-chevron-down transition-transform"></i>
             </button>
-            <div class="faq-content px-4 pb-3 text-gray-600 hidden">We offer health, life, and asset insurance plans tailored to your needs.</div>
+            <div class="faq-content px-8 pb-5 text-gray-600 hidden">We offer health, life, and asset insurance plans tailored to your needs.</div>
           </div>
-          <div class="bg-white border border-green-100 rounded-lg shadow-sm">
-            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-green-800 focus:outline-none faq-toggle">
+          <div class="bg-white border border-green-100 rounded-3xl shadow-xl">
+            <button type="button" class="w-full flex justify-between items-center px-8 py-5 text-left font-semibold text-green-800 focus:outline-none faq-toggle text-lg">
               How do I choose the right insurance plan?
               <i class="fas fa-chevron-down transition-transform"></i>
             </button>
-            <div class="faq-content px-4 pb-3 text-gray-600 hidden">Our advisors help you select the best plan based on your requirements and budget.</div>
+            <div class="faq-content px-8 pb-5 text-gray-600 hidden">Our advisors help you select the best plan based on your requirements and budget.</div>
           </div>
-          <div class="bg-white border border-green-100 rounded-lg shadow-sm">
-            <button type="button" class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-green-800 focus:outline-none faq-toggle">
+          <div class="bg-white border border-green-100 rounded-3xl shadow-xl">
+            <button type="button" class="w-full flex justify-between items-center px-8 py-5 text-left font-semibold text-green-800 focus:outline-none faq-toggle text-lg">
               Is the claim process easy?
               <i class="fas fa-chevron-down transition-transform"></i>
             </button>
-            <div class="faq-content px-4 pb-3 text-gray-600 hidden">Yes, we assist you throughout the claim process for a hassle-free experience.</div>
+            <div class="faq-content px-8 pb-5 text-gray-600 hidden">Yes, we assist you throughout the claim process for a hassle-free experience.</div>
           </div>
         </div>
       </div>

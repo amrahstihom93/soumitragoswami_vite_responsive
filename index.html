@@ -20,6 +20,41 @@
 
   <!-- Small helpers -->
   <style>
+    @media (max-width: 1023px) {
+      .liquid-glass-inner {
+        max-width: 100vw !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+    }
+    @media (max-width: 1023px) {
+      #main-menu-desktop {
+        display: none !important;
+      }
+      #menu-toggle {
+        display: flex !important;
+        z-index: 11000 !important; /* Ensure toggler is always above nav */
+        position: relative;
+      }
+  /* #mobile-menu: toggled by .hidden class only. Do NOT set display:none elsewhere! */
+      .liquid-glass-inner {
+        height: 60px !important;
+        min-height: 60px !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      #mobile-menu {
+        display: none !important;
+      }
+      #main-menu-desktop {
+        display: flex !important;
+      }
+      #menu-toggle {
+        display: none !important;
+      }
+    }
     :root { --nav-h: 72px; }
     body { font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; }
     .footer { background-color: #212529 !important; }
@@ -42,28 +77,127 @@
     /* account for fixed nav */
     body.has-sticky { padding-top: var(--nav-h); }
   </style>
+  <style>
+    /* Navbar Professional Look */
+    .liquid-glass-inner {
+      background: rgba(255,255,255,0.92) !important;
+      border-radius: 0 !important;
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
+      border-bottom: 2px solid rgba(0,122,255,0.13);
+      position: relative;
+      z-index: 1;
+    }
+    #main-menu-desktop a, #main-menu-desktop button {
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.9rem;
+      font-weight: 500;
+      color: #1e293b;
+      background: none;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      position: relative;
+    }
+    #main-menu-desktop a:hover, #main-menu-desktop button:hover, #main-menu-desktop a:focus, #main-menu-desktop button:focus {
+      background: #e6f0ff;
+      color: #2563eb;
+      box-shadow: 0 0 0 2px #3b82f6;
+    }
+    #main-menu-desktop .nav-active, #main-menu-desktop .nav-active:focus {
+      background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+      color: #2563eb !important;
+      border-radius: 0.9rem;
+      box-shadow: 0 2px 8px 0 rgba(59,130,246,0.10);
+      border: 1.5px solid #b6d2ff;
+      font-weight: 600;
+    }
+    #main-menu-desktop .group:focus-within > button, #main-menu-desktop .group:hover > button {
+      background: #e6f0ff;
+      color: #2563eb;
+    }
+    .menu-dropdown {
+      background: #fff;
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 24px 0 rgba(59,130,246,0.12), 0 1.5px 8px 0 rgba(59,130,246,0.10) inset;
+      border: 1.5px solid #e0e7ef;
+      padding: 0.75rem 0;
+      min-width: 14rem;
+      transition: box-shadow 0.2s, border 0.2s;
+      backdrop-filter: blur(8px);
+    }
+    .menu-dropdown li a {
+      border-radius: 0.75rem;
+      padding: 0.75rem 2rem;
+      font-weight: 500;
+      color: #222;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+    .menu-dropdown li a:hover, .menu-dropdown li a:focus {
+      background: #e6f0ff;
+      color: #2563eb;
+      box-shadow: 0 0 0 2px #3b82f6;
+    }
+    /* Mobile menu improvements */
+    #mobile-menu {
+      background: rgba(255,255,255,0.98) !important;
+      backdrop-filter: blur(12px) !important;
+    }
+    #mobile-menu .rounded-l-3xl {
+      border-radius: 1.5rem 0 0 1.5rem !important;
+      box-shadow: 0 4px 24px 0 rgba(59,130,246,0.10);
+    }
+    #mobile-menu a, #mobile-menu button {
+      font-weight: 500;
+      color: #1e293b;
+      border-radius: 0.9rem;
+      transition: background 0.18s, color 0.18s;
+    }
+    #mobile-menu a:hover, #mobile-menu button:hover, #mobile-menu a:focus, #mobile-menu button:focus {
+      background: #e6f0ff;
+      color: #2563eb;
+    }
+    #mobile-menu .nav-active {
+      background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+      color: #2563eb !important;
+      border: 1.5px solid #b6d2ff;
+      font-weight: 600;
+    }
+  </style>
+  <style>
+    .nav-active, .menu-dropdown .nav-active {
+      background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+      color: #2563eb !important;
+      border-radius: 0.9rem;
+      box-shadow: 0 2px 8px 0 rgba(59,130,246,0.10);
+      border: 1.5px solid #b6d2ff;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+    }
+  </style>
 </head>
 
 <body class="bg-white text-gray-900 font-inter has-sticky">
-  <!-- Fixed Top Navbar -->
-  <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-blue-100 shadow z-50">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8" style="height: var(--nav-h)">
+
+  <!-- Fixed Top Navbar: Single Source of Truth (imported from src/components/navbar.html) -->
+  <!-- Liquid Glass Plate (Desktop Only) -->
+  <nav class="fixed top-0 left-0 w-full z-50 glass-nav-bar liquid-glass-navbar" style="backdrop-filter: blur(18px) saturate(180%);-webkit-backdrop-filter: blur(18px) saturate(180%); background: transparent; box-shadow: none; border-bottom: none;">
+    <!-- SVG Lensing/Refraction Filter for Liquid Glass Effect -->
+  <!-- Glass Plate with Lensing Effect Only (No Morph) -->
+  <!-- <div class="hidden md:block absolute left-1/2 top-0 -translate-x-1/2 z-0" style="width: 96vw; max-width: 1600px; height: 90px; filter: url(#liquidGlassLense); background: rgba(255,255,255,0.90); border-radius: 0 0 2.5rem 2.5rem; box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 2px 16px 0 rgba(0,122,255,0.08); border-bottom: 2px solid rgba(0,122,255,0.10); pointer-events: none;"></div> -->
+  <div class="max-w-auto mx-auto flex items-center justify-between px-4 md:px-8 relative liquid-glass-inner" style="height: 72px; background: rgba(255,255,255,0.82); border-radius: 0; box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); border-bottom: 2px solid rgba(0,122,255,0.13); position:relative; z-index:1;">
       <a href="index.html" class="flex items-center gap-3 shrink-0">
         <img src="/img/logo.png" alt="Logo" class="h-12 w-auto" />
       </a>
-
-      <!-- Desktop Menu -->
-      <ul id="main-menu-desktop" class="hidden md:flex items-center gap-2">
-        <li><a href="login.html" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Login</a></li>
-        <li><a href="/" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Home</a></li>
-
+      <!-- Desktop Menu Only (hide mobile nav on desktop) -->
+  <ul id="main-menu-desktop" class="hidden lg:flex items-center gap-2 font-medium text-lg">
+        <li><a href="index.html" class="nav-active">Home</a></li>
         <li class="relative group">
-          <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1"
-                  aria-haspopup="true" aria-expanded="false">
+          <button class="flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
             Services <i class="fas fa-chevron-down text-xs"></i>
           </button>
-          <!-- dropdown -->
-          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
+          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] menu-dropdown opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40">
             <li><a href="sip.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Mutual Funds/SIP</a></li>
             <li><a href="ins.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Insurance</a></li>
             <li><a href="loan.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Loans</a></li>
@@ -71,183 +205,314 @@
             <li><a href="other.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Other Services</a></li>
           </ul>
         </li>
-
-        <li><a href="#about" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
-        <li><a href="#team" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
-        <li><a href="#contact" class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
-
+        <li><a href="#about" class="px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-blue-50 transition">About</a></li>
+        <li><a href="#team" class="px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-blue-50 transition">Team</a></li>
+        <li><a href="#contact" class="px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-blue-50 transition">Contact</a></li>
         <li class="relative group">
-          <button class="px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1"
-                  aria-haspopup="true" aria-expanded="false">
+          <button class="px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-blue-50 transition flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
             More <i class="fas fa-chevron-down text-xs"></i>
           </button>
-          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] bg-white/95 border border-blue-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40 backdrop-blur-md">
+          <ul class="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[14rem] menu-dropdown opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-400 z-40">
             <li><a href="cert.html" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Certification</a></li>
             <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Risk Profiler</a></li>
             <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-7 py-3 text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg">Disclosure</a></li>
           </ul>
         </li>
+        <li><a href="login.html" class="">Login</a></li>
       </ul>
-
-      <!-- Mobile toggle -->
-      <button id="menu-toggle" class="md:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center"
-              aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+      <!-- Hamburger menu toggler for mobile/tablet -->
+  <button id="menu-toggle" class="lg:hidden text-2xl p-2 rounded-lg hover:bg-blue-50 bg-blue-600 text-white shadow w-12 h-12 flex items-center justify-center ml-2" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" style="display: flex; z-index: 1002;">
         <i class="fas fa-bars"></i>
       </button>
-    </div>
-
-    <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="md:hidden hidden mobile-drawer bg-white border-t border-blue-100 shadow-2xl">
-      <ul class="px-4 py-3 space-y-1">
-        <li><a href="login.html" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Login</a></li>
-        <li><a href="/" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Home</a></li>
-        <!-- Services (collapsible) -->
-        <li>
-          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-accordion="#m-services" aria-expanded="false">
-            Services <i class="fas fa-chevron-down text-xs"></i>
-          </button>
-          <ul id="m-services" class="hidden pl-4 py-1 space-y-1">
-            <li><a href="sip.html" class="block px-3 py-2 rounded hover:bg-blue-50">Mutual Funds/SIP</a></li>
-            <li><a href="ins.html" class="block px-3 py-2 rounded hover:bg-blue-50">Insurance</a></li>
-            <li><a href="loan.html" class="block px-3 py-2 rounded hover:bg-blue-50">Loans</a></li>
-            <li><a href="itr.html" class="block px-3 py-2 rounded hover:bg-blue-50">IT Filing & GST</a></li>
-            <li><a href="other.html" class="block px-3 py-2 rounded hover:bg-blue-50">Other Services</a></li>
-          </ul>
-        </li>
-        <li><a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">About</a></li>
-        <li><a href="#team" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Team</a></li>
-        <li><a href="#contact" class="block px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50">Contact</a></li>
-        <!-- More (collapsible) -->
-        <li>
-          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium hover:text-blue-700 hover:bg-blue-50" data-accordion="#m-more" aria-expanded="false">
-            More <i class="fas fa-chevron-down text-xs"></i>
-          </button>
-          <ul id="m-more" class="hidden pl-4 py-1 space-y-1">
-            <li><a href="cert.html" class="block px-3 py-2 rounded hover:bg-blue-50">Certification</a></li>
-            <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Risk Profiler</a></li>
-            <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="block px-3 py-2 rounded hover:bg-blue-50">Disclosure</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section id="home" class="hero relative py-16 md:py-24 overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none select-none z-0">
-      <svg width="100%" height="100%" viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-        <defs>
-          <radialGradient id="mainRadial" cx="50%" cy="50%" r="80%" fx="50%" fy="50%">
-            <stop offset="0%" stop-color="#e0e7ff" stop-opacity="0.7" />
-            <stop offset="60%" stop-color="#c7d2fe" stop-opacity="0.4" />
-            <stop offset="100%" stop-color="#f3e8ff" stop-opacity="0.2" />
-          </radialGradient>
-          <linearGradient id="mainLinear" x1="0" y1="0" x2="1440" y2="500" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#6366f1" stop-opacity="0.12" />
-            <stop offset="1" stop-color="#a78bfa" stop-opacity="0.08" />
-          </linearGradient>
-          <filter id="blur1"><feGaussianBlur stdDeviation="30" /></filter>
-          <filter id="blur2"><feGaussianBlur stdDeviation="20" /></filter>
-        </defs>
-        <ellipse cx="720" cy="250" rx="700" ry="200" fill="url(#mainRadial)" />
-        <ellipse cx="400" cy="120" rx="180" ry="60" fill="#6366f1" opacity="0.10" filter="url(#blur1)" />
-        <ellipse cx="1100" cy="380" rx="160" ry="50" fill="#a78bfa" opacity="0.10" filter="url(#blur2)" />
-        <rect x="0" y="450" width="1440" height="50" fill="url(#mainLinear)" />
-      </svg>
-    </div>
-
-    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
-      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-        <div class="space-y-6">
-          <div class="flex items-center gap-4">
-            <div>
-              <h2 class="text-2xl md:text-3xl font-bold text-blue-900">Soumitra Goswami</h2>
-              <p class="text-blue-700 text-base md:text-lg font-medium">Financial Advisor & Investment Consultant</p>
-            </div>
-          </div>
-
-          <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-            Start Your <span class="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Investment Journey</span> with Me
-          </h1>
-          <p class="text-lg md:text-xl text-gray-600 max-w-xl">
-            Professional financial advisor helping you build wealth through smart investments, insurance planning, and comprehensive financial solutions tailored to your goals.
-          </p>
-
-          <div class="flex flex-wrap gap-3">
-            <button class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-5 py-3 shadow transition-all">
-              <i class="fas fa-rocket"></i> Start Investing
-            </button>
-            <button class="inline-flex items-center gap-2 bg-white border border-blue-600 text-blue-700 hover:bg-blue-50 font-semibold rounded-lg px-5 py-3 shadow transition-all">
-              <i class="fas fa-phone"></i> Schedule Call
+      <!-- Mobile menu overlay and drawer -->
+  <div id="mobile-menu" class="lg:hidden fixed top-0 right-0 z-[9999] hidden w-full h-full">
+        <!-- Overlay -->
+  <div id="mobile-menu-overlay" class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-blue-100/60 to-blue-200/60 backdrop-blur-xl transition-opacity duration-300 opacity-100 m-0 p-0" tabindex="-1" aria-label="Close menu overlay" style="z-index:9998;"></div>
+        <!-- Drawer: always anchored to right edge -->
+        <div class="mobile-drawer fixed right-0 w-[88vw] max-w-xs bg-white/80 rounded-l-2xl shadow-2xl flex flex-col border-l border-blue-100 animate-slide-in" style="z-index:10000; top:72px; height:calc(100vh - 72px); overflow-y:auto; backdrop-filter: blur(32px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 2px 16px 0 rgba(0,122,255,0.08), -8px 0 16px 0 rgba(59,130,246,0.07);">
+          <div class="flex items-center justify-between px-7 py-6 border-b border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-tl-3xl" style="backdrop-filter: blur(12px);">
+            <a href="index.html" class="flex items-center gap-2">
+              <img src="/img/logo.png" alt="Logo" class="h-11 w-auto drop-shadow" />
+            </a>
+            <button id="menu-close" class="text-3xl p-3 rounded-full hover:bg-blue-100 focus:outline-none text-blue-600 transition-all duration-200 shadow-lg border border-blue-100" aria-label="Close menu" style="min-width:48px; min-height:48px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.85);">
+              <i class="fas fa-times"></i>
             </button>
           </div>
-
-          <div class="flex gap-4 md:gap-6 mt-4">
-            <div class="flex-1 min-w-[120px] flex flex-col items-center bg-white rounded-xl shadow-md px-5 py-4 border border-blue-100">
-              <div class="text-2xl md:text-3xl font-bold text-blue-700">50+</div>
-              <div class="text-gray-600 text-sm font-medium">Happy Clients</div>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:flex-start;">
+            <ul class="px-2 py-3 space-y-1 text-[15px]">
+              <li><a href="login.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-sign-in-alt w-5"></i> Login</a></li>
+              <li><a href="index.html" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-home w-5"></i> Home</a></li>
+              <!-- Services (collapsible) -->
+              <li class="relative">
+                <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-services" aria-expanded="false">
+                  <span class="flex items-center gap-3"><i class="fas fa-briefcase w-5"></i> Services</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <ul id="m-services" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                  <li><a href="sip.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-chart-line w-4"></i> Mutual Funds/SIP</a></li>
+                  <li><a href="ins.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-shield-alt w-4"></i> Insurance</a></li>
+                  <li><a href="loan.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-university w-4"></i> Loans</a></li>
+                  <li><a href="itr.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-invoice w-4"></i> IT Filing & GST</a></li>
+                  <li><a href="other.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-ellipsis-h w-4"></i> Other Services</a></li>
+                </ul>
+              </li>
+              <li><a href="#about" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-user w-5"></i> About</a></li>
+              <li><a href="#team" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-users w-5"></i> Team</a></li>
+              <li><a href="#contact" class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition"><i class="fas fa-envelope w-5"></i> Contact</a></li>
+              <!-- More (collapsible) -->
+              <li class="relative">
+                <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium text-gray-900 bg-white/80 hover:text-blue-700 hover:bg-blue-100 transition" data-accordion="#m-more" aria-expanded="false">
+                  <span class="flex items-center gap-3"><i class="fas fa-ellipsis-v w-5"></i> More</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <ul id="m-more" class="hidden w-full pl-3 py-1 space-y-1 bg-white/90 rounded-lg shadow border border-blue-100 mt-1 transition-all duration-300">
+                  <li><a href="cert.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-certificate w-4"></i> Certification</a></li>
+                  <li><a href="https://forms.zohopublic.in/resolutionkolgm1/form/RiskProfilerIndividuals/formperma/webSTFNbCb0bFXIPBu4XptDgXmSNiWWmCkuh6vqUV_k" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-user-shield w-4"></i> Risk Profiler</a></li>
+                  <li><a href="https://soumitragoswami.in/pdf/TER_May_2025.pdf" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100"><i class="fas fa-file-alt w-4"></i> Disclosure</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div class="px-2 pt-3 pb-4 border-t border-blue-100 bg-gradient-to-r from-blue-50/80 to-blue-100/80 rounded-bl-2xl mt-1">
+              <a href="enquiry.html" class="block w-full text-center bg-gradient-to-r from-blue-500 to-blue-400 text-white font-bold py-2.5 rounded-lg shadow hover:from-blue-700 hover:to-blue-600 transition">Enquire Now</a>
             </div>
-            <div class="flex-1 min-w-[120px] flex flex-col items-center bg-white rounded-xl shadow-md px-5 py-4 border border-blue-100">
-              <div class="text-2xl md:text-3xl font-bold text-blue-700">₹10Cr+</div>
-              <div class="text-gray-600 text-sm font-medium">Assets Managed</div>
-            </div>
-            <div class="flex-1 min-w-[120px] flex flex-col items-center bg-white rounded-xl shadow-md px-5 py-4 border border-blue-100">
-              <div class="text-2xl md:text-3xl font-bold text-blue-700">5+</div>
-              <div class="text-gray-600 text-sm font-medium">Years Experience</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative flex justify-center">
-          <img src="/img/soumitra.jpg" alt="Soumitra Goswami" class="rounded-3xl shadow-2xl w-full max-w-xs md:max-w-md mx-auto border-4 border-white" />
-          <div class="absolute -bottom-6 right-6 bg-white rounded-xl p-4 shadow-lg border border-blue-100 flex items-center gap-2">
-            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <span class="text-sm font-medium text-blue-700">Available for consultation</span>
           </div>
         </div>
       </div>
+<style>
+@keyframes slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.animate-slide-in {
+  animation: slide-in 0.35s cubic-bezier(.4,1.6,.6,1);
+}
+@media (max-width: 1023px) {
+  #mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    max-width: 400px;
+    height: 100vh;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(18px) saturate(180%);
+    z-index: 12000;
+    box-shadow: -2px 0 24px 0 rgba(59,130,246,0.10);
+    transition: transform 0.35s cubic-bezier(.4,1.6,.6,1), opacity 0.25s;
+    overflow-y: auto;
+  }
+  #mobile-menu .rounded-l-3xl {
+    border-radius: 1.5rem 0 1.5rem 1.5rem !important;
+    box-shadow: 0 4px 24px 0 rgba(59,130,246,0.10);
+    background: rgba(255,255,255,0.98);
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    padding-bottom: 1.5rem;
+  }
+  #mobile-menu ul li a, #mobile-menu ul li button {
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: #1e293b;
+    border-radius: 0.9rem;
+    padding: 0.85rem 1.2rem;
+    background: none;
+    transition: background 0.18s, color 0.18s;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  #mobile-menu ul li a:hover, #mobile-menu ul li button:hover, #mobile-menu ul li a:focus, #mobile-menu ul li button:focus {
+    background: #e6f0ff;
+    color: #2563eb;
+  }
+  #mobile-menu ul li .active, #mobile-menu ul li .nav-active {
+    background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+    color: #2563eb !important;
+    border: 1.5px solid #b6d2ff;
+    font-weight: 600;
+  }
+  #mobile-menu .px-6.py-4 {
+    background: linear-gradient(120deg, #e6f0ff 60%, #f5faff 100%);
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+}
+</style>
+      </div>
     </div>
+     
+  </nav>
+  
+           
+<!-- Hero Carousel Section -->
+<section id="home" class="hero relative min-h-screen w-full flex items-center justify-center overflow-hidden border-b-2 border-blue-100">
+  <div class="absolute inset-0 pointer-events-none select-none z-0">
+    <svg width="100%" height="100%" viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+      <!-- ...SVG background unchanged... -->
+    </svg>
+  </div>
+  <div class="relative z-10 w-full h-full flex flex-col justify-center">
+    <div id="hero-carousel" class="relative h-full min-h-screen flex items-center justify-center">
+      <!-- Slide 1 -->
+      <div class="carousel-slide block opacity-100 transition-opacity duration-700 ease-in-out h-full min-h-screen flex items-center justify-center relative">
+  <!-- Background removed for first slide -->
+  <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 xl:gap-32 items-center w-full h-full">
+          <div class="space-y-8 bg-white/70 backdrop-blur-lg rounded-3xl p-6 md:p-10 shadow-xl w-full max-w-2xl">
+            <h2 class="text-2xl md:text-3xl xl:text-4xl font-bold text-blue-900">Soumitra Goswami</h2>
+            <p class="text-blue-700 text-base md:text-lg xl:text-xl font-medium">Financial Advisor & Investment Consultant</p>
+            <h1 class="text-3xl md:text-5xl xl:text-7xl font-extrabold text-gray-900 leading-tight">
+              Start Your <span class="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Investment Journey</span> with Me
+            </h1>
+            <p class="text-base md:text-xl xl:text-2xl text-gray-600 max-w-2xl">
+              Professional financial advisor helping you build wealth through smart investments, insurance planning, and comprehensive financial solutions tailored to your goals.
+            </p>
+            <div class="flex flex-wrap gap-4 md:gap-6">
+              <button class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full px-8 py-4 shadow transition-all text-base md:text-lg xl:text-xl">
+                <i class="fas fa-rocket"></i> Start Investing
+              </button>
+              <button class="inline-flex items-center gap-2 bg-white border border-blue-600 text-blue-700 hover:bg-blue-50 font-semibold rounded-full px-8 py-4 shadow transition-all text-base md:text-lg xl:text-xl">
+                <i class="fas fa-phone"></i> Schedule Call
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-4 md:gap-6 mt-4">
+              <div class="flex-1 min-w-[120px] flex flex-col items-center bg-white rounded-xl shadow-md px-5 py-4 border border-blue-100">
+                <div class="text-2xl md:text-3xl font-bold text-blue-700">50+</div>
+                <div class="text-gray-600 text-sm font-medium">Happy Clients</div>
+              </div>
+              <div class="flex-1 min-w-[120px] flex flex-col items-center bg-white rounded-xl shadow-md px-5 py-4 border border-blue-100">
+                <div class="text-2xl md:text-3xl font-bold text-blue-700">₹10Cr+</div>
+                <div class="text-gray-600 text-sm font-medium">Assets Managed</div>
+              </div>
+              <div class="flex-1 min-w-[120px] flex flex-col items-center bg-white rounded-xl shadow-md px-5 py-4 border border-blue-100">
+                <div class="text-2xl md:text-3xl font-bold text-blue-700">5+</div>
+                <div class="text-gray-600 text-sm font-medium">Years Experience</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative flex justify-center items-center w-full max-w-lg mx-auto">
+            <div class="w-full max-w-lg rounded-3xl shadow-2xl border-4 border-white overflow-hidden bg-white/60 backdrop-blur-lg">
+              <img src="/img/soumitra.jpg" alt="Soumitra Goswami" class="w-full h-auto object-cover" />
+            </div>
+            <div class="absolute -bottom-6 right-6 bg-white rounded-xl p-4 shadow-lg border border-blue-100 flex items-center gap-2">
+              <div id="consult-dot" class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span class="text-sm font-medium text-blue-700">Book for consultation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 3 (New) -->
+      <!-- Slide 3 (New) -->
+      <div class="carousel-slide hidden opacity-0 transition-opacity duration-700 ease-in-out h-full min-h-screen flex items-center justify-center relative">
+        <div class="absolute inset-0 w-full h-full z-0">
+          <img src="/img/carousel-2.jpg" alt="Retirement & Future Planning" class="w-full h-full object-cover object-center" />
+          <div class="absolute inset-0 bg-gradient-to-br from-white/80 via-white/60 to-white/20"></div>
+        </div>
+  <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 xl:gap-32 items-center w-full h-full">
+          <div class="space-y-8 bg-white/70 backdrop-blur-lg rounded-3xl p-6 md:p-10 shadow-xl w-full max-w-2xl">
+            <h2 class="text-2xl md:text-3xl xl:text-4xl font-bold text-blue-900">Plan for Tomorrow</h2>
+            <p class="text-orange-700 text-base md:text-lg xl:text-xl font-medium">Retirement & Future Planning</p>
+            <h1 class="text-3xl md:text-5xl xl:text-7xl font-extrabold text-gray-900 leading-tight">
+              <span class="bg-gradient-to-r from-orange-600 to-yellow-400 bg-clip-text text-transparent">Secure Your Dreams</span> Today
+            </h1>
+            <p class="text-base md:text-xl xl:text-2xl text-gray-600 max-w-2xl">
+              Prepare for a worry-free retirement and achieve your life goals with expert financial planning and guidance.
+            </p>
+            <div class="flex flex-wrap gap-4 md:gap-6">
+              <button class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full px-8 py-4 shadow transition-all text-base md:text-lg xl:text-xl">
+                <i class="fas fa-sun"></i> Plan Retirement
+              </button>
+              <button class="inline-flex items-center gap-2 bg-white border border-orange-600 text-orange-700 hover:bg-orange-50 font-semibold rounded-full px-8 py-4 shadow transition-all text-base md:text-lg xl:text-xl">
+                <i class="fas fa-comments"></i> Free Consultation
+              </button>
+            </div>
+          </div>
+          <div class="relative flex justify-center items-center w-full max-w-lg mx-auto">
+            <!-- Optionally add a relevant image or illustration here for visual balance -->
+          </div>
+        </div>
+      </div>
+      <!-- Carousel Controls -->
+  <div class="absolute inset-y-0 left-0 right-0 flex justify-between items-center px-2 md:px-8 z-20 pointer-events-none">
+  <button id="carousel-prev"
+    class="backdrop-blur-md bg-white/10 border border-blue-200 rounded-full shadow-lg p-3 md:p-4 text-2xl text-blue-700 hover:bg-white/30 hover:shadow-xl transition focus:outline-none
+    ring-1 ring-white/40 focus:ring-2 focus:ring-blue-400 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 pointer-events-auto absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-30"
+    style="box-shadow: 0 4px 24px 0 rgba(30, 64, 175, 0.10);">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button id="carousel-next"
+    class="backdrop-blur-md bg-white/10 border border-blue-200 rounded-full shadow-lg p-3 md:p-4 text-2xl text-blue-700 hover:bg-white/30 hover:shadow-xl transition focus:outline-none
+    ring-1 ring-white/40 focus:ring-2 focus:ring-blue-400 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 pointer-events-auto absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-30"
+    style="box-shadow: 0 4px 24px 0 rgba(30, 64, 175, 0.10);">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>
+      <!-- Carousel Dots -->
+      <div class="flex justify-center mt-6 space-x-2" id="carousel-dots">
+        <button class="w-3 h-3 rounded-full bg-blue-300 transition-colors" aria-label="Go to slide 1"></button>
+        <button class="w-3 h-3 rounded-full bg-blue-100 transition-colors" aria-label="Go to slide 2"></button>
+        <button class="w-3 h-3 rounded-full bg-blue-100 transition-colors" aria-label="Go to slide 3"></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Change dot color based on time: green (8am-8pm), red (else)
+    document.addEventListener('DOMContentLoaded', function() {
+      var dot = document.getElementById('consult-dot');
+      if (dot) {
+        var hour = new Date().getHours();
+        if (hour >= 8 && hour < 20) {
+          dot.classList.remove('bg-red-500');
+          dot.classList.add('bg-green-500');
+        } else {
+          dot.classList.remove('bg-green-500');
+          dot.classList.add('bg-red-500');
+        }
+      }
+    });
+  </script>
   </section>
 
   <!-- Services -->
   <section id="services" class="bg-white py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 md:px-8">
+
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 md:px-8">
       <div class="text-center mb-10">
-  <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2">Our Services</h2>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2">Our Services</h2>
         <p class="text-lg text-gray-600">Comprehensive financial solutions to help you achieve your financial goals</p>
       </div>
-
-  <div class="grid grid-cols-2 gap-4 sm:flex sm:flex-row sm:gap-8 justify-center px-2">
-        <!-- cards unchanged, just tidied widths -->
-  <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-6 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full">
           <div class="bg-blue-600 rounded-full p-4 mb-4"><i class="fas fa-chart-line text-white text-2xl"></i></div>
           <h3 class="text-xl font-bold text-blue-800 mb-2">Mutual Funds/SIP</h3>
           <p class="text-gray-600 mb-6">Build wealth systematically with our curated mutual fund portfolios and SIP plans.</p>
           <a href="sip.html" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
-
-  <div class="bg-white rounded-2xl shadow-lg border border-green-100 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl shadow-lg border border-green-100 p-6 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full">
           <div class="bg-green-600 rounded-full p-4 mb-4"><i class="fas fa-shield-alt text-white text-2xl"></i></div>
           <h3 class="text-xl font-bold text-green-800 mb-2">Insurance</h3>
           <p class="text-gray-600 mb-6">Protect your family and assets with comprehensive insurance solutions.</p>
           <a href="ins.html" class="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
-
-  <div class="bg-white rounded-2xl shadow-lg border border-purple-100 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl shadow-lg border border-purple-100 p-6 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full">
           <div class="bg-purple-600 rounded-full p-4 mb-4"><i class="fas fa-hand-holding-usd text-white text-2xl"></i></div>
           <h3 class="text-xl font-bold text-purple-800 mb-2">Loans</h3>
           <p class="text-gray-600 mb-6">Get the best loan deals for home, personal, business, and other financial needs.</p>
           <a href="loan.html" class="text-purple-600 font-semibold hover:text-purple-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
-
-  <div class="bg-white rounded-2xl shadow-lg border border-orange-100 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+        <!-- Card 4 -->
+        <div class="bg-white rounded-2xl shadow-lg border border-orange-100 p-6 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full">
           <div class="bg-orange-600 rounded-full p-4 mb-4"><i class="fas fa-file-invoice text-white text-2xl"></i></div>
           <h3 class="text-xl font-bold text-orange-800 mb-2">IT Filing & Add-on Services</h3>
           <p class="text-gray-600 mb-6">Complete IT filing, GST, and other essential documentation services.</p>
           <a href="itr.html" class="text-orange-600 font-semibold hover:text-orange-700 transition-colors flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
-
-  <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full max-w-xs mx-auto">
+        <!-- Card 5 -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 flex flex-col items-center text-center hover:shadow-2xl transition-all w-full">
           <div class="bg-gray-600 rounded-full p-4 mb-4"><i class="fas fa-ellipsis-h text-white text-2xl"></i></div>
           <h3 class="text-xl font-bold text-gray-800 mb-2">Other Services</h3>
           <p class="text-gray-600 mb-6">Explore more services and solutions tailored for you.</p>
@@ -258,34 +523,132 @@
   </section>
 
   <!-- About -->
-  <section id="about" class="bg-gray-50 py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 md:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-        <div><img src="/img/about.jpg" alt="About Soumitra Goswami" class="rounded-3xl shadow-2xl w-full border-4 border-white" /></div>
-        <div class="space-y-6">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900">About Soumitra Goswami</h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            With over 5 years of experience in financial planning and investment advisory, I help individuals and families achieve their financial goals through strategic planning and smart investment decisions.
-          </p>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            My approach combines deep market knowledge with personalized service to ensure every client receives tailored solutions that align with their risk profile and financial objectives.
-          </p>
-          <div class="grid grid-cols-2 gap-6">
-            <div class="bg-white rounded-xl shadow-md p-6 border border-blue-100 text-center">
-              <h4 class="font-bold text-blue-600 text-xl mb-2">AMFI Certified</h4>
-              <p class="text-gray-600">Mutual Fund Distributor</p>
-            </div>
-            <div class="bg-white rounded-xl shadow-md p-6 border border-green-100 text-center">
-              <h4 class="font-bold text-green-600 text-xl mb-2">NISM Certified</h4>
-              <p class="text-gray-600">Investment Advisor</p>
-            </div>
-          </div>
-          <button onclick="window.location.href='cert.html'" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-8 py-3 shadow transition-all mt-2">
-            View Certifications
-          </button>
+  <section id="about" class="relative bg-gradient-to-br from-blue-50/80 to-blue-100/80 py-8 md:py-12 border-t-2 border-blue-100">
+    <div class="max-w-3xl mx-auto px-2 sm:px-4">
+      <div class="about-card">
+        <h2>About Soumitra Goswami</h2>
+        <div class="subtitle">
+          AMFI Registered Mutual Fund Distributor: <a href="#" style="color:#2563eb;text-decoration:underline;">ARN-309045</a>
         </div>
+        <p>
+          With over 5 years of experience in financial planning and investment advisory, I help individuals and families achieve their financial goals through strategic planning and smart investment decisions.
+        </p>
+        <p>
+          My approach combines deep market knowledge with personalized service to ensure every client receives tailored solutions that align with their risk profile and financial objectives.
+        </p>
+        <div class="certifications">
+          <div class="cert-card amfi">
+            <h3>AMFI Certified</h3>
+            <span>Mutual Fund Distributor</span>
+          </div>
+          <div class="cert-card nism">
+            <h3>NISM Certified</h3>
+            <span>Investment Advisor</span>
+          </div>
+        </div>
+        <a href="cert.html" class="btn-main">View Certifications</a>
+        <span class="policy-links">
+          <a href="https://soumitragoswami.in/pdf/privacypolicy.pdf" target="_blank" download>Privacy Policy</a>
+          <a href="https://soumitragoswami.in/pdf/termscondition.pdf" target="_blank" download>Terms &amp; Conditions</a>
+        </span>
       </div>
     </div>
+    <style>
+    .about-card {
+      background: linear-gradient(135deg, #f8fbff 0%, #eaf1fb 100%);
+      border-radius: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10), 0 1.5px 8px 0 rgba(59,130,246,0.10) inset;
+      padding: 3rem 2rem 2.5rem 2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      border: 1.5px solid #e0e7ef;
+    }
+    .about-card h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #1e40af;
+      margin-bottom: 0.5rem;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+    .about-card .subtitle {
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    .about-card p {
+      color: #475569;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .certifications {
+      display: flex;
+      gap: 1.5rem;
+      margin: 2rem 0 1.5rem 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cert-card {
+      flex: 1 1 220px;
+      background: #fff;
+      border-radius: 1.25rem;
+      border: 1.5px solid #e0e7ef;
+      box-shadow: 0 2px 8px 0 rgba(59,130,246,0.07);
+      padding: 1.2rem 1rem;
+      text-align: center;
+      transition: box-shadow 0.2s, border 0.2s;
+    }
+    .cert-card.amfi { border-color: #3b82f6; }
+    .cert-card.nism { border-color: #22c55e; }
+    .cert-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .cert-card.amfi h3 { color: #2563eb; }
+    .cert-card.nism h3 { color: #16a34a; }
+    .cert-card span {
+      color: #64748b;
+      font-size: 1rem;
+    }
+    .btn-main {
+      display: inline-block;
+      background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.85rem 2.2rem;
+      border-radius: 2rem;
+      box-shadow: 0 4px 16px 0 rgba(59,130,246,0.13);
+      border: none;
+      outline: none;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+    .btn-main:hover, .btn-main:focus {
+      background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 100%);
+      box-shadow: 0 8px 24px 0 rgba(59,130,246,0.18);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .policy-links {
+      margin-left: 1.5rem;
+      font-size: 1rem;
+    }
+    .policy-links a {
+      color: #2563eb;
+      text-decoration: underline;
+      margin-left: 1.2rem;
+      transition: color 0.2s;
+    }
+    .policy-links a:hover { color: #1d4ed8; }
+    </style>
   </section>
 
   <!-- Team -->
@@ -328,34 +691,99 @@
         <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2">What Our Clients Say</h2>
         <p class="text-lg text-gray-600">Read testimonials from our satisfied clients</p>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- three cards unchanged -->
-        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center">
-          <img src="/img/testimonial-1.jpg" alt="Rajesh Kumar" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
-          <h4 class="text-lg font-bold text-blue-800 mb-1">Rajesh Kumar</h4>
-          <p class="text-gray-500 text-sm mb-2">Business Owner</p>
-          <p class="text-gray-700 mb-4">Soumitra's expertise in financial planning helped me achieve my investment goals faster than I expected. Highly recommended!</p>
-          <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <div class="relative">
+        <button id="testimonial-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-700 shadow-lg"><i class="fas fa-chevron-left"></i></button>
+        <div id="testimonial-slider" class="overflow-hidden">
+          <div class="flex transition-transform duration-500" style="will-change: transform;" id="testimonial-track">
+            <!-- Testimonial Cards -->
+            <div class="testimonial-card bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center min-w-full md:min-w-[33.3333%]">
+              <img src="/img/testimonial-1.jpg" alt="Pratap Kundu" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+              <h4 class="text-lg font-bold text-blue-800 mb-1">Pratap Kundu</h4>
+              <p class="text-gray-500 text-sm mb-2">Business Owner</p>
+              <p class="text-gray-700 mb-4">"I got guidance to understand different investment options like SIPs, mutual funds, stock market instruments, and fixed deposits. This information helped me to plan based on my financial goals and comfort with risk. The discussions also covered tax considerations, retirement planning, and building an emergency fund. Highly recommended!"</p>
+              <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <div class="testimonial-card bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center min-w-full md:min-w-[33.3333%]">
+              <img src="/img/testimonial-2.jpg" alt="Debabrata Chakraborty" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+              <h4 class="text-lg font-bold text-blue-800 mb-1">Debabrata Chakraborty</h4>
+              <p class="text-gray-500 text-sm mb-2">Software Engineer, Private Sector</p>
+              <p class="text-gray-700 mb-4">Professional service and excellent guidance on mutual funds. My SIP portfolio is performing exceptionally well.</p>
+              <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <div class="testimonial-card bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center min-w-full md:min-w-[33.3333%]">
+              <img src="/img/testimonial-3.jpg" alt="Nilanjan Banerjee" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+              <h4 class="text-lg font-bold text-blue-800 mb-1">Nilanjan Banerjee</h4>
+              <p class="text-gray-500 text-sm mb-2">Technical Staff, Impact Center, Jadavpur University</p>
+              <p class="text-gray-700 mb-4">Savings & investment go hand in hand. Saving is an individual thing. whereas investment is a game where one needs to follow a stategy, handholding & proper guidance. Soumitra plays the perfect roll of a friend philosopher & guide for long term wealth creation of an individual.</p>
+              <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <div class="testimonial-card bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center min-w-full md:min-w-[33.3333%]">
+              <img src="/img/testimonial-4.jpg" alt="Mansuri" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+              <h4 class="text-lg font-bold text-blue-800 mb-1">Mansuri</h4>
+              <p class="text-gray-500 text-sm mb-2">Sister Tutor, BSMC</p>
+              <p class="text-gray-700 mb-4">Soumitra's financial advice is practical and easy to follow. I feel more confident about my investments and future planning. Highly recommended!</p>
+              <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
         </div>
-
-        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center">
-          <img src="/img/testimonial-2.jpg" alt="Priya Sharma" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
-          <h4 class="text-lg font-bold text-blue-800 mb-1">Priya Sharma</h4>
-          <p class="text-gray-500 text-sm mb-2">Software Engineer</p>
-          <p class="text-gray-700 mb-4">Professional service and excellent guidance on mutual funds. My SIP portfolio is performing exceptionally well.</p>
-          <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center">
-          <img src="/img/testimonial-3.jpg" alt="Amit Patel" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
-          <h4 class="text-lg font-bold text-blue-800 mb-1">Amit Patel</h4>
-          <p class="text-gray-500 text-sm mb-2">Doctor</p>
-          <p class="text-gray-700 mb-4">Great experience with loan processing and insurance planning. The team is very responsive and knowledgeable.</p>
-          <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
+        <button id="testimonial-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-700 shadow-lg"><i class="fas fa-chevron-right"></i></button>
       </div>
+      <div class="flex justify-center mt-6 gap-2" id="testimonial-dots"></div>
     </div>
+    <script>
+      // Responsive testimonial slider logic
+      const track = document.getElementById('testimonial-track');
+      const prevBtn = document.getElementById('testimonial-prev');
+      const nextBtn = document.getElementById('testimonial-next');
+      const dotsContainer = document.getElementById('testimonial-dots');
+      const cards = Array.from(track.children);
+      let current = 0;
+      function getVisible() {
+        if(window.innerWidth >= 1024) return 3;
+        if(window.innerWidth >= 640) return 2;
+        return 1;
+      }
+      function updateSlider() {
+        const visible = getVisible();
+        const width = track.offsetWidth / visible;
+        track.style.transform = `translateX(-${current * width}px)`;
+        // Dots
+        dotsContainer.innerHTML = '';
+        const total = Math.ceil(cards.length / visible);
+        for(let i=0;i<total;i++) {
+          const dot = document.createElement('button');
+          dot.className = 'w-3 h-3 rounded-full ' + (i===Math.floor(current/visible)?'bg-blue-600':'bg-blue-200') + ' transition-colors';
+          dot.onclick = ()=>{current=i*visible;updateSlider();};
+          dotsContainer.appendChild(dot);
+        }
+      }
+      function next() {
+        const visible = getVisible();
+        if(current+visible < cards.length) current+=visible;
+        else current=0;
+        updateSlider();
+      }
+      function prev() {
+        const visible = getVisible();
+        if(current-visible >= 0) current-=visible;
+        else current=(Math.ceil(cards.length/visible)-1)*visible;
+        updateSlider();
+      }
+      nextBtn.onclick = next;
+      prevBtn.onclick = prev;
+      window.addEventListener('resize',()=>{current=0;updateSlider();});
+      updateSlider();
+    </script>
+
+        <!-- <div class="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 text-center">
+          <img src="/img/testimonial-4.jpg" alt="Mansuri" class="rounded-full w-20 h-20 object-cover mb-4 border-4 border-blue-100 shadow mx-auto" />
+          <h4 class="text-lg font-bold text-blue-800 mb-1">Mansuri</h4>
+          <p class="text-gray-500 text-sm mb-2">Sister Tutor, BSMC</p>
+          <p class="text-gray-700 mb-4">Soumitra's financial advice is practical and easy to follow. I feel more confident about my investments and future planning. Highly recommended!</p>
+          <div class="flex gap-1 text-yellow-400 text-lg justify-center"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        </div> -->
+      <!-- </div>
+    </div> -->
   </section>
 
   <!-- Contact -->
@@ -584,33 +1012,7 @@
     }
     document.querySelectorAll('nav a, .btn, button').forEach(el => el.addEventListener('click', createRipple));
 
-    // mobile menu & accordions
-    (function () {
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('mobile-menu');
-      if (!toggle || !menu) return;
-
-      const open = () => { menu.classList.remove('hidden'); menu.classList.add('show'); toggle.setAttribute('aria-expanded','true'); };
-      const close = () => { menu.classList.add('hidden'); menu.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); };
-
-      toggle.addEventListener('click', e => { e.stopPropagation(); (menu.classList.contains('hidden') ? open : close)(); });
-      document.addEventListener('click', e => {
-        if (!menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== toggle) close();
-      });
-      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
-
-      // collapsible submenus
-      menu.querySelectorAll('[data-accordion]').forEach(btn => {
-        const sel = btn.getAttribute('data-accordion'); const panel = document.querySelector(sel);
-        btn.addEventListener('click', () => {
-          const openNow = !panel.classList.contains('hidden');
-          // close all panels
-          menu.querySelectorAll('.mobile-drawer ul[id]').forEach(p => p.classList.add('hidden'));
-          if (!openNow) panel.classList.remove('hidden'); else panel.classList.add('hidden');
-          btn.setAttribute('aria-expanded', String(!openNow));
-        });
-      });
-    })();
+  // mobile menu & accordions handled by src/navbar-mobile.js
 
     // OTP modal logic
     (function () {
@@ -664,5 +1066,72 @@
       }
     });
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('#hero-carousel .carousel-slide');
+    const dots = document.querySelectorAll('#carousel-dots button');
+    let current = 0, timer = null, animating = false;
+
+    function showSlide(idx) {
+      if (animating || idx === current) return;
+      animating = true;
+      const prev = current;
+      const next = idx;
+
+      // Fade out previous
+      slides[prev].classList.remove('opacity-100');
+      slides[prev].classList.add('opacity-0');
+
+      // After fade out, hide previous, show next, then fade in next
+      setTimeout(() => {
+        slides[prev].classList.add('hidden');
+        slides[next].classList.remove('hidden', 'opacity-0');
+        // Force reflow for transition
+        void slides[next].offsetWidth;
+        slides[next].classList.add('opacity-100');
+
+        // Update dots
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('bg-blue-300', i === next);
+          dot.classList.toggle('bg-blue-100', i !== next);
+        });
+
+        current = next;
+        animating = false;
+        resetTimer();
+      }, 700); // match your transition duration
+    }
+
+    function nextSlide() {
+      showSlide((current + 1) % slides.length);
+    }
+    function prevSlide() {
+      showSlide((current - 1 + slides.length) % slides.length);
+    }
+    function resetTimer() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(nextSlide, 7000);
+    }
+
+    document.getElementById('carousel-prev').onclick = prevSlide;
+    document.getElementById('carousel-next').onclick = nextSlide;
+    dots.forEach((dot, i) => {
+      dot.onclick = () => showSlide(i);
+    });
+
+    // Initial state: only first slide visible and fully opaque
+    slides.forEach((slide, i) => {
+      if (i === 0) {
+        slide.classList.remove('hidden', 'opacity-0');
+        slide.classList.add('opacity-100');
+      } else {
+        slide.classList.add('hidden', 'opacity-0');
+        slide.classList.remove('opacity-100');
+      }
+    });
+    dots[0].classList.add('bg-blue-300');
+    resetTimer();
+  });
+</script>
 </body>
 </html>
